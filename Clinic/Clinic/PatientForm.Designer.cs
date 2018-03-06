@@ -57,6 +57,8 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.wylogujToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.personalGroupBox = new System.Windows.Forms.GroupBox();
+            this.countryTextBox = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.returnButton1 = new System.Windows.Forms.Button();
             this.saveButton = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
@@ -172,7 +174,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(469, 26);
+            this.label6.Location = new System.Drawing.Point(645, 78);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(59, 13);
             this.label6.TabIndex = 10;
@@ -180,10 +182,10 @@
             // 
             // phoneTextBox
             // 
-            this.phoneTextBox.Location = new System.Drawing.Point(534, 19);
+            this.phoneTextBox.Location = new System.Drawing.Point(710, 71);
             this.phoneTextBox.Mask = "000-000-000";
             this.phoneTextBox.Name = "phoneTextBox";
-            this.phoneTextBox.Size = new System.Drawing.Size(66, 20);
+            this.phoneTextBox.Size = new System.Drawing.Size(111, 20);
             this.phoneTextBox.TabIndex = 11;
             // 
             // label7
@@ -226,7 +228,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(673, 26);
+            this.label9.Location = new System.Drawing.Point(673, 25);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(31, 13);
             this.label9.TabIndex = 16;
@@ -300,22 +302,24 @@
             // profilToolStripMenuItem
             // 
             this.profilToolStripMenuItem.Name = "profilToolStripMenuItem";
-            this.profilToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.profilToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.profilToolStripMenuItem.Text = "Profil";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(115, 6);
             // 
             // wylogujToolStripMenuItem
             // 
             this.wylogujToolStripMenuItem.Name = "wylogujToolStripMenuItem";
-            this.wylogujToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.wylogujToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.wylogujToolStripMenuItem.Text = "Wyloguj";
             // 
             // personalGroupBox
             // 
+            this.personalGroupBox.Controls.Add(this.countryTextBox);
+            this.personalGroupBox.Controls.Add(this.label16);
             this.personalGroupBox.Controls.Add(this.returnButton1);
             this.personalGroupBox.Controls.Add(this.saveButton);
             this.personalGroupBox.Controls.Add(this.label1);
@@ -325,12 +329,13 @@
             this.personalGroupBox.Controls.Add(this.label10);
             this.personalGroupBox.Controls.Add(this.postcodeTextBox);
             this.personalGroupBox.Controls.Add(this.label9);
+            this.personalGroupBox.Controls.Add(this.label6);
+            this.personalGroupBox.Controls.Add(this.phoneTextBox);
             this.personalGroupBox.Controls.Add(this.houseTextBox);
             this.personalGroupBox.Controls.Add(this.label12);
             this.personalGroupBox.Controls.Add(this.label3);
             this.personalGroupBox.Controls.Add(this.label8);
             this.personalGroupBox.Controls.Add(this.label7);
-            this.personalGroupBox.Controls.Add(this.label6);
             this.personalGroupBox.Controls.Add(this.label4);
             this.personalGroupBox.Controls.Add(this.label5);
             this.personalGroupBox.Controls.Add(this.surnameTextBox);
@@ -341,13 +346,28 @@
             this.personalGroupBox.Controls.Add(this.peselTextBox);
             this.personalGroupBox.Controls.Add(this.cityTextBox);
             this.personalGroupBox.Controls.Add(this.insuranceTextBox);
-            this.personalGroupBox.Controls.Add(this.phoneTextBox);
             this.personalGroupBox.Location = new System.Drawing.Point(12, 28);
             this.personalGroupBox.Name = "personalGroupBox";
             this.personalGroupBox.Size = new System.Drawing.Size(984, 100);
             this.personalGroupBox.TabIndex = 25;
             this.personalGroupBox.TabStop = false;
             this.personalGroupBox.Text = "Dane osobowe";
+            // 
+            // countryTextBox
+            // 
+            this.countryTextBox.Location = new System.Drawing.Point(534, 18);
+            this.countryTextBox.Name = "countryTextBox";
+            this.countryTextBox.Size = new System.Drawing.Size(66, 20);
+            this.countryTextBox.TabIndex = 27;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(503, 25);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(25, 13);
+            this.label16.TabIndex = 26;
+            this.label16.Text = "Kraj";
             // 
             // returnButton1
             // 
@@ -602,5 +622,7 @@
         private System.Windows.Forms.DataGridView examinationsDataGrid;
         private System.Windows.Forms.DataGridView laboratoryDataGrid;
         private System.Windows.Forms.Button returnButton2;                          //inaccesible for registrar
+        private System.Windows.Forms.TextBox countryTextBox;
+        private System.Windows.Forms.Label label16;
     }
 }

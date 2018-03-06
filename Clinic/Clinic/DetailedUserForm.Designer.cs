@@ -70,7 +70,7 @@
             this.specializationTextBox = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.termlessCheckBox = new System.Windows.Forms.CheckBox();
-            this.validityDatePicker = new System.Windows.Forms.DateTimePicker();
+            this.validityDateFromPicker = new System.Windows.Forms.DateTimePicker();
             this.label16 = new System.Windows.Forms.Label();
             this.roleComboBox = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
@@ -82,6 +82,10 @@
             this.passTextBox1 = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.loginTextBox = new System.Windows.Forms.TextBox();
+            this.countryTextBox = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.validityDateToPicker = new System.Windows.Forms.DateTimePicker();
+            this.label22 = new System.Windows.Forms.Label();
             this.personalGroupBox.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.contactGroupBox.SuspendLayout();
@@ -240,7 +244,7 @@
             // 
             // postcodeTextBox
             // 
-            this.postcodeTextBox.Location = new System.Drawing.Point(334, 50);
+            this.postcodeTextBox.Location = new System.Drawing.Point(334, 76);
             this.postcodeTextBox.Mask = "00-000";
             this.postcodeTextBox.Name = "postcodeTextBox";
             this.postcodeTextBox.Size = new System.Drawing.Size(66, 20);
@@ -266,7 +270,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(252, 57);
+            this.label12.Location = new System.Drawing.Point(254, 83);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(74, 13);
             this.label12.TabIndex = 23;
@@ -275,7 +279,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(290, 31);
+            this.label8.Location = new System.Drawing.Point(290, 57);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(38, 13);
             this.label8.TabIndex = 14;
@@ -293,7 +297,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(356, 36);
+            this.label5.Location = new System.Drawing.Point(499, 31);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(157, 13);
             this.label5.TabIndex = 8;
@@ -308,17 +312,17 @@
             // 
             // cityTextBox
             // 
-            this.cityTextBox.Location = new System.Drawing.Point(334, 24);
+            this.cityTextBox.Location = new System.Drawing.Point(334, 50);
             this.cityTextBox.Name = "cityTextBox";
             this.cityTextBox.Size = new System.Drawing.Size(66, 20);
             this.cityTextBox.TabIndex = 15;
             // 
             // permissionTextBox
             // 
-            this.permissionTextBox.Location = new System.Drawing.Point(519, 29);
+            this.permissionTextBox.Location = new System.Drawing.Point(657, 24);
             this.permissionTextBox.Mask = "0000000";
             this.permissionTextBox.Name = "permissionTextBox";
-            this.permissionTextBox.Size = new System.Drawing.Size(82, 20);
+            this.permissionTextBox.Size = new System.Drawing.Size(100, 20);
             this.permissionTextBox.TabIndex = 9;
             // 
             // businessPhoneTextBox
@@ -356,22 +360,24 @@
             // profilToolStripMenuItem
             // 
             this.profilToolStripMenuItem.Name = "profilToolStripMenuItem";
-            this.profilToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.profilToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.profilToolStripMenuItem.Text = "Profil";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(115, 6);
             // 
             // wylogujToolStripMenuItem
             // 
             this.wylogujToolStripMenuItem.Name = "wylogujToolStripMenuItem";
-            this.wylogujToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.wylogujToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.wylogujToolStripMenuItem.Text = "Wyloguj";
             // 
             // contactGroupBox
             // 
+            this.contactGroupBox.Controls.Add(this.countryTextBox);
+            this.contactGroupBox.Controls.Add(this.label21);
             this.contactGroupBox.Controls.Add(this.label14);
             this.contactGroupBox.Controls.Add(this.mailTextBox);
             this.contactGroupBox.Controls.Add(this.label11);
@@ -430,10 +436,12 @@
             // 
             // workerGroupBox
             // 
+            this.workerGroupBox.Controls.Add(this.label22);
+            this.workerGroupBox.Controls.Add(this.validityDateToPicker);
             this.workerGroupBox.Controls.Add(this.specializationTextBox);
             this.workerGroupBox.Controls.Add(this.label17);
             this.workerGroupBox.Controls.Add(this.termlessCheckBox);
-            this.workerGroupBox.Controls.Add(this.validityDatePicker);
+            this.workerGroupBox.Controls.Add(this.validityDateFromPicker);
             this.workerGroupBox.Controls.Add(this.label16);
             this.workerGroupBox.Controls.Add(this.roleComboBox);
             this.workerGroupBox.Controls.Add(this.label15);
@@ -448,7 +456,7 @@
             // 
             // specializationTextBox
             // 
-            this.specializationTextBox.Location = new System.Drawing.Point(708, 29);
+            this.specializationTextBox.Location = new System.Drawing.Point(657, 62);
             this.specializationTextBox.Name = "specializationTextBox";
             this.specializationTextBox.Size = new System.Drawing.Size(100, 20);
             this.specializationTextBox.TabIndex = 37;
@@ -456,7 +464,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(633, 36);
+            this.label17.Location = new System.Drawing.Point(582, 69);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(69, 13);
             this.label17.TabIndex = 36;
@@ -467,28 +475,28 @@
             this.termlessCheckBox.AutoSize = true;
             this.termlessCheckBox.Checked = true;
             this.termlessCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.termlessCheckBox.Location = new System.Drawing.Point(132, 88);
+            this.termlessCheckBox.Location = new System.Drawing.Point(132, 87);
             this.termlessCheckBox.Name = "termlessCheckBox";
             this.termlessCheckBox.Size = new System.Drawing.Size(91, 17);
             this.termlessCheckBox.TabIndex = 35;
             this.termlessCheckBox.Text = "bezterminowo";
             this.termlessCheckBox.UseVisualStyleBackColor = true;
             // 
-            // validityDatePicker
+            // validityDateFromPicker
             // 
-            this.validityDatePicker.Location = new System.Drawing.Point(132, 62);
-            this.validityDatePicker.Name = "validityDatePicker";
-            this.validityDatePicker.Size = new System.Drawing.Size(200, 20);
-            this.validityDatePicker.TabIndex = 33;
+            this.validityDateFromPicker.Location = new System.Drawing.Point(132, 62);
+            this.validityDateFromPicker.Name = "validityDateFromPicker";
+            this.validityDateFromPicker.Size = new System.Drawing.Size(155, 20);
+            this.validityDateFromPicker.TabIndex = 33;
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(19, 69);
+            this.label16.Location = new System.Drawing.Point(4, 68);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(107, 13);
+            this.label16.Size = new System.Drawing.Size(122, 13);
             this.label16.TabIndex = 32;
-            this.label16.Text = "Data ważności konta";
+            this.label16.Text = "Data ważności konta od";
             // 
             // roleComboBox
             // 
@@ -503,7 +511,7 @@
             "Administrator"});
             this.roleComboBox.Location = new System.Drawing.Point(132, 23);
             this.roleComboBox.Name = "roleComboBox";
-            this.roleComboBox.Size = new System.Drawing.Size(128, 21);
+            this.roleComboBox.Size = new System.Drawing.Size(155, 21);
             this.roleComboBox.TabIndex = 31;
             // 
             // label15
@@ -590,6 +598,38 @@
             this.loginTextBox.Size = new System.Drawing.Size(138, 20);
             this.loginTextBox.TabIndex = 3;
             // 
+            // countryTextBox
+            // 
+            this.countryTextBox.Location = new System.Drawing.Point(334, 24);
+            this.countryTextBox.Name = "countryTextBox";
+            this.countryTextBox.Size = new System.Drawing.Size(66, 20);
+            this.countryTextBox.TabIndex = 32;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(280, 31);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(48, 13);
+            this.label21.TabIndex = 31;
+            this.label21.Text = "Państwo";
+            // 
+            // validityDateToPicker
+            // 
+            this.validityDateToPicker.Location = new System.Drawing.Point(324, 62);
+            this.validityDateToPicker.Name = "validityDateToPicker";
+            this.validityDateToPicker.Size = new System.Drawing.Size(155, 20);
+            this.validityDateToPicker.TabIndex = 38;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(298, 68);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(19, 13);
+            this.label22.TabIndex = 39;
+            this.label22.Text = "do";
+            // 
             // DetailedUserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -662,7 +702,7 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.CheckBox termlessCheckBox;
-        private System.Windows.Forms.DateTimePicker validityDatePicker;         //inaccesible if termless is true
+        private System.Windows.Forms.DateTimePicker validityDateFromPicker;         //inaccesible if termless is true
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.ComboBox roleComboBox;
         private System.Windows.Forms.TextBox specializationTextBox;             //inaccesible if role is different than 'doctor'
@@ -674,5 +714,9 @@
         private System.Windows.Forms.TextBox passTextBox1;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox loginTextBox;
+        private System.Windows.Forms.TextBox countryTextBox;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.DateTimePicker validityDateToPicker;         //inaccesible if termless is true
+        private System.Windows.Forms.Label label22;
     }
 }
