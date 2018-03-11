@@ -62,12 +62,18 @@
             this.examinationsDataGrid = new System.Windows.Forms.DataGridView();
             this.laboratoryTabPage = new System.Windows.Forms.TabPage();
             this.laboratoryDataGrid = new System.Windows.Forms.DataGridView();
+            this.descriptionTabPage = new System.Windows.Forms.TabPage();
             this.diagnosisTabPage = new System.Windows.Forms.TabPage();
             this.diagnosisTextBox = new System.Windows.Forms.RichTextBox();
             this.returnButton2 = new System.Windows.Forms.Button();
             this.confirmButton = new System.Windows.Forms.Button();
             this.addButton = new System.Windows.Forms.Button();
             this.detailsButton = new System.Windows.Forms.Button();
+            this.descriptionTextBox = new System.Windows.Forms.RichTextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.toolStrip.SuspendLayout();
             this.patientGroupBox.SuspendLayout();
             this.appointmentGroupBox.SuspendLayout();
@@ -76,6 +82,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.examinationsDataGrid)).BeginInit();
             this.laboratoryTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.laboratoryDataGrid)).BeginInit();
+            this.descriptionTabPage.SuspendLayout();
             this.diagnosisTabPage.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -106,18 +113,18 @@
             // profilToolStripMenuItem
             // 
             this.profilToolStripMenuItem.Name = "profilToolStripMenuItem";
-            this.profilToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.profilToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.profilToolStripMenuItem.Text = "Profil";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(115, 6);
             // 
             // wylogujToolStripMenuItem
             // 
             this.wylogujToolStripMenuItem.Name = "wylogujToolStripMenuItem";
-            this.wylogujToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.wylogujToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.wylogujToolStripMenuItem.Text = "Wyloguj";
             // 
             // patientSearchBox
@@ -143,7 +150,7 @@
             this.patientGroupBox.Controls.Add(this.patientSearchBox);
             this.patientGroupBox.Location = new System.Drawing.Point(12, 28);
             this.patientGroupBox.Name = "patientGroupBox";
-            this.patientGroupBox.Size = new System.Drawing.Size(468, 92);
+            this.patientGroupBox.Size = new System.Drawing.Size(468, 117);
             this.patientGroupBox.TabIndex = 16;
             this.patientGroupBox.TabStop = false;
             this.patientGroupBox.Text = "Pacjent";
@@ -159,7 +166,7 @@
             // 
             // patientButton
             // 
-            this.patientButton.Location = new System.Drawing.Point(362, 51);
+            this.patientButton.Location = new System.Drawing.Point(362, 77);
             this.patientButton.Name = "patientButton";
             this.patientButton.Size = new System.Drawing.Size(100, 32);
             this.patientButton.TabIndex = 23;
@@ -237,7 +244,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 48);
+            this.label1.Location = new System.Drawing.Point(44, 53);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(39, 13);
             this.label1.TabIndex = 17;
@@ -247,15 +254,15 @@
             // 
             this.doctorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.doctorComboBox.FormattingEnabled = true;
-            this.doctorComboBox.Location = new System.Drawing.Point(51, 45);
+            this.doctorComboBox.Location = new System.Drawing.Point(89, 45);
             this.doctorComboBox.Name = "doctorComboBox";
-            this.doctorComboBox.Size = new System.Drawing.Size(342, 21);
+            this.doctorComboBox.Size = new System.Drawing.Size(304, 21);
             this.doctorComboBox.TabIndex = 18;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(15, 23);
+            this.label6.Location = new System.Drawing.Point(53, 26);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(30, 13);
             this.label6.TabIndex = 19;
@@ -263,7 +270,7 @@
             // 
             // appointmentDatePicker
             // 
-            this.appointmentDatePicker.Location = new System.Drawing.Point(51, 19);
+            this.appointmentDatePicker.Location = new System.Drawing.Point(89, 19);
             this.appointmentDatePicker.Name = "appointmentDatePicker";
             this.appointmentDatePicker.Size = new System.Drawing.Size(138, 20);
             this.appointmentDatePicker.TabIndex = 20;
@@ -271,7 +278,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(244, 21);
+            this.label7.Location = new System.Drawing.Point(244, 26);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(46, 13);
             this.label7.TabIndex = 21;
@@ -289,9 +296,13 @@
             // 
             // appointmentGroupBox
             // 
+            this.appointmentGroupBox.Controls.Add(this.label12);
+            this.appointmentGroupBox.Controls.Add(this.label11);
+            this.appointmentGroupBox.Controls.Add(this.label10);
+            this.appointmentGroupBox.Controls.Add(this.label9);
             this.appointmentGroupBox.Controls.Add(this.statusLabel);
-            this.appointmentGroupBox.Controls.Add(this.label8);
             this.appointmentGroupBox.Controls.Add(this.returnButton1);
+            this.appointmentGroupBox.Controls.Add(this.label8);
             this.appointmentGroupBox.Controls.Add(this.label6);
             this.appointmentGroupBox.Controls.Add(this.registerButton);
             this.appointmentGroupBox.Controls.Add(this.appointmentTimePicker);
@@ -301,7 +312,7 @@
             this.appointmentGroupBox.Controls.Add(this.label1);
             this.appointmentGroupBox.Location = new System.Drawing.Point(491, 28);
             this.appointmentGroupBox.Name = "appointmentGroupBox";
-            this.appointmentGroupBox.Size = new System.Drawing.Size(505, 92);
+            this.appointmentGroupBox.Size = new System.Drawing.Size(505, 117);
             this.appointmentGroupBox.TabIndex = 23;
             this.appointmentGroupBox.TabStop = false;
             this.appointmentGroupBox.Text = "Wizyta";
@@ -309,7 +320,7 @@
             // statusLabel
             // 
             this.statusLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.statusLabel.Location = new System.Drawing.Point(80, 69);
+            this.statusLabel.Location = new System.Drawing.Point(89, 93);
             this.statusLabel.Name = "statusLabel";
             this.statusLabel.Size = new System.Drawing.Size(100, 16);
             this.statusLabel.TabIndex = 27;
@@ -317,7 +328,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(6, 70);
+            this.label8.Location = new System.Drawing.Point(15, 96);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(68, 13);
             this.label8.TabIndex = 26;
@@ -325,7 +336,7 @@
             // 
             // returnButton1
             // 
-            this.returnButton1.Location = new System.Drawing.Point(399, 51);
+            this.returnButton1.Location = new System.Drawing.Point(399, 77);
             this.returnButton1.Name = "returnButton1";
             this.returnButton1.Size = new System.Drawing.Size(100, 32);
             this.returnButton1.TabIndex = 25;
@@ -345,11 +356,12 @@
             // 
             this.tabControl.Controls.Add(this.examinationTabPage);
             this.tabControl.Controls.Add(this.laboratoryTabPage);
+            this.tabControl.Controls.Add(this.descriptionTabPage);
             this.tabControl.Controls.Add(this.diagnosisTabPage);
-            this.tabControl.Location = new System.Drawing.Point(12, 126);
+            this.tabControl.Location = new System.Drawing.Point(12, 151);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(872, 591);
+            this.tabControl.Size = new System.Drawing.Size(872, 560);
             this.tabControl.TabIndex = 24;
             // 
             // examinationTabPage
@@ -358,7 +370,7 @@
             this.examinationTabPage.Location = new System.Drawing.Point(4, 22);
             this.examinationTabPage.Name = "examinationTabPage";
             this.examinationTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.examinationTabPage.Size = new System.Drawing.Size(864, 565);
+            this.examinationTabPage.Size = new System.Drawing.Size(864, 534);
             this.examinationTabPage.TabIndex = 0;
             this.examinationTabPage.Text = "Badania";
             this.examinationTabPage.UseVisualStyleBackColor = true;
@@ -368,7 +380,7 @@
             this.examinationsDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.examinationsDataGrid.Location = new System.Drawing.Point(0, 0);
             this.examinationsDataGrid.Name = "examinationsDataGrid";
-            this.examinationsDataGrid.Size = new System.Drawing.Size(864, 565);
+            this.examinationsDataGrid.Size = new System.Drawing.Size(864, 534);
             this.examinationsDataGrid.TabIndex = 0;
             // 
             // laboratoryTabPage
@@ -377,7 +389,7 @@
             this.laboratoryTabPage.Location = new System.Drawing.Point(4, 22);
             this.laboratoryTabPage.Name = "laboratoryTabPage";
             this.laboratoryTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.laboratoryTabPage.Size = new System.Drawing.Size(864, 565);
+            this.laboratoryTabPage.Size = new System.Drawing.Size(864, 534);
             this.laboratoryTabPage.TabIndex = 1;
             this.laboratoryTabPage.Text = "Zlecenia";
             this.laboratoryTabPage.UseVisualStyleBackColor = true;
@@ -387,15 +399,25 @@
             this.laboratoryDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.laboratoryDataGrid.Location = new System.Drawing.Point(0, 0);
             this.laboratoryDataGrid.Name = "laboratoryDataGrid";
-            this.laboratoryDataGrid.Size = new System.Drawing.Size(864, 565);
+            this.laboratoryDataGrid.Size = new System.Drawing.Size(864, 534);
             this.laboratoryDataGrid.TabIndex = 1;
+            // 
+            // descriptionTabPage
+            // 
+            this.descriptionTabPage.Controls.Add(this.descriptionTextBox);
+            this.descriptionTabPage.Location = new System.Drawing.Point(4, 22);
+            this.descriptionTabPage.Name = "descriptionTabPage";
+            this.descriptionTabPage.Size = new System.Drawing.Size(864, 534);
+            this.descriptionTabPage.TabIndex = 3;
+            this.descriptionTabPage.Text = "Opis";
+            this.descriptionTabPage.UseVisualStyleBackColor = true;
             // 
             // diagnosisTabPage
             // 
             this.diagnosisTabPage.Controls.Add(this.diagnosisTextBox);
             this.diagnosisTabPage.Location = new System.Drawing.Point(4, 22);
             this.diagnosisTabPage.Name = "diagnosisTabPage";
-            this.diagnosisTabPage.Size = new System.Drawing.Size(864, 565);
+            this.diagnosisTabPage.Size = new System.Drawing.Size(864, 534);
             this.diagnosisTabPage.TabIndex = 2;
             this.diagnosisTabPage.Text = "Diagnoza";
             this.diagnosisTabPage.UseVisualStyleBackColor = true;
@@ -404,13 +426,13 @@
             // 
             this.diagnosisTextBox.Location = new System.Drawing.Point(0, 0);
             this.diagnosisTextBox.Name = "diagnosisTextBox";
-            this.diagnosisTextBox.Size = new System.Drawing.Size(864, 565);
+            this.diagnosisTextBox.Size = new System.Drawing.Size(864, 534);
             this.diagnosisTextBox.TabIndex = 0;
             this.diagnosisTextBox.Text = "";
             // 
             // returnButton2
             // 
-            this.returnButton2.Location = new System.Drawing.Point(890, 681);
+            this.returnButton2.Location = new System.Drawing.Point(890, 679);
             this.returnButton2.Name = "returnButton2";
             this.returnButton2.Size = new System.Drawing.Size(100, 32);
             this.returnButton2.TabIndex = 25;
@@ -419,7 +441,7 @@
             // 
             // confirmButton
             // 
-            this.confirmButton.Location = new System.Drawing.Point(890, 643);
+            this.confirmButton.Location = new System.Drawing.Point(890, 641);
             this.confirmButton.Name = "confirmButton";
             this.confirmButton.Size = new System.Drawing.Size(100, 32);
             this.confirmButton.TabIndex = 26;
@@ -428,7 +450,7 @@
             // 
             // addButton
             // 
-            this.addButton.Location = new System.Drawing.Point(890, 148);
+            this.addButton.Location = new System.Drawing.Point(890, 173);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(100, 32);
             this.addButton.TabIndex = 27;
@@ -437,12 +459,54 @@
             // 
             // detailsButton
             // 
-            this.detailsButton.Location = new System.Drawing.Point(890, 186);
+            this.detailsButton.Location = new System.Drawing.Point(890, 211);
             this.detailsButton.Name = "detailsButton";
             this.detailsButton.Size = new System.Drawing.Size(100, 32);
             this.detailsButton.TabIndex = 28;
             this.detailsButton.Text = "Szczegóły";
             this.detailsButton.UseVisualStyleBackColor = true;
+            // 
+            // descriptionTextBox
+            // 
+            this.descriptionTextBox.Location = new System.Drawing.Point(0, 0);
+            this.descriptionTextBox.Name = "descriptionTextBox";
+            this.descriptionTextBox.Size = new System.Drawing.Size(864, 534);
+            this.descriptionTextBox.TabIndex = 1;
+            this.descriptionTextBox.Text = "";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(6, 72);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(77, 13);
+            this.label9.TabIndex = 28;
+            this.label9.Text = "Data rejestracji";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(195, 72);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(95, 13);
+            this.label10.TabIndex = 29;
+            this.label10.Text = "Osoba rejestrująca";
+            // 
+            // label11
+            // 
+            this.label11.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label11.Location = new System.Drawing.Point(89, 69);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(100, 16);
+            this.label11.TabIndex = 30;
+            // 
+            // label12
+            // 
+            this.label12.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label12.Location = new System.Drawing.Point(293, 69);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(100, 16);
+            this.label12.TabIndex = 31;
             // 
             // DetailedAppointmentForm
             // 
@@ -470,6 +534,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.examinationsDataGrid)).EndInit();
             this.laboratoryTabPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.laboratoryDataGrid)).EndInit();
+            this.descriptionTabPage.ResumeLayout(false);
             this.diagnosisTabPage.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -517,5 +582,11 @@
         private System.Windows.Forms.DataGridView examinationsDataGrid;
         private System.Windows.Forms.DataGridView laboratoryDataGrid;
         private System.Windows.Forms.RichTextBox diagnosisTextBox;
+        private System.Windows.Forms.TabPage descriptionTabPage;
+        private System.Windows.Forms.RichTextBox descriptionTextBox;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
     }
 }
