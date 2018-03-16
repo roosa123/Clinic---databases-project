@@ -34,18 +34,18 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.fromDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.label3 = new System.Windows.Forms.Label();
-            this.toDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
             this.doctorComboBox = new System.Windows.Forms.ComboBox();
-            this.registerButton = new System.Windows.Forms.Button();
-            this.appointmentButton = new System.Windows.Forms.Button();
+            this.executeButton = new System.Windows.Forms.Button();
+            this.appointmentDetailsButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.userButton = new System.Windows.Forms.ToolStripSplitButton();
             this.profilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.wylogujToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.searchButton = new System.Windows.Forms.Button();
+            this.returnButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.appointmentsDataGrid)).BeginInit();
             this.toolStrip.SuspendLayout();
             this.SuspendLayout();
@@ -67,7 +67,7 @@
             "Zarejestrowana",
             "Wykonana",
             "Anulowana"});
-            this.statusComboBox.Location = new System.Drawing.Point(456, 50);
+            this.statusComboBox.Location = new System.Drawing.Point(304, 52);
             this.statusComboBox.Name = "statusComboBox";
             this.statusComboBox.Size = new System.Drawing.Size(101, 21);
             this.statusComboBox.TabIndex = 1;
@@ -75,7 +75,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(413, 55);
+            this.label1.Location = new System.Drawing.Point(261, 55);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(37, 13);
             this.label1.TabIndex = 2;
@@ -86,37 +86,22 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(30, 55);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 13);
+            this.label2.Size = new System.Drawing.Size(30, 13);
             this.label2.TabIndex = 3;
-            this.label2.Text = "Daty od";
+            this.label2.Text = "Data";
             // 
             // fromDateTimePicker
             // 
-            this.fromDateTimePicker.Location = new System.Drawing.Point(80, 53);
+            this.fromDateTimePicker.Location = new System.Drawing.Point(66, 53);
             this.fromDateTimePicker.Name = "fromDateTimePicker";
-            this.fromDateTimePicker.Size = new System.Drawing.Size(138, 20);
+            this.fromDateTimePicker.ShowCheckBox = true;
+            this.fromDateTimePicker.Size = new System.Drawing.Size(157, 20);
             this.fromDateTimePicker.TabIndex = 4;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(224, 55);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(19, 13);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "do";
-            // 
-            // toDateTimePicker
-            // 
-            this.toDateTimePicker.Location = new System.Drawing.Point(249, 53);
-            this.toDateTimePicker.Name = "toDateTimePicker";
-            this.toDateTimePicker.Size = new System.Drawing.Size(138, 20);
-            this.toDateTimePicker.TabIndex = 6;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(583, 55);
+            this.label4.Location = new System.Drawing.Point(452, 55);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(39, 13);
             this.label4.TabIndex = 7;
@@ -126,36 +111,36 @@
             // 
             this.doctorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.doctorComboBox.FormattingEnabled = true;
-            this.doctorComboBox.Location = new System.Drawing.Point(628, 50);
+            this.doctorComboBox.Location = new System.Drawing.Point(497, 53);
             this.doctorComboBox.Name = "doctorComboBox";
             this.doctorComboBox.Size = new System.Drawing.Size(350, 21);
             this.doctorComboBox.TabIndex = 8;
             // 
-            // registerButton
+            // executeButton
             // 
-            this.registerButton.Location = new System.Drawing.Point(878, 175);
-            this.registerButton.Name = "registerButton";
-            this.registerButton.Size = new System.Drawing.Size(100, 32);
-            this.registerButton.TabIndex = 9;
-            this.registerButton.Text = "Zarejestruj wizytę";
-            this.registerButton.UseVisualStyleBackColor = true;
+            this.executeButton.Location = new System.Drawing.Point(878, 100);
+            this.executeButton.Name = "executeButton";
+            this.executeButton.Size = new System.Drawing.Size(100, 32);
+            this.executeButton.TabIndex = 9;
+            this.executeButton.Text = "Obsłuż";
+            this.executeButton.UseVisualStyleBackColor = true;
             // 
-            // appointmentButton
+            // appointmentDetailsButton
             // 
-            this.appointmentButton.Location = new System.Drawing.Point(878, 100);
-            this.appointmentButton.Name = "appointmentButton";
-            this.appointmentButton.Size = new System.Drawing.Size(100, 32);
-            this.appointmentButton.TabIndex = 10;
-            this.appointmentButton.Text = "Szczegóły wizyty";
-            this.appointmentButton.UseVisualStyleBackColor = true;
+            this.appointmentDetailsButton.Location = new System.Drawing.Point(878, 138);
+            this.appointmentDetailsButton.Name = "appointmentDetailsButton";
+            this.appointmentDetailsButton.Size = new System.Drawing.Size(100, 32);
+            this.appointmentDetailsButton.TabIndex = 10;
+            this.appointmentDetailsButton.Text = "Pokaż";
+            this.appointmentDetailsButton.UseVisualStyleBackColor = true;
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(878, 137);
+            this.cancelButton.Location = new System.Drawing.Point(878, 176);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(100, 32);
             this.cancelButton.TabIndex = 11;
-            this.cancelButton.Text = "Anuluj wizytę";
+            this.cancelButton.Text = "Anuluj";
             this.cancelButton.UseVisualStyleBackColor = true;
             // 
             // toolStrip
@@ -185,33 +170,51 @@
             // profilToolStripMenuItem
             // 
             this.profilToolStripMenuItem.Name = "profilToolStripMenuItem";
-            this.profilToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.profilToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.profilToolStripMenuItem.Text = "Profil";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(115, 6);
             // 
             // wylogujToolStripMenuItem
             // 
             this.wylogujToolStripMenuItem.Name = "wylogujToolStripMenuItem";
-            this.wylogujToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.wylogujToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.wylogujToolStripMenuItem.Text = "Wyloguj";
+            // 
+            // searchButton
+            // 
+            this.searchButton.Location = new System.Drawing.Point(878, 42);
+            this.searchButton.Name = "searchButton";
+            this.searchButton.Size = new System.Drawing.Size(100, 32);
+            this.searchButton.TabIndex = 13;
+            this.searchButton.Text = "Szukaj";
+            this.searchButton.UseVisualStyleBackColor = true;
+            // 
+            // returnButton
+            // 
+            this.returnButton.Location = new System.Drawing.Point(878, 672);
+            this.returnButton.Name = "returnButton";
+            this.returnButton.Size = new System.Drawing.Size(100, 32);
+            this.returnButton.TabIndex = 14;
+            this.returnButton.Text = "Powrót";
+            this.returnButton.UseVisualStyleBackColor = true;
             // 
             // AppointmentsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.Controls.Add(this.returnButton);
+            this.Controls.Add(this.searchButton);
             this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.cancelButton);
-            this.Controls.Add(this.appointmentButton);
-            this.Controls.Add(this.registerButton);
+            this.Controls.Add(this.appointmentDetailsButton);
+            this.Controls.Add(this.executeButton);
             this.Controls.Add(this.doctorComboBox);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.toDateTimePicker);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.fromDateTimePicker);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -234,17 +237,17 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker fromDateTimePicker;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DateTimePicker toDateTimePicker;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox doctorComboBox;                    //locked for doctor
-        private System.Windows.Forms.Button registerButton;                      //inaccesible for doctor
-        private System.Windows.Forms.Button appointmentButton;
+        private System.Windows.Forms.Button executeButton;                      //inaccesible for doctor
+        private System.Windows.Forms.Button appointmentDetailsButton;
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.ToolStrip toolStrip;
         private System.Windows.Forms.ToolStripSplitButton userButton;
         private System.Windows.Forms.ToolStripMenuItem profilToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem wylogujToolStripMenuItem;
+        private System.Windows.Forms.Button searchButton;
+        private System.Windows.Forms.Button returnButton;
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Przychodnia
 {
-    partial class PatientForm
+    partial class DetailedPatientForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PatientForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DetailedPatientForm));
             this.label1 = new System.Windows.Forms.Label();
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -71,12 +71,6 @@
             this.laboratoryTabPage = new System.Windows.Forms.TabPage();
             this.laboratoryDataGrid = new System.Windows.Forms.DataGridView();
             this.detailsButton = new System.Windows.Forms.Button();
-            this.toDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.label13 = new System.Windows.Forms.Label();
-            this.fromDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.statusComboBox = new System.Windows.Forms.ComboBox();
             this.returnButton2 = new System.Windows.Forms.Button();
             this.toolStrip.SuspendLayout();
             this.personalGroupBox.SuspendLayout();
@@ -480,56 +474,6 @@
             this.detailsButton.Text = "Szczegóły";
             this.detailsButton.UseVisualStyleBackColor = true;
             // 
-            // toDateTimePicker
-            // 
-            this.toDateTimePicker.Location = new System.Drawing.Point(858, 246);
-            this.toDateTimePicker.Name = "toDateTimePicker";
-            this.toDateTimePicker.Size = new System.Drawing.Size(138, 20);
-            this.toDateTimePicker.TabIndex = 33;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(855, 230);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(19, 13);
-            this.label13.TabIndex = 32;
-            this.label13.Text = "do";
-            // 
-            // fromDateTimePicker
-            // 
-            this.fromDateTimePicker.Location = new System.Drawing.Point(858, 207);
-            this.fromDateTimePicker.Name = "fromDateTimePicker";
-            this.fromDateTimePicker.Size = new System.Drawing.Size(138, 20);
-            this.fromDateTimePicker.TabIndex = 31;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(855, 191);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(44, 13);
-            this.label14.TabIndex = 30;
-            this.label14.Text = "Daty od";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(855, 280);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(37, 13);
-            this.label15.TabIndex = 29;
-            this.label15.Text = "Status";
-            // 
-            // statusComboBox
-            // 
-            this.statusComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.statusComboBox.FormattingEnabled = true;
-            this.statusComboBox.Location = new System.Drawing.Point(898, 272);
-            this.statusComboBox.Name = "statusComboBox";
-            this.statusComboBox.Size = new System.Drawing.Size(99, 21);
-            this.statusComboBox.TabIndex = 28;
-            // 
             // returnButton2
             // 
             this.returnButton2.Location = new System.Drawing.Point(858, 681);
@@ -539,23 +483,17 @@
             this.returnButton2.Text = "Powrót";
             this.returnButton2.UseVisualStyleBackColor = true;
             // 
-            // PatientForm
+            // DetailedPatientForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 729);
             this.Controls.Add(this.returnButton2);
-            this.Controls.Add(this.toDateTimePicker);
-            this.Controls.Add(this.label13);
-            this.Controls.Add(this.fromDateTimePicker);
-            this.Controls.Add(this.label14);
-            this.Controls.Add(this.label15);
-            this.Controls.Add(this.statusComboBox);
             this.Controls.Add(this.detailsButton);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.personalGroupBox);
             this.Controls.Add(this.toolStrip);
-            this.Name = "PatientForm";
+            this.Name = "DetailedPatientForm";
             this.Text = "Pacjent";
             this.toolStrip.ResumeLayout(false);
             this.toolStrip.PerformLayout();
@@ -612,12 +550,6 @@
         private System.Windows.Forms.TabPage examinationsTabPage;
         private System.Windows.Forms.TabPage laboratoryTabPage;
         private System.Windows.Forms.Button detailsButton;                          //inaccesible for registrar
-        private System.Windows.Forms.DateTimePicker toDateTimePicker;               //inaccesible for registrar
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.DateTimePicker fromDateTimePicker;             //inaccesible for registrar
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.ComboBox statusComboBox;                       //inaccesible for registrar, depends on active tab
         private System.Windows.Forms.DataGridView appointmentsDataGrid;
         private System.Windows.Forms.DataGridView examinationsDataGrid;
         private System.Windows.Forms.DataGridView laboratoryDataGrid;

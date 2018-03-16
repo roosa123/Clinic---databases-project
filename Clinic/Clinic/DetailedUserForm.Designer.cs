@@ -42,31 +42,20 @@
             this.peselTextBox = new System.Windows.Forms.MaskedTextBox();
             this.returnButton1 = new System.Windows.Forms.Button();
             this.saveButton = new System.Windows.Forms.Button();
-            this.label11 = new System.Windows.Forms.Label();
-            this.apartmentTextBox = new System.Windows.Forms.MaskedTextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.postcodeTextBox = new System.Windows.Forms.MaskedTextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.houseTextBox = new System.Windows.Forms.MaskedTextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.streetTextBox = new System.Windows.Forms.TextBox();
-            this.cityTextBox = new System.Windows.Forms.TextBox();
             this.permissionTextBox = new System.Windows.Forms.MaskedTextBox();
-            this.businessPhoneTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.phoneTextBox = new System.Windows.Forms.MaskedTextBox();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.userButton = new System.Windows.Forms.ToolStripSplitButton();
             this.profilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.wylogujToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.contactGroupBox = new System.Windows.Forms.GroupBox();
             this.label14 = new System.Windows.Forms.Label();
             this.mailTextBox = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.privatePhoneTextBox = new System.Windows.Forms.MaskedTextBox();
             this.workerGroupBox = new System.Windows.Forms.GroupBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.validityDateToPicker = new System.Windows.Forms.DateTimePicker();
             this.specializationTextBox = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.termlessCheckBox = new System.Windows.Forms.CheckBox();
@@ -82,13 +71,8 @@
             this.passTextBox1 = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.loginTextBox = new System.Windows.Forms.TextBox();
-            this.countryTextBox = new System.Windows.Forms.TextBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.validityDateToPicker = new System.Windows.Forms.DateTimePicker();
-            this.label22 = new System.Windows.Forms.Label();
             this.personalGroupBox.SuspendLayout();
             this.toolStrip.SuspendLayout();
-            this.contactGroupBox.SuspendLayout();
             this.workerGroupBox.SuspendLayout();
             this.profileGroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -97,7 +81,9 @@
             // 
             this.personalGroupBox.Controls.Add(this.label1);
             this.personalGroupBox.Controls.Add(this.nameTextBox);
+            this.personalGroupBox.Controls.Add(this.label14);
             this.personalGroupBox.Controls.Add(this.label3);
+            this.personalGroupBox.Controls.Add(this.mailTextBox);
             this.personalGroupBox.Controls.Add(this.label7);
             this.personalGroupBox.Controls.Add(this.label4);
             this.personalGroupBox.Controls.Add(this.surnameTextBox);
@@ -105,6 +91,8 @@
             this.personalGroupBox.Controls.Add(this.birthdatePicker);
             this.personalGroupBox.Controls.Add(this.sexComboBox);
             this.personalGroupBox.Controls.Add(this.peselTextBox);
+            this.personalGroupBox.Controls.Add(this.label6);
+            this.personalGroupBox.Controls.Add(this.phoneTextBox);
             this.personalGroupBox.Location = new System.Drawing.Point(12, 28);
             this.personalGroupBox.Name = "personalGroupBox";
             this.personalGroupBox.Size = new System.Drawing.Size(984, 76);
@@ -216,83 +204,14 @@
             this.saveButton.Text = "Zapisz";
             this.saveButton.UseVisualStyleBackColor = true;
             // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(516, 57);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(49, 13);
-            this.label11.TabIndex = 20;
-            this.label11.Text = "Nr lokalu";
-            // 
-            // apartmentTextBox
-            // 
-            this.apartmentTextBox.Location = new System.Drawing.Point(571, 50);
-            this.apartmentTextBox.Mask = "000";
-            this.apartmentTextBox.Name = "apartmentTextBox";
-            this.apartmentTextBox.Size = new System.Drawing.Size(25, 20);
-            this.apartmentTextBox.TabIndex = 21;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(432, 57);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(47, 13);
-            this.label10.TabIndex = 18;
-            this.label10.Text = "Nr domu";
-            // 
-            // postcodeTextBox
-            // 
-            this.postcodeTextBox.Location = new System.Drawing.Point(334, 76);
-            this.postcodeTextBox.Mask = "00-000";
-            this.postcodeTextBox.Name = "postcodeTextBox";
-            this.postcodeTextBox.Size = new System.Drawing.Size(66, 20);
-            this.postcodeTextBox.TabIndex = 22;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(448, 31);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(31, 13);
-            this.label9.TabIndex = 16;
-            this.label9.Text = "Ulica";
-            // 
-            // houseTextBox
-            // 
-            this.houseTextBox.Location = new System.Drawing.Point(485, 50);
-            this.houseTextBox.Mask = "000";
-            this.houseTextBox.Name = "houseTextBox";
-            this.houseTextBox.Size = new System.Drawing.Size(25, 20);
-            this.houseTextBox.TabIndex = 19;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(254, 83);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(74, 13);
-            this.label12.TabIndex = 23;
-            this.label12.Text = "Kod pocztowy";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(290, 57);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(38, 13);
-            this.label8.TabIndex = 14;
-            this.label8.Text = "Miasto";
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 31);
+            this.label6.Location = new System.Drawing.Point(560, 25);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(91, 13);
+            this.label6.Size = new System.Drawing.Size(43, 13);
             this.label6.TabIndex = 10;
-            this.label6.Text = "Telefon służbowy";
+            this.label6.Text = "Telefon";
             // 
             // label5
             // 
@@ -303,20 +222,6 @@
             this.label5.TabIndex = 8;
             this.label5.Text = "Nr prawa wykonywania zawodu";
             // 
-            // streetTextBox
-            // 
-            this.streetTextBox.Location = new System.Drawing.Point(485, 24);
-            this.streetTextBox.Name = "streetTextBox";
-            this.streetTextBox.Size = new System.Drawing.Size(111, 20);
-            this.streetTextBox.TabIndex = 17;
-            // 
-            // cityTextBox
-            // 
-            this.cityTextBox.Location = new System.Drawing.Point(334, 50);
-            this.cityTextBox.Name = "cityTextBox";
-            this.cityTextBox.Size = new System.Drawing.Size(66, 20);
-            this.cityTextBox.TabIndex = 15;
-            // 
             // permissionTextBox
             // 
             this.permissionTextBox.Location = new System.Drawing.Point(657, 24);
@@ -325,13 +230,13 @@
             this.permissionTextBox.Size = new System.Drawing.Size(100, 20);
             this.permissionTextBox.TabIndex = 9;
             // 
-            // businessPhoneTextBox
+            // phoneTextBox
             // 
-            this.businessPhoneTextBox.Location = new System.Drawing.Point(103, 24);
-            this.businessPhoneTextBox.Mask = "000-000-000";
-            this.businessPhoneTextBox.Name = "businessPhoneTextBox";
-            this.businessPhoneTextBox.Size = new System.Drawing.Size(66, 20);
-            this.businessPhoneTextBox.TabIndex = 11;
+            this.phoneTextBox.Location = new System.Drawing.Point(609, 18);
+            this.phoneTextBox.Mask = "000-000-000";
+            this.phoneTextBox.Name = "phoneTextBox";
+            this.phoneTextBox.Size = new System.Drawing.Size(111, 20);
+            this.phoneTextBox.TabIndex = 11;
             // 
             // toolStrip
             // 
@@ -374,37 +279,10 @@
             this.wylogujToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.wylogujToolStripMenuItem.Text = "Wyloguj";
             // 
-            // contactGroupBox
-            // 
-            this.contactGroupBox.Controls.Add(this.countryTextBox);
-            this.contactGroupBox.Controls.Add(this.label21);
-            this.contactGroupBox.Controls.Add(this.label14);
-            this.contactGroupBox.Controls.Add(this.mailTextBox);
-            this.contactGroupBox.Controls.Add(this.label11);
-            this.contactGroupBox.Controls.Add(this.label13);
-            this.contactGroupBox.Controls.Add(this.apartmentTextBox);
-            this.contactGroupBox.Controls.Add(this.privatePhoneTextBox);
-            this.contactGroupBox.Controls.Add(this.label10);
-            this.contactGroupBox.Controls.Add(this.houseTextBox);
-            this.contactGroupBox.Controls.Add(this.label6);
-            this.contactGroupBox.Controls.Add(this.label9);
-            this.contactGroupBox.Controls.Add(this.postcodeTextBox);
-            this.contactGroupBox.Controls.Add(this.businessPhoneTextBox);
-            this.contactGroupBox.Controls.Add(this.label8);
-            this.contactGroupBox.Controls.Add(this.cityTextBox);
-            this.contactGroupBox.Controls.Add(this.streetTextBox);
-            this.contactGroupBox.Controls.Add(this.label12);
-            this.contactGroupBox.Location = new System.Drawing.Point(12, 110);
-            this.contactGroupBox.Name = "contactGroupBox";
-            this.contactGroupBox.Size = new System.Drawing.Size(984, 105);
-            this.contactGroupBox.TabIndex = 28;
-            this.contactGroupBox.TabStop = false;
-            this.contactGroupBox.Text = "Dane kontaktowe";
-            // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(65, 83);
+            this.label14.Location = new System.Drawing.Point(571, 51);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(32, 13);
             this.label14.TabIndex = 29;
@@ -412,27 +290,10 @@
             // 
             // mailTextBox
             // 
-            this.mailTextBox.Location = new System.Drawing.Point(103, 76);
+            this.mailTextBox.Location = new System.Drawing.Point(609, 44);
             this.mailTextBox.Name = "mailTextBox";
             this.mailTextBox.Size = new System.Drawing.Size(111, 20);
             this.mailTextBox.TabIndex = 30;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(9, 57);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(88, 13);
-            this.label13.TabIndex = 12;
-            this.label13.Text = "Telefon prywatny";
-            // 
-            // privatePhoneTextBox
-            // 
-            this.privatePhoneTextBox.Location = new System.Drawing.Point(103, 50);
-            this.privatePhoneTextBox.Mask = "000-000-000";
-            this.privatePhoneTextBox.Name = "privatePhoneTextBox";
-            this.privatePhoneTextBox.Size = new System.Drawing.Size(66, 20);
-            this.privatePhoneTextBox.TabIndex = 13;
             // 
             // workerGroupBox
             // 
@@ -447,12 +308,28 @@
             this.workerGroupBox.Controls.Add(this.label15);
             this.workerGroupBox.Controls.Add(this.label5);
             this.workerGroupBox.Controls.Add(this.permissionTextBox);
-            this.workerGroupBox.Location = new System.Drawing.Point(12, 221);
+            this.workerGroupBox.Location = new System.Drawing.Point(12, 110);
             this.workerGroupBox.Name = "workerGroupBox";
             this.workerGroupBox.Size = new System.Drawing.Size(984, 110);
             this.workerGroupBox.TabIndex = 29;
             this.workerGroupBox.TabStop = false;
             this.workerGroupBox.Text = "Dane pracownicze";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(298, 68);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(19, 13);
+            this.label22.TabIndex = 39;
+            this.label22.Text = "do";
+            // 
+            // validityDateToPicker
+            // 
+            this.validityDateToPicker.Location = new System.Drawing.Point(324, 62);
+            this.validityDateToPicker.Name = "validityDateToPicker";
+            this.validityDateToPicker.Size = new System.Drawing.Size(155, 20);
+            this.validityDateToPicker.TabIndex = 38;
             // 
             // specializationTextBox
             // 
@@ -517,11 +394,11 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(64, 29);
+            this.label15.Location = new System.Drawing.Point(97, 27);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(62, 13);
+            this.label15.Size = new System.Drawing.Size(29, 13);
             this.label15.TabIndex = 30;
-            this.label15.Text = "Stanowisko";
+            this.label15.Text = "Rola";
             // 
             // profileGroupBox
             // 
@@ -532,7 +409,7 @@
             this.profileGroupBox.Controls.Add(this.passTextBox1);
             this.profileGroupBox.Controls.Add(this.label18);
             this.profileGroupBox.Controls.Add(this.loginTextBox);
-            this.profileGroupBox.Location = new System.Drawing.Point(12, 337);
+            this.profileGroupBox.Location = new System.Drawing.Point(12, 220);
             this.profileGroupBox.Name = "profileGroupBox";
             this.profileGroupBox.Size = new System.Drawing.Size(984, 81);
             this.profileGroupBox.TabIndex = 30;
@@ -598,38 +475,6 @@
             this.loginTextBox.Size = new System.Drawing.Size(138, 20);
             this.loginTextBox.TabIndex = 3;
             // 
-            // countryTextBox
-            // 
-            this.countryTextBox.Location = new System.Drawing.Point(334, 24);
-            this.countryTextBox.Name = "countryTextBox";
-            this.countryTextBox.Size = new System.Drawing.Size(66, 20);
-            this.countryTextBox.TabIndex = 32;
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(280, 31);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(48, 13);
-            this.label21.TabIndex = 31;
-            this.label21.Text = "Państwo";
-            // 
-            // validityDateToPicker
-            // 
-            this.validityDateToPicker.Location = new System.Drawing.Point(324, 62);
-            this.validityDateToPicker.Name = "validityDateToPicker";
-            this.validityDateToPicker.Size = new System.Drawing.Size(155, 20);
-            this.validityDateToPicker.TabIndex = 38;
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(298, 68);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(19, 13);
-            this.label22.TabIndex = 39;
-            this.label22.Text = "do";
-            // 
             // DetailedUserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -637,7 +482,6 @@
             this.ClientSize = new System.Drawing.Size(1008, 729);
             this.Controls.Add(this.profileGroupBox);
             this.Controls.Add(this.workerGroupBox);
-            this.Controls.Add(this.contactGroupBox);
             this.Controls.Add(this.returnButton1);
             this.Controls.Add(this.personalGroupBox);
             this.Controls.Add(this.saveButton);
@@ -648,8 +492,6 @@
             this.personalGroupBox.PerformLayout();
             this.toolStrip.ResumeLayout(false);
             this.toolStrip.PerformLayout();
-            this.contactGroupBox.ResumeLayout(false);
-            this.contactGroupBox.PerformLayout();
             this.workerGroupBox.ResumeLayout(false);
             this.workerGroupBox.PerformLayout();
             this.profileGroupBox.ResumeLayout(false);
@@ -674,30 +516,17 @@
         private System.Windows.Forms.MaskedTextBox peselTextBox;
         private System.Windows.Forms.Button returnButton1;
         private System.Windows.Forms.Button saveButton;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.MaskedTextBox apartmentTextBox;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.MaskedTextBox postcodeTextBox;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.MaskedTextBox houseTextBox;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox streetTextBox;
-        private System.Windows.Forms.TextBox cityTextBox;
         private System.Windows.Forms.MaskedTextBox permissionTextBox;           //inaccesible if role is different than 'doctor'
-        private System.Windows.Forms.MaskedTextBox businessPhoneTextBox;
+        private System.Windows.Forms.MaskedTextBox phoneTextBox;
         private System.Windows.Forms.ToolStrip toolStrip;
         private System.Windows.Forms.ToolStripSplitButton userButton;
         private System.Windows.Forms.ToolStripMenuItem profilToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem wylogujToolStripMenuItem;
-        private System.Windows.Forms.GroupBox contactGroupBox;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox mailTextBox;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.MaskedTextBox privatePhoneTextBox;
         private System.Windows.Forms.GroupBox workerGroupBox;                   //locked for not-admin user
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label17;
@@ -714,8 +543,6 @@
         private System.Windows.Forms.TextBox passTextBox1;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox loginTextBox;
-        private System.Windows.Forms.TextBox countryTextBox;
-        private System.Windows.Forms.Label label21;
         private System.Windows.Forms.DateTimePicker validityDateToPicker;         //inaccesible if termless is true
         private System.Windows.Forms.Label label22;
     }

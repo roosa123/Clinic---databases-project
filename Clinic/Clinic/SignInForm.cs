@@ -17,12 +17,14 @@ namespace Przychodnia
             InitializeComponent();
             new DetailedAppointmentForm().Show();
             new AppointmentsForm().Show();
-            new PatientForm().Show();
+            new DetailedPatientForm().Show();
             new ExaminationForm().Show();
             new DetailedLaboratoryForm().Show();
             new LaboratoryForm().Show();
             new UsersForm().Show();
             new DetailedUserForm().Show();
+            new RegistrationForm().Show();
+            new ExaminationListForm().Show();
         }
     }
 }

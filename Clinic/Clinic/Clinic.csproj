@@ -47,6 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExaminationListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExaminationListForm.Designer.cs">
+      <DependentUpon>ExaminationListForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="LaboratoryForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,17 +83,23 @@
     <Compile Include="ExaminationForm.Designer.cs">
       <DependentUpon>ExaminationForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="RegistrationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegistrationForm.Designer.cs">
+      <DependentUpon>RegistrationForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SignInForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SignInForm.Designer.cs">
       <DependentUpon>SignInForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="PatientForm.cs">
+    <Compile Include="DetailedPatientForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PatientForm.Designer.cs">
-      <DependentUpon>PatientForm.cs</DependentUpon>
+    <Compile Include="DetailedPatientForm.Designer.cs">
+      <DependentUpon>DetailedPatientForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -103,6 +115,9 @@
     <Compile Include="AppointmentsForm.Designer.cs">
       <DependentUpon>AppointmentsForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ExaminationListForm.resx">
+      <DependentUpon>ExaminationListForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LaboratoryForm.resx">
       <DependentUpon>LaboratoryForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -118,11 +133,14 @@
     <EmbeddedResource Include="ExaminationForm.resx">
       <DependentUpon>ExaminationForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="RegistrationForm.resx">
+      <DependentUpon>RegistrationForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SignInForm.resx">
       <DependentUpon>SignInForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PatientForm.resx">
-      <DependentUpon>PatientForm.cs</DependentUpon>
+    <EmbeddedResource Include="DetailedPatientForm.resx">
+      <DependentUpon>DetailedPatientForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

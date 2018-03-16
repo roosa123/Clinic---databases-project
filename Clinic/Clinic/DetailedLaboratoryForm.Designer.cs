@@ -40,8 +40,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.typeComboBox = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.doctorCommentTextBox = new System.Windows.Forms.RichTextBox();
             this.returnButton1 = new System.Windows.Forms.Button();
@@ -67,6 +65,13 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.confirmationDateLabel = new System.Windows.Forms.Label();
+            this.searchButton = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.codeLabel = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.examinationLabel = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.toolStrip.SuspendLayout();
             this.doctorPanel.SuspendLayout();
             this.laboratorianPanel.SuspendLayout();
@@ -117,7 +122,7 @@
             // requestDateLabel
             // 
             this.requestDateLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.requestDateLabel.Location = new System.Drawing.Point(132, 92);
+            this.requestDateLabel.Location = new System.Drawing.Point(133, 136);
             this.requestDateLabel.Name = "requestDateLabel";
             this.requestDateLabel.Size = new System.Drawing.Size(250, 20);
             this.requestDateLabel.TabIndex = 40;
@@ -125,7 +130,7 @@
             // doctorLabel
             // 
             this.doctorLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.doctorLabel.Location = new System.Drawing.Point(132, 61);
+            this.doctorLabel.Location = new System.Drawing.Point(133, 105);
             this.doctorLabel.Name = "doctorLabel";
             this.doctorLabel.Size = new System.Drawing.Size(250, 20);
             this.doctorLabel.TabIndex = 39;
@@ -133,7 +138,7 @@
             // patientLabel
             // 
             this.patientLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.patientLabel.Location = new System.Drawing.Point(132, 32);
+            this.patientLabel.Location = new System.Drawing.Point(133, 76);
             this.patientLabel.Name = "patientLabel";
             this.patientLabel.Size = new System.Drawing.Size(250, 20);
             this.patientLabel.TabIndex = 38;
@@ -141,7 +146,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(54, 99);
+            this.label4.Location = new System.Drawing.Point(55, 143);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(72, 13);
             this.label4.TabIndex = 37;
@@ -150,7 +155,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(40, 39);
+            this.label3.Location = new System.Drawing.Point(41, 83);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(86, 13);
             this.label3.TabIndex = 36;
@@ -159,28 +164,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(4, 68);
+            this.label2.Location = new System.Drawing.Point(5, 112);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(122, 13);
             this.label2.TabIndex = 35;
             this.label2.Text = "Imię i nazwisko pacjenta";
-            // 
-            // typeComboBox
-            // 
-            this.typeComboBox.FormattingEnabled = true;
-            this.typeComboBox.Location = new System.Drawing.Point(132, 3);
-            this.typeComboBox.Name = "typeComboBox";
-            this.typeComboBox.Size = new System.Drawing.Size(250, 21);
-            this.typeComboBox.TabIndex = 34;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(45, 11);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(81, 13);
-            this.label1.TabIndex = 41;
-            this.label1.Text = "Nazwa badania";
             // 
             // label5
             // 
@@ -195,13 +183,13 @@
             // 
             this.doctorCommentTextBox.Location = new System.Drawing.Point(391, 19);
             this.doctorCommentTextBox.Name = "doctorCommentTextBox";
-            this.doctorCommentTextBox.Size = new System.Drawing.Size(484, 93);
+            this.doctorCommentTextBox.Size = new System.Drawing.Size(484, 137);
             this.doctorCommentTextBox.TabIndex = 43;
             this.doctorCommentTextBox.Text = "";
             // 
             // returnButton1
             // 
-            this.returnButton1.Location = new System.Drawing.Point(881, 57);
+            this.returnButton1.Location = new System.Drawing.Point(879, 124);
             this.returnButton1.Name = "returnButton1";
             this.returnButton1.Size = new System.Drawing.Size(100, 32);
             this.returnButton1.TabIndex = 44;
@@ -220,21 +208,26 @@
             // doctorPanel
             // 
             this.doctorPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.doctorPanel.Controls.Add(this.typeComboBox);
+            this.doctorPanel.Controls.Add(this.searchButton);
             this.doctorPanel.Controls.Add(this.returnButton1);
+            this.doctorPanel.Controls.Add(this.label1);
+            this.doctorPanel.Controls.Add(this.label10);
             this.doctorPanel.Controls.Add(this.requestButton);
+            this.doctorPanel.Controls.Add(this.codeLabel);
             this.doctorPanel.Controls.Add(this.label2);
+            this.doctorPanel.Controls.Add(this.label13);
             this.doctorPanel.Controls.Add(this.label3);
+            this.doctorPanel.Controls.Add(this.examinationLabel);
             this.doctorPanel.Controls.Add(this.doctorCommentTextBox);
+            this.doctorPanel.Controls.Add(this.label14);
             this.doctorPanel.Controls.Add(this.patientLabel);
             this.doctorPanel.Controls.Add(this.label5);
             this.doctorPanel.Controls.Add(this.doctorLabel);
             this.doctorPanel.Controls.Add(this.label4);
-            this.doctorPanel.Controls.Add(this.label1);
             this.doctorPanel.Controls.Add(this.requestDateLabel);
             this.doctorPanel.Location = new System.Drawing.Point(12, 28);
             this.doctorPanel.Name = "doctorPanel";
-            this.doctorPanel.Size = new System.Drawing.Size(984, 124);
+            this.doctorPanel.Size = new System.Drawing.Size(984, 169);
             this.doctorPanel.TabIndex = 46;
             // 
             // laboratorianPanel
@@ -249,31 +242,31 @@
             this.laboratorianPanel.Controls.Add(this.label8);
             this.laboratorianPanel.Controls.Add(this.label9);
             this.laboratorianPanel.Controls.Add(this.executionDateLlabel);
-            this.laboratorianPanel.Location = new System.Drawing.Point(12, 158);
+            this.laboratorianPanel.Location = new System.Drawing.Point(12, 203);
             this.laboratorianPanel.Name = "laboratorianPanel";
-            this.laboratorianPanel.Size = new System.Drawing.Size(984, 379);
+            this.laboratorianPanel.Size = new System.Drawing.Size(984, 334);
             this.laboratorianPanel.TabIndex = 47;
             // 
             // cancelButton1
             // 
-            this.cancelButton1.Location = new System.Drawing.Point(881, 96);
+            this.cancelButton1.Location = new System.Drawing.Point(879, 87);
             this.cancelButton1.Name = "cancelButton1";
             this.cancelButton1.Size = new System.Drawing.Size(100, 32);
             this.cancelButton1.TabIndex = 54;
-            this.cancelButton1.Text = "Anuluj badanie";
+            this.cancelButton1.Text = "Anuluj";
             this.cancelButton1.UseVisualStyleBackColor = true;
             // 
             // resultsTextBox
             // 
-            this.resultsTextBox.Location = new System.Drawing.Point(7, 58);
+            this.resultsTextBox.Location = new System.Drawing.Point(10, 49);
             this.resultsTextBox.Name = "resultsTextBox";
-            this.resultsTextBox.Size = new System.Drawing.Size(868, 318);
+            this.resultsTextBox.Size = new System.Drawing.Size(868, 280);
             this.resultsTextBox.TabIndex = 53;
             this.resultsTextBox.Text = "";
             // 
             // returnButton2
             // 
-            this.returnButton2.Location = new System.Drawing.Point(881, 134);
+            this.returnButton2.Location = new System.Drawing.Point(879, 125);
             this.returnButton2.Name = "returnButton2";
             this.returnButton2.Size = new System.Drawing.Size(100, 32);
             this.returnButton2.TabIndex = 51;
@@ -282,17 +275,17 @@
             // 
             // executeButton
             // 
-            this.executeButton.Location = new System.Drawing.Point(881, 58);
+            this.executeButton.Location = new System.Drawing.Point(879, 49);
             this.executeButton.Name = "executeButton";
             this.executeButton.Size = new System.Drawing.Size(100, 32);
             this.executeButton.TabIndex = 52;
-            this.executeButton.Text = "Zapisz";
+            this.executeButton.Text = "Wykonaj";
             this.executeButton.UseVisualStyleBackColor = true;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(4, 10);
+            this.label6.Location = new System.Drawing.Point(7, 11);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(149, 13);
             this.label6.TabIndex = 46;
@@ -301,7 +294,7 @@
             // laboratorianLabel
             // 
             this.laboratorianLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.laboratorianLabel.Location = new System.Drawing.Point(159, 9);
+            this.laboratorianLabel.Location = new System.Drawing.Point(162, 10);
             this.laboratorianLabel.Name = "laboratorianLabel";
             this.laboratorianLabel.Size = new System.Drawing.Size(250, 20);
             this.laboratorianLabel.TabIndex = 48;
@@ -309,7 +302,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(4, 42);
+            this.label8.Location = new System.Drawing.Point(7, 33);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(39, 13);
             this.label8.TabIndex = 50;
@@ -318,7 +311,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(438, 10);
+            this.label9.Location = new System.Drawing.Point(441, 11);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(73, 13);
             this.label9.TabIndex = 47;
@@ -327,7 +320,7 @@
             // executionDateLlabel
             // 
             this.executionDateLlabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.executionDateLlabel.Location = new System.Drawing.Point(517, 9);
+            this.executionDateLlabel.Location = new System.Drawing.Point(520, 10);
             this.executionDateLlabel.Name = "executionDateLlabel";
             this.executionDateLlabel.Size = new System.Drawing.Size(250, 20);
             this.executionDateLlabel.TabIndex = 49;
@@ -355,7 +348,7 @@
             this.cancelButton2.Name = "cancelButton2";
             this.cancelButton2.Size = new System.Drawing.Size(100, 32);
             this.cancelButton2.TabIndex = 54;
-            this.cancelButton2.Text = "Anuluj badanie";
+            this.cancelButton2.Text = "Anuluj";
             this.cancelButton2.UseVisualStyleBackColor = true;
             // 
             // supervisorCommentTextBox
@@ -427,6 +420,66 @@
             this.confirmationDateLabel.Size = new System.Drawing.Size(250, 20);
             this.confirmationDateLabel.TabIndex = 49;
             // 
+            // searchButton
+            // 
+            this.searchButton.Location = new System.Drawing.Point(881, 57);
+            this.searchButton.Name = "searchButton";
+            this.searchButton.Size = new System.Drawing.Size(100, 50);
+            this.searchButton.TabIndex = 61;
+            this.searchButton.Text = "Wyszukaj badanie";
+            this.searchButton.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label1.Location = new System.Drawing.Point(293, 49);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(90, 20);
+            this.label1.TabIndex = 60;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(228, 56);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(59, 13);
+            this.label10.TabIndex = 59;
+            this.label10.Text = "ID badania";
+            // 
+            // codeLabel
+            // 
+            this.codeLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.codeLabel.Location = new System.Drawing.Point(133, 49);
+            this.codeLabel.Name = "codeLabel";
+            this.codeLabel.Size = new System.Drawing.Size(76, 20);
+            this.codeLabel.TabIndex = 58;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(60, 56);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(67, 13);
+            this.label13.TabIndex = 57;
+            this.label13.Text = "Kod badania";
+            // 
+            // examinationLabel
+            // 
+            this.examinationLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.examinationLabel.Location = new System.Drawing.Point(133, 19);
+            this.examinationLabel.Name = "examinationLabel";
+            this.examinationLabel.Size = new System.Drawing.Size(250, 20);
+            this.examinationLabel.TabIndex = 56;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(46, 26);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(81, 13);
+            this.label14.TabIndex = 55;
+            this.label14.Text = "Nazwa badania";
+            // 
             // DetailedLaboratoryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -437,7 +490,7 @@
             this.Controls.Add(this.doctorPanel);
             this.Controls.Add(this.toolStrip);
             this.Name = "DetailedLaboratoryForm";
-            this.Text = "Zlecenie";
+            this.Text = "Badanie laboratoryjne";
             this.toolStrip.ResumeLayout(false);
             this.toolStrip.PerformLayout();
             this.doctorPanel.ResumeLayout(false);
@@ -464,8 +517,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox typeComboBox;                 //locked for reviewing examination
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.RichTextBox doctorCommentTextBox;      //locked for reviewing examination
         private System.Windows.Forms.Button returnButton1;                  //inaccesible for laboratorian and supervisor
@@ -491,5 +542,12 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label confirmationDateLabel;
+        private System.Windows.Forms.Button searchButton;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label codeLabel;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label examinationLabel;
+        private System.Windows.Forms.Label label14;
     }
 }
