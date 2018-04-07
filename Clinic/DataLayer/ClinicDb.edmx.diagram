@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="79b56653afd448d38cbc2ec16e75ef9f" Name="Diagram1">
+        <EntityTypeShape EntityType="clinicModel.Address" Width="1.5" PointX="0.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="clinicModel.Appointment" Width="1.5" PointX="9.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="clinicModel.Doctor" Width="1.5" PointX="7.5" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="clinicModel.Employee" Width="1.5" PointX="5.25" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="clinicModel.Examinations" Width="1.5" PointX="9.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="clinicModel.LaboratoryExamination" Width="1.5" PointX="12" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="clinicModel.LaboratoryPerson" Width="1.5" PointX="7.5" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="clinicModel.LaboratorySupervisor" Width="1.5" PointX="7.5" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="clinicModel.Patient" Width="1.5" PointX="5.25" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="clinicModel.Person" Width="1.5" PointX="3" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="clinicModel.PhysicalExamination" Width="1.5" PointX="15" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="clinicModel.RegistrationPerson" Width="1.5" PointX="7.5" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="clinicModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="clinicModel.FK_Person_Address" ManuallyRouted="false" />
+        <AssociationConnector Association="clinicModel.FK_Appointment_Doctor" ManuallyRouted="false" />
+        <AssociationConnector Association="clinicModel.FK_Appointment_Patient" ManuallyRouted="false" />
+        <AssociationConnector Association="clinicModel.FK_Appointment_RegisterPerson" ManuallyRouted="false" />
+        <AssociationConnector Association="clinicModel.FK_LaboratoryExamination_Appointment" ManuallyRouted="false" />
+        <AssociationConnector Association="clinicModel.FK_PhysiologicalExamination_Appointment" ManuallyRouted="false" />
+        <AssociationConnector Association="clinicModel.FK_Doctor_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="clinicModel.FK_Employee_Person" ManuallyRouted="false" />
+        <AssociationConnector Association="clinicModel.FK_LaboratoryPerson_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="clinicModel.FK_LaboratorySupervisor_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="clinicModel.FK_RegisterPerson_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="clinicModel.FK_LaboratoryExamination_Examinations" ManuallyRouted="false" />
+        <AssociationConnector Association="clinicModel.FK_PhysiologicalExamination_LaboratoryExamination" ManuallyRouted="false" />
+        <AssociationConnector Association="clinicModel.FK_LaboratoryExamination_LaboratoryPerson" ManuallyRouted="false" />
+        <AssociationConnector Association="clinicModel.FK_LaboratoryExamination_LaboratorySupervisor" ManuallyRouted="false" />
+        <AssociationConnector Association="clinicModel.FK_Patient_Person" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
