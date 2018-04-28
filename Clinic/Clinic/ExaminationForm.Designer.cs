@@ -28,12 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ExaminationForm));
-            this.toolStrip = new System.Windows.Forms.ToolStrip();
-            this.userButton = new System.Windows.Forms.ToolStripSplitButton();
-            this.profilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.wylogujToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -51,49 +45,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.searchButton = new System.Windows.Forms.Button();
-            this.toolStrip.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // toolStrip
-            // 
-            this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.userButton});
-            this.toolStrip.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip.Name = "toolStrip";
-            this.toolStrip.Size = new System.Drawing.Size(1008, 25);
-            this.toolStrip.TabIndex = 25;
-            this.toolStrip.Text = "toolStrip1";
-            // 
-            // userButton
-            // 
-            this.userButton.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.userButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.userButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.profilToolStripMenuItem,
-            this.toolStripSeparator1,
-            this.wylogujToolStripMenuItem});
-            this.userButton.Image = ((System.Drawing.Image)(resources.GetObject("userButton.Image")));
-            this.userButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.userButton.Name = "userButton";
-            this.userButton.Size = new System.Drawing.Size(107, 22);
-            this.userButton.Text = "<<username>>";
-            // 
-            // profilToolStripMenuItem
-            // 
-            this.profilToolStripMenuItem.Name = "profilToolStripMenuItem";
-            this.profilToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
-            this.profilToolStripMenuItem.Text = "Profil";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(115, 6);
-            // 
-            // wylogujToolStripMenuItem
-            // 
-            this.wylogujToolStripMenuItem.Name = "wylogujToolStripMenuItem";
-            this.wylogujToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
-            this.wylogujToolStripMenuItem.Text = "Wyloguj";
             // 
             // label1
             // 
@@ -180,6 +132,7 @@
             this.saveButton.TabIndex = 36;
             this.saveButton.Text = "Wykonaj";
             this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // returnButton
             // 
@@ -189,6 +142,7 @@
             this.returnButton.TabIndex = 37;
             this.returnButton.Text = "Powrót";
             this.returnButton.UseVisualStyleBackColor = true;
+            this.returnButton.Click += new System.EventHandler(this.returnButton_Click);
             // 
             // examinationLabel
             // 
@@ -240,6 +194,7 @@
             this.searchButton.TabIndex = 43;
             this.searchButton.Text = "Wyszukaj badanie";
             this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
             // ExaminationForm
             // 
@@ -263,23 +218,31 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.toolStrip);
             this.Name = "ExaminationForm";
             this.Text = "Badanie fizykalne";
-            this.toolStrip.ResumeLayout(false);
-            this.toolStrip.PerformLayout();
+            this.Controls.SetChildIndex(this.label1, 0);
+            this.Controls.SetChildIndex(this.label2, 0);
+            this.Controls.SetChildIndex(this.label3, 0);
+            this.Controls.SetChildIndex(this.label4, 0);
+            this.Controls.SetChildIndex(this.patientLabel, 0);
+            this.Controls.SetChildIndex(this.doctorLabel, 0);
+            this.Controls.SetChildIndex(this.dateLabel, 0);
+            this.Controls.SetChildIndex(this.label5, 0);
+            this.Controls.SetChildIndex(this.resultTextBox, 0);
+            this.Controls.SetChildIndex(this.saveButton, 0);
+            this.Controls.SetChildIndex(this.returnButton, 0);
+            this.Controls.SetChildIndex(this.examinationLabel, 0);
+            this.Controls.SetChildIndex(this.label6, 0);
+            this.Controls.SetChildIndex(this.codeLabel, 0);
+            this.Controls.SetChildIndex(this.label7, 0);
+            this.Controls.SetChildIndex(this.label8, 0);
+            this.Controls.SetChildIndex(this.searchButton, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.ToolStrip toolStrip;
-        private System.Windows.Forms.ToolStripSplitButton userButton;
-        private System.Windows.Forms.ToolStripMenuItem profilToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem wylogujToolStripMenuItem;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;

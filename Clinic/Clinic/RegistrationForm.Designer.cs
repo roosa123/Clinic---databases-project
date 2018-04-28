@@ -28,12 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegistrationForm));
-            this.toolStrip = new System.Windows.Forms.ToolStrip();
-            this.userButton = new System.Windows.Forms.ToolStripSplitButton();
-            this.profilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.wylogujToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -59,59 +53,17 @@
             this.label9 = new System.Windows.Forms.Label();
             this.statusComboBox = new System.Windows.Forms.ComboBox();
             this.patientGroupBox = new System.Windows.Forms.GroupBox();
-            this.detailsButton = new System.Windows.Forms.Button();
-            this.appointmentsGroupBox = new System.Windows.Forms.GroupBox();
             this.registerGroupBox = new System.Windows.Forms.GroupBox();
             this.label7 = new System.Windows.Forms.Label();
             this.appointmentTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.toolStrip.SuspendLayout();
+            this.detailsButton = new System.Windows.Forms.Button();
+            this.appointmentsGroupBox = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.patientsDataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.appointmentsDataGrid)).BeginInit();
             this.patientGroupBox.SuspendLayout();
-            this.appointmentsGroupBox.SuspendLayout();
             this.registerGroupBox.SuspendLayout();
+            this.appointmentsGroupBox.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // toolStrip
-            // 
-            this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.userButton});
-            this.toolStrip.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip.Name = "toolStrip";
-            this.toolStrip.Size = new System.Drawing.Size(1008, 25);
-            this.toolStrip.TabIndex = 25;
-            this.toolStrip.Text = "toolStrip1";
-            // 
-            // userButton
-            // 
-            this.userButton.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.userButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.userButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.profilToolStripMenuItem,
-            this.toolStripSeparator1,
-            this.wylogujToolStripMenuItem});
-            this.userButton.Image = ((System.Drawing.Image)(resources.GetObject("userButton.Image")));
-            this.userButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.userButton.Name = "userButton";
-            this.userButton.Size = new System.Drawing.Size(107, 22);
-            this.userButton.Text = "<<username>>";
-            // 
-            // profilToolStripMenuItem
-            // 
-            this.profilToolStripMenuItem.Name = "profilToolStripMenuItem";
-            this.profilToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
-            this.profilToolStripMenuItem.Text = "Profil";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(115, 6);
-            // 
-            // wylogujToolStripMenuItem
-            // 
-            this.wylogujToolStripMenuItem.Name = "wylogujToolStripMenuItem";
-            this.wylogujToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
-            this.wylogujToolStripMenuItem.Text = "Wyloguj";
             // 
             // label1
             // 
@@ -170,6 +122,7 @@
             this.searchPatientButton.TabIndex = 32;
             this.searchPatientButton.Text = "Szukaj";
             this.searchPatientButton.UseVisualStyleBackColor = true;
+            this.searchPatientButton.Click += new System.EventHandler(this.searchPatientButton_Click);
             // 
             // label6
             // 
@@ -188,6 +141,7 @@
             this.registerButton.TabIndex = 24;
             this.registerButton.Text = "Zarejestruj";
             this.registerButton.UseVisualStyleBackColor = true;
+            this.registerButton.Click += new System.EventHandler(this.registerButton_Click);
             // 
             // appointmentDatePicker
             // 
@@ -238,6 +192,7 @@
             this.newPatientButton.TabIndex = 37;
             this.newPatientButton.Text = "Dodaj pacjenta";
             this.newPatientButton.UseVisualStyleBackColor = true;
+            this.newPatientButton.Click += new System.EventHandler(this.newPatientButton_Click);
             // 
             // patientButton
             // 
@@ -247,6 +202,7 @@
             this.patientButton.TabIndex = 38;
             this.patientButton.Text = "Edytuj dane";
             this.patientButton.UseVisualStyleBackColor = true;
+            this.patientButton.Click += new System.EventHandler(this.patientButton_Click);
             // 
             // cancelButton
             // 
@@ -256,6 +212,7 @@
             this.cancelButton.TabIndex = 40;
             this.cancelButton.Text = "Anuluj wizytę";
             this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // searchAppointmentButton
             // 
@@ -265,6 +222,7 @@
             this.searchAppointmentButton.TabIndex = 47;
             this.searchAppointmentButton.Text = "Szukaj";
             this.searchAppointmentButton.UseVisualStyleBackColor = true;
+            this.searchAppointmentButton.Click += new System.EventHandler(this.searchAppointmentButton_Click);
             // 
             // doctorComboBox1
             // 
@@ -345,33 +303,6 @@
             this.patientGroupBox.TabStop = false;
             this.patientGroupBox.Text = "Pacjenci";
             // 
-            // detailsButton
-            // 
-            this.detailsButton.Location = new System.Drawing.Point(611, 138);
-            this.detailsButton.Name = "detailsButton";
-            this.detailsButton.Size = new System.Drawing.Size(100, 32);
-            this.detailsButton.TabIndex = 39;
-            this.detailsButton.Text = "Przeglądaj dane";
-            this.detailsButton.UseVisualStyleBackColor = true;
-            // 
-            // appointmentsGroupBox
-            // 
-            this.appointmentsGroupBox.Controls.Add(this.cancelButton);
-            this.appointmentsGroupBox.Controls.Add(this.searchAppointmentButton);
-            this.appointmentsGroupBox.Controls.Add(this.appointmentsDataGrid);
-            this.appointmentsGroupBox.Controls.Add(this.doctorComboBox1);
-            this.appointmentsGroupBox.Controls.Add(this.label5);
-            this.appointmentsGroupBox.Controls.Add(this.fromDateTimePicker);
-            this.appointmentsGroupBox.Controls.Add(this.label8);
-            this.appointmentsGroupBox.Controls.Add(this.label9);
-            this.appointmentsGroupBox.Controls.Add(this.statusComboBox);
-            this.appointmentsGroupBox.Location = new System.Drawing.Point(15, 332);
-            this.appointmentsGroupBox.Name = "appointmentsGroupBox";
-            this.appointmentsGroupBox.Size = new System.Drawing.Size(981, 385);
-            this.appointmentsGroupBox.TabIndex = 49;
-            this.appointmentsGroupBox.TabStop = false;
-            this.appointmentsGroupBox.Text = "Wizyty";
-            // 
             // registerGroupBox
             // 
             this.registerGroupBox.Controls.Add(this.doctorComboBox);
@@ -407,6 +338,34 @@
             this.appointmentTimePicker.Size = new System.Drawing.Size(97, 20);
             this.appointmentTimePicker.TabIndex = 22;
             // 
+            // detailsButton
+            // 
+            this.detailsButton.Location = new System.Drawing.Point(611, 138);
+            this.detailsButton.Name = "detailsButton";
+            this.detailsButton.Size = new System.Drawing.Size(100, 32);
+            this.detailsButton.TabIndex = 39;
+            this.detailsButton.Text = "Przeglądaj dane";
+            this.detailsButton.UseVisualStyleBackColor = true;
+            this.detailsButton.Click += new System.EventHandler(this.detailsButton_Click);
+            // 
+            // appointmentsGroupBox
+            // 
+            this.appointmentsGroupBox.Controls.Add(this.cancelButton);
+            this.appointmentsGroupBox.Controls.Add(this.searchAppointmentButton);
+            this.appointmentsGroupBox.Controls.Add(this.appointmentsDataGrid);
+            this.appointmentsGroupBox.Controls.Add(this.doctorComboBox1);
+            this.appointmentsGroupBox.Controls.Add(this.label5);
+            this.appointmentsGroupBox.Controls.Add(this.fromDateTimePicker);
+            this.appointmentsGroupBox.Controls.Add(this.label8);
+            this.appointmentsGroupBox.Controls.Add(this.label9);
+            this.appointmentsGroupBox.Controls.Add(this.statusComboBox);
+            this.appointmentsGroupBox.Location = new System.Drawing.Point(15, 332);
+            this.appointmentsGroupBox.Name = "appointmentsGroupBox";
+            this.appointmentsGroupBox.Size = new System.Drawing.Size(981, 385);
+            this.appointmentsGroupBox.TabIndex = 49;
+            this.appointmentsGroupBox.TabStop = false;
+            this.appointmentsGroupBox.Text = "Wizyty";
+            // 
             // RegistrationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -414,31 +373,24 @@
             this.ClientSize = new System.Drawing.Size(1008, 729);
             this.Controls.Add(this.appointmentsGroupBox);
             this.Controls.Add(this.patientGroupBox);
-            this.Controls.Add(this.toolStrip);
             this.Name = "RegistrationForm";
             this.Text = "Rejestracja";
-            this.toolStrip.ResumeLayout(false);
-            this.toolStrip.PerformLayout();
+            this.Controls.SetChildIndex(this.patientGroupBox, 0);
+            this.Controls.SetChildIndex(this.appointmentsGroupBox, 0);
             ((System.ComponentModel.ISupportInitialize)(this.patientsDataGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.appointmentsDataGrid)).EndInit();
             this.patientGroupBox.ResumeLayout(false);
             this.patientGroupBox.PerformLayout();
-            this.appointmentsGroupBox.ResumeLayout(false);
-            this.appointmentsGroupBox.PerformLayout();
             this.registerGroupBox.ResumeLayout(false);
             this.registerGroupBox.PerformLayout();
+            this.appointmentsGroupBox.ResumeLayout(false);
+            this.appointmentsGroupBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.ToolStrip toolStrip;
-        private System.Windows.Forms.ToolStripSplitButton userButton;
-        private System.Windows.Forms.ToolStripMenuItem profilToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem wylogujToolStripMenuItem;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox nameTextBox;
         private System.Windows.Forms.Label label4;

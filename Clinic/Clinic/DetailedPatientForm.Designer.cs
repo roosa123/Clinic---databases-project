@@ -1,4 +1,6 @@
-﻿namespace Przychodnia
+﻿using DataLayer;
+
+namespace Przychodnia
 {
     partial class DetailedPatientForm
     {
@@ -28,7 +30,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DetailedPatientForm));
             this.label1 = new System.Windows.Forms.Label();
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -51,11 +52,6 @@
             this.houseTextBox = new System.Windows.Forms.MaskedTextBox();
             this.postcodeTextBox = new System.Windows.Forms.MaskedTextBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.toolStrip = new System.Windows.Forms.ToolStrip();
-            this.userButton = new System.Windows.Forms.ToolStripSplitButton();
-            this.profilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.wylogujToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.personalGroupBox = new System.Windows.Forms.GroupBox();
             this.countryTextBox = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
@@ -72,7 +68,6 @@
             this.laboratoryDataGrid = new System.Windows.Forms.DataGridView();
             this.detailsButton = new System.Windows.Forms.Button();
             this.returnButton2 = new System.Windows.Forms.Button();
-            this.toolStrip.SuspendLayout();
             this.personalGroupBox.SuspendLayout();
             this.tabControl.SuspendLayout();
             this.appointmentsTabPage.SuspendLayout();
@@ -269,47 +264,6 @@
             this.label12.TabIndex = 23;
             this.label12.Text = "Kod pocztowy";
             // 
-            // toolStrip
-            // 
-            this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.userButton});
-            this.toolStrip.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip.Name = "toolStrip";
-            this.toolStrip.Size = new System.Drawing.Size(1008, 25);
-            this.toolStrip.TabIndex = 24;
-            this.toolStrip.Text = "toolStrip1";
-            // 
-            // userButton
-            // 
-            this.userButton.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.userButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.userButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.profilToolStripMenuItem,
-            this.toolStripSeparator1,
-            this.wylogujToolStripMenuItem});
-            this.userButton.Image = ((System.Drawing.Image)(resources.GetObject("userButton.Image")));
-            this.userButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.userButton.Name = "userButton";
-            this.userButton.Size = new System.Drawing.Size(107, 22);
-            this.userButton.Text = "<<username>>";
-            // 
-            // profilToolStripMenuItem
-            // 
-            this.profilToolStripMenuItem.Name = "profilToolStripMenuItem";
-            this.profilToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
-            this.profilToolStripMenuItem.Text = "Profil";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(115, 6);
-            // 
-            // wylogujToolStripMenuItem
-            // 
-            this.wylogujToolStripMenuItem.Name = "wylogujToolStripMenuItem";
-            this.wylogujToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
-            this.wylogujToolStripMenuItem.Text = "Wyloguj";
-            // 
             // personalGroupBox
             // 
             this.personalGroupBox.Controls.Add(this.countryTextBox);
@@ -371,6 +325,7 @@
             this.returnButton1.TabIndex = 25;
             this.returnButton1.Text = "Powrót";
             this.returnButton1.UseVisualStyleBackColor = true;
+            this.returnButton1.Click += new System.EventHandler(this.returnButton1_Click);
             // 
             // saveButton
             // 
@@ -380,6 +335,7 @@
             this.saveButton.TabIndex = 24;
             this.saveButton.Text = "Zapisz";
             this.saveButton.UseVisualStyleBackColor = true;
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // label11
             // 
@@ -473,6 +429,7 @@
             this.detailsButton.TabIndex = 27;
             this.detailsButton.Text = "Szczegóły";
             this.detailsButton.UseVisualStyleBackColor = true;
+            this.detailsButton.Click += new System.EventHandler(this.detailsButton_Click);
             // 
             // returnButton2
             // 
@@ -482,6 +439,7 @@
             this.returnButton2.TabIndex = 34;
             this.returnButton2.Text = "Powrót";
             this.returnButton2.UseVisualStyleBackColor = true;
+            this.returnButton2.Click += new System.EventHandler(this.returnButton2_Click);
             // 
             // DetailedPatientForm
             // 
@@ -492,11 +450,12 @@
             this.Controls.Add(this.detailsButton);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.personalGroupBox);
-            this.Controls.Add(this.toolStrip);
             this.Name = "DetailedPatientForm";
             this.Text = "Pacjent";
-            this.toolStrip.ResumeLayout(false);
-            this.toolStrip.PerformLayout();
+            this.Controls.SetChildIndex(this.personalGroupBox, 0);
+            this.Controls.SetChildIndex(this.tabControl, 0);
+            this.Controls.SetChildIndex(this.detailsButton, 0);
+            this.Controls.SetChildIndex(this.returnButton2, 0);
             this.personalGroupBox.ResumeLayout(false);
             this.personalGroupBox.PerformLayout();
             this.tabControl.ResumeLayout(false);
@@ -535,11 +494,6 @@
         private System.Windows.Forms.MaskedTextBox houseTextBox;
         private System.Windows.Forms.MaskedTextBox postcodeTextBox;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.ToolStrip toolStrip;
-        private System.Windows.Forms.ToolStripSplitButton userButton;
-        private System.Windows.Forms.ToolStripMenuItem profilToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem wylogujToolStripMenuItem;
         private System.Windows.Forms.GroupBox personalGroupBox;                     //locked for doctor
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.MaskedTextBox apartmentTextBox;
@@ -556,5 +510,6 @@
         private System.Windows.Forms.Button returnButton2;                          //inaccesible for registrar
         private System.Windows.Forms.TextBox countryTextBox;
         private System.Windows.Forms.Label label16;
+        
     }
 }

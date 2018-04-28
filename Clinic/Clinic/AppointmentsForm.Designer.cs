@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AppointmentsForm));
             this.appointmentsDataGrid = new System.Windows.Forms.DataGridView();
             this.statusComboBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -38,16 +37,8 @@
             this.doctorComboBox = new System.Windows.Forms.ComboBox();
             this.executeButton = new System.Windows.Forms.Button();
             this.appointmentDetailsButton = new System.Windows.Forms.Button();
-            this.cancelButton = new System.Windows.Forms.Button();
-            this.toolStrip = new System.Windows.Forms.ToolStrip();
-            this.userButton = new System.Windows.Forms.ToolStripSplitButton();
-            this.profilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.wylogujToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.searchButton = new System.Windows.Forms.Button();
-            this.returnButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.appointmentsDataGrid)).BeginInit();
-            this.toolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // appointmentsDataGrid
@@ -124,6 +115,7 @@
             this.executeButton.TabIndex = 9;
             this.executeButton.Text = "Obsłuż";
             this.executeButton.UseVisualStyleBackColor = true;
+            this.executeButton.Click += new System.EventHandler(this.executeButton_Click);
             // 
             // appointmentDetailsButton
             // 
@@ -133,56 +125,7 @@
             this.appointmentDetailsButton.TabIndex = 10;
             this.appointmentDetailsButton.Text = "Pokaż";
             this.appointmentDetailsButton.UseVisualStyleBackColor = true;
-            // 
-            // cancelButton
-            // 
-            this.cancelButton.Location = new System.Drawing.Point(878, 176);
-            this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(100, 32);
-            this.cancelButton.TabIndex = 11;
-            this.cancelButton.Text = "Anuluj";
-            this.cancelButton.UseVisualStyleBackColor = true;
-            // 
-            // toolStrip
-            // 
-            this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.userButton});
-            this.toolStrip.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip.Name = "toolStrip";
-            this.toolStrip.Size = new System.Drawing.Size(1008, 25);
-            this.toolStrip.TabIndex = 12;
-            this.toolStrip.Text = "toolStrip1";
-            // 
-            // userButton
-            // 
-            this.userButton.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.userButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.userButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.profilToolStripMenuItem,
-            this.toolStripSeparator1,
-            this.wylogujToolStripMenuItem});
-            this.userButton.Image = ((System.Drawing.Image)(resources.GetObject("userButton.Image")));
-            this.userButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.userButton.Name = "userButton";
-            this.userButton.Size = new System.Drawing.Size(107, 22);
-            this.userButton.Text = "<<username>>";
-            // 
-            // profilToolStripMenuItem
-            // 
-            this.profilToolStripMenuItem.Name = "profilToolStripMenuItem";
-            this.profilToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
-            this.profilToolStripMenuItem.Text = "Profil";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(115, 6);
-            // 
-            // wylogujToolStripMenuItem
-            // 
-            this.wylogujToolStripMenuItem.Name = "wylogujToolStripMenuItem";
-            this.wylogujToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
-            this.wylogujToolStripMenuItem.Text = "Wyloguj";
+            this.appointmentDetailsButton.Click += new System.EventHandler(this.appointmentDetailsButton_Click);
             // 
             // searchButton
             // 
@@ -192,25 +135,14 @@
             this.searchButton.TabIndex = 13;
             this.searchButton.Text = "Szukaj";
             this.searchButton.UseVisualStyleBackColor = true;
-            // 
-            // returnButton
-            // 
-            this.returnButton.Location = new System.Drawing.Point(878, 672);
-            this.returnButton.Name = "returnButton";
-            this.returnButton.Size = new System.Drawing.Size(100, 32);
-            this.returnButton.TabIndex = 14;
-            this.returnButton.Text = "Powrót";
-            this.returnButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
             // 
             // AppointmentsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 729);
-            this.Controls.Add(this.returnButton);
             this.Controls.Add(this.searchButton);
-            this.Controls.Add(this.toolStrip);
-            this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.appointmentDetailsButton);
             this.Controls.Add(this.executeButton);
             this.Controls.Add(this.doctorComboBox);
@@ -222,9 +154,17 @@
             this.Controls.Add(this.appointmentsDataGrid);
             this.Name = "AppointmentsForm";
             this.Text = "Wizyty";
+            this.Controls.SetChildIndex(this.appointmentsDataGrid, 0);
+            this.Controls.SetChildIndex(this.statusComboBox, 0);
+            this.Controls.SetChildIndex(this.label1, 0);
+            this.Controls.SetChildIndex(this.label2, 0);
+            this.Controls.SetChildIndex(this.fromDateTimePicker, 0);
+            this.Controls.SetChildIndex(this.label4, 0);
+            this.Controls.SetChildIndex(this.doctorComboBox, 0);
+            this.Controls.SetChildIndex(this.executeButton, 0);
+            this.Controls.SetChildIndex(this.appointmentDetailsButton, 0);
+            this.Controls.SetChildIndex(this.searchButton, 0);
             ((System.ComponentModel.ISupportInitialize)(this.appointmentsDataGrid)).EndInit();
-            this.toolStrip.ResumeLayout(false);
-            this.toolStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -241,13 +181,6 @@
         private System.Windows.Forms.ComboBox doctorComboBox;                    //locked for doctor
         private System.Windows.Forms.Button executeButton;                      //inaccesible for doctor
         private System.Windows.Forms.Button appointmentDetailsButton;
-        private System.Windows.Forms.Button cancelButton;
-        private System.Windows.Forms.ToolStrip toolStrip;
-        private System.Windows.Forms.ToolStripSplitButton userButton;
-        private System.Windows.Forms.ToolStripMenuItem profilToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem wylogujToolStripMenuItem;
         private System.Windows.Forms.Button searchButton;
-        private System.Windows.Forms.Button returnButton;
     }
 }

@@ -28,11 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DetailedUserForm));
             this.personalGroupBox = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.nameTextBox = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.mailTextBox = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.surnameTextBox = new System.Windows.Forms.TextBox();
@@ -40,19 +41,12 @@
             this.birthdatePicker = new System.Windows.Forms.DateTimePicker();
             this.sexComboBox = new System.Windows.Forms.ComboBox();
             this.peselTextBox = new System.Windows.Forms.MaskedTextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.phoneTextBox = new System.Windows.Forms.MaskedTextBox();
             this.returnButton1 = new System.Windows.Forms.Button();
             this.saveButton = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.permissionTextBox = new System.Windows.Forms.MaskedTextBox();
-            this.phoneTextBox = new System.Windows.Forms.MaskedTextBox();
-            this.toolStrip = new System.Windows.Forms.ToolStrip();
-            this.userButton = new System.Windows.Forms.ToolStripSplitButton();
-            this.profilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.wylogujToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label14 = new System.Windows.Forms.Label();
-            this.mailTextBox = new System.Windows.Forms.TextBox();
             this.workerGroupBox = new System.Windows.Forms.GroupBox();
             this.label22 = new System.Windows.Forms.Label();
             this.validityDateToPicker = new System.Windows.Forms.DateTimePicker();
@@ -72,7 +66,6 @@
             this.label18 = new System.Windows.Forms.Label();
             this.loginTextBox = new System.Windows.Forms.TextBox();
             this.personalGroupBox.SuspendLayout();
-            this.toolStrip.SuspendLayout();
             this.workerGroupBox.SuspendLayout();
             this.profileGroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -116,6 +109,15 @@
             this.nameTextBox.Size = new System.Drawing.Size(138, 20);
             this.nameTextBox.TabIndex = 1;
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(571, 51);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(32, 13);
+            this.label14.TabIndex = 29;
+            this.label14.Text = "Email";
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -124,6 +126,13 @@
             this.label3.Size = new System.Drawing.Size(79, 13);
             this.label3.TabIndex = 4;
             this.label3.Text = "Data urodzenia";
+            // 
+            // mailTextBox
+            // 
+            this.mailTextBox.Location = new System.Drawing.Point(609, 44);
+            this.mailTextBox.Name = "mailTextBox";
+            this.mailTextBox.Size = new System.Drawing.Size(111, 20);
+            this.mailTextBox.TabIndex = 30;
             // 
             // label7
             // 
@@ -186,6 +195,23 @@
             this.peselTextBox.Size = new System.Drawing.Size(82, 20);
             this.peselTextBox.TabIndex = 7;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(560, 25);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(43, 13);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "Telefon";
+            // 
+            // phoneTextBox
+            // 
+            this.phoneTextBox.Location = new System.Drawing.Point(609, 18);
+            this.phoneTextBox.Mask = "000-000-000";
+            this.phoneTextBox.Name = "phoneTextBox";
+            this.phoneTextBox.Size = new System.Drawing.Size(111, 20);
+            this.phoneTextBox.TabIndex = 11;
+            // 
             // returnButton1
             // 
             this.returnButton1.Location = new System.Drawing.Point(896, 647);
@@ -194,6 +220,7 @@
             this.returnButton1.TabIndex = 25;
             this.returnButton1.Text = "Powrót";
             this.returnButton1.UseVisualStyleBackColor = true;
+            this.returnButton1.Click += new System.EventHandler(this.returnButton1_Click);
             // 
             // saveButton
             // 
@@ -203,15 +230,7 @@
             this.saveButton.TabIndex = 24;
             this.saveButton.Text = "Zapisz";
             this.saveButton.UseVisualStyleBackColor = true;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(560, 25);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(43, 13);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "Telefon";
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // label5
             // 
@@ -229,71 +248,6 @@
             this.permissionTextBox.Name = "permissionTextBox";
             this.permissionTextBox.Size = new System.Drawing.Size(100, 20);
             this.permissionTextBox.TabIndex = 9;
-            // 
-            // phoneTextBox
-            // 
-            this.phoneTextBox.Location = new System.Drawing.Point(609, 18);
-            this.phoneTextBox.Mask = "000-000-000";
-            this.phoneTextBox.Name = "phoneTextBox";
-            this.phoneTextBox.Size = new System.Drawing.Size(111, 20);
-            this.phoneTextBox.TabIndex = 11;
-            // 
-            // toolStrip
-            // 
-            this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.userButton});
-            this.toolStrip.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip.Name = "toolStrip";
-            this.toolStrip.Size = new System.Drawing.Size(1008, 25);
-            this.toolStrip.TabIndex = 26;
-            this.toolStrip.Text = "toolStrip1";
-            // 
-            // userButton
-            // 
-            this.userButton.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.userButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.userButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.profilToolStripMenuItem,
-            this.toolStripSeparator1,
-            this.wylogujToolStripMenuItem});
-            this.userButton.Image = ((System.Drawing.Image)(resources.GetObject("userButton.Image")));
-            this.userButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.userButton.Name = "userButton";
-            this.userButton.Size = new System.Drawing.Size(107, 22);
-            this.userButton.Text = "<<username>>";
-            // 
-            // profilToolStripMenuItem
-            // 
-            this.profilToolStripMenuItem.Name = "profilToolStripMenuItem";
-            this.profilToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
-            this.profilToolStripMenuItem.Text = "Profil";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(115, 6);
-            // 
-            // wylogujToolStripMenuItem
-            // 
-            this.wylogujToolStripMenuItem.Name = "wylogujToolStripMenuItem";
-            this.wylogujToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
-            this.wylogujToolStripMenuItem.Text = "Wyloguj";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(571, 51);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(32, 13);
-            this.label14.TabIndex = 29;
-            this.label14.Text = "Email";
-            // 
-            // mailTextBox
-            // 
-            this.mailTextBox.Location = new System.Drawing.Point(609, 44);
-            this.mailTextBox.Name = "mailTextBox";
-            this.mailTextBox.Size = new System.Drawing.Size(111, 20);
-            this.mailTextBox.TabIndex = 30;
             // 
             // workerGroupBox
             // 
@@ -424,6 +378,7 @@
             this.newPasswordButton.TabIndex = 26;
             this.newPasswordButton.Text = "Zmień hasło";
             this.newPasswordButton.UseVisualStyleBackColor = true;
+            this.newPasswordButton.Click += new System.EventHandler(this.newPasswordButton_Click);
             // 
             // label20
             // 
@@ -485,13 +440,15 @@
             this.Controls.Add(this.returnButton1);
             this.Controls.Add(this.personalGroupBox);
             this.Controls.Add(this.saveButton);
-            this.Controls.Add(this.toolStrip);
             this.Name = "DetailedUserForm";
             this.Text = "Użytkownik";
+            this.Controls.SetChildIndex(this.saveButton, 0);
+            this.Controls.SetChildIndex(this.personalGroupBox, 0);
+            this.Controls.SetChildIndex(this.returnButton1, 0);
+            this.Controls.SetChildIndex(this.workerGroupBox, 0);
+            this.Controls.SetChildIndex(this.profileGroupBox, 0);
             this.personalGroupBox.ResumeLayout(false);
             this.personalGroupBox.PerformLayout();
-            this.toolStrip.ResumeLayout(false);
-            this.toolStrip.PerformLayout();
             this.workerGroupBox.ResumeLayout(false);
             this.workerGroupBox.PerformLayout();
             this.profileGroupBox.ResumeLayout(false);
@@ -520,11 +477,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.MaskedTextBox permissionTextBox;           //inaccesible if role is different than 'doctor'
         private System.Windows.Forms.MaskedTextBox phoneTextBox;
-        private System.Windows.Forms.ToolStrip toolStrip;
-        private System.Windows.Forms.ToolStripSplitButton userButton;
-        private System.Windows.Forms.ToolStripMenuItem profilToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem wylogujToolStripMenuItem;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox mailTextBox;
         private System.Windows.Forms.GroupBox workerGroupBox;                   //locked for not-admin user

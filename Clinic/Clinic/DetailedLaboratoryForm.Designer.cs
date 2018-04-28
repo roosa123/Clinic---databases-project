@@ -28,12 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DetailedLaboratoryForm));
-            this.toolStrip = new System.Windows.Forms.ToolStrip();
-            this.userButton = new System.Windows.Forms.ToolStripSplitButton();
-            this.profilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.wylogujToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.requestDateLabel = new System.Windows.Forms.Label();
             this.doctorLabel = new System.Windows.Forms.Label();
             this.patientLabel = new System.Windows.Forms.Label();
@@ -45,6 +39,13 @@
             this.returnButton1 = new System.Windows.Forms.Button();
             this.requestButton = new System.Windows.Forms.Button();
             this.doctorPanel = new System.Windows.Forms.Panel();
+            this.searchButton = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.codeLabel = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.examinationLabel = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.laboratorianPanel = new System.Windows.Forms.Panel();
             this.cancelButton1 = new System.Windows.Forms.Button();
             this.resultsTextBox = new System.Windows.Forms.RichTextBox();
@@ -65,59 +66,10 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.confirmationDateLabel = new System.Windows.Forms.Label();
-            this.searchButton = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.codeLabel = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.examinationLabel = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.toolStrip.SuspendLayout();
             this.doctorPanel.SuspendLayout();
             this.laboratorianPanel.SuspendLayout();
             this.supervisorPanel.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // toolStrip
-            // 
-            this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.userButton});
-            this.toolStrip.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip.Name = "toolStrip";
-            this.toolStrip.Size = new System.Drawing.Size(1008, 25);
-            this.toolStrip.TabIndex = 26;
-            this.toolStrip.Text = "toolStrip1";
-            // 
-            // userButton
-            // 
-            this.userButton.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.userButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.userButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.profilToolStripMenuItem,
-            this.toolStripSeparator1,
-            this.wylogujToolStripMenuItem});
-            this.userButton.Image = ((System.Drawing.Image)(resources.GetObject("userButton.Image")));
-            this.userButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.userButton.Name = "userButton";
-            this.userButton.Size = new System.Drawing.Size(107, 22);
-            this.userButton.Text = "<<username>>";
-            // 
-            // profilToolStripMenuItem
-            // 
-            this.profilToolStripMenuItem.Name = "profilToolStripMenuItem";
-            this.profilToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
-            this.profilToolStripMenuItem.Text = "Profil";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(115, 6);
-            // 
-            // wylogujToolStripMenuItem
-            // 
-            this.wylogujToolStripMenuItem.Name = "wylogujToolStripMenuItem";
-            this.wylogujToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
-            this.wylogujToolStripMenuItem.Text = "Wyloguj";
             // 
             // requestDateLabel
             // 
@@ -189,12 +141,13 @@
             // 
             // returnButton1
             // 
-            this.returnButton1.Location = new System.Drawing.Point(879, 124);
+            this.returnButton1.Location = new System.Drawing.Point(881, 56);
             this.returnButton1.Name = "returnButton1";
             this.returnButton1.Size = new System.Drawing.Size(100, 32);
             this.returnButton1.TabIndex = 44;
             this.returnButton1.Text = "Powrót";
             this.returnButton1.UseVisualStyleBackColor = true;
+            this.returnButton1.Click += new System.EventHandler(this.returnButton1_Click);
             // 
             // requestButton
             // 
@@ -204,6 +157,7 @@
             this.requestButton.TabIndex = 45;
             this.requestButton.Text = "Zleć badanie";
             this.requestButton.UseVisualStyleBackColor = true;
+            this.requestButton.Click += new System.EventHandler(this.requestButton_Click);
             // 
             // doctorPanel
             // 
@@ -230,6 +184,67 @@
             this.doctorPanel.Size = new System.Drawing.Size(984, 169);
             this.doctorPanel.TabIndex = 46;
             // 
+            // searchButton
+            // 
+            this.searchButton.Location = new System.Drawing.Point(324, 19);
+            this.searchButton.Name = "searchButton";
+            this.searchButton.Size = new System.Drawing.Size(61, 50);
+            this.searchButton.TabIndex = 61;
+            this.searchButton.Text = "Wyszukaj badanie";
+            this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
+            // 
+            // label1
+            // 
+            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label1.Location = new System.Drawing.Point(266, 49);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(52, 20);
+            this.label1.TabIndex = 60;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(201, 56);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(59, 13);
+            this.label10.TabIndex = 59;
+            this.label10.Text = "ID badania";
+            // 
+            // codeLabel
+            // 
+            this.codeLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.codeLabel.Location = new System.Drawing.Point(133, 49);
+            this.codeLabel.Name = "codeLabel";
+            this.codeLabel.Size = new System.Drawing.Size(62, 20);
+            this.codeLabel.TabIndex = 58;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(60, 56);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(67, 13);
+            this.label13.TabIndex = 57;
+            this.label13.Text = "Kod badania";
+            // 
+            // examinationLabel
+            // 
+            this.examinationLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.examinationLabel.Location = new System.Drawing.Point(133, 19);
+            this.examinationLabel.Name = "examinationLabel";
+            this.examinationLabel.Size = new System.Drawing.Size(185, 20);
+            this.examinationLabel.TabIndex = 56;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(46, 26);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(81, 13);
+            this.label14.TabIndex = 55;
+            this.label14.Text = "Nazwa badania";
+            // 
             // laboratorianPanel
             // 
             this.laboratorianPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -255,6 +270,7 @@
             this.cancelButton1.TabIndex = 54;
             this.cancelButton1.Text = "Anuluj";
             this.cancelButton1.UseVisualStyleBackColor = true;
+            this.cancelButton1.Click += new System.EventHandler(this.cancelButton1_Click);
             // 
             // resultsTextBox
             // 
@@ -272,6 +288,7 @@
             this.returnButton2.TabIndex = 51;
             this.returnButton2.Text = "Powrót";
             this.returnButton2.UseVisualStyleBackColor = true;
+            this.returnButton2.Click += new System.EventHandler(this.returnButton2_Click);
             // 
             // executeButton
             // 
@@ -281,6 +298,7 @@
             this.executeButton.TabIndex = 52;
             this.executeButton.Text = "Wykonaj";
             this.executeButton.UseVisualStyleBackColor = true;
+            this.executeButton.Click += new System.EventHandler(this.executeButton_Click);
             // 
             // label6
             // 
@@ -350,6 +368,7 @@
             this.cancelButton2.TabIndex = 54;
             this.cancelButton2.Text = "Anuluj";
             this.cancelButton2.UseVisualStyleBackColor = true;
+            this.cancelButton2.Click += new System.EventHandler(this.cancelButton2_Click);
             // 
             // supervisorCommentTextBox
             // 
@@ -367,6 +386,7 @@
             this.returnButton3.TabIndex = 51;
             this.returnButton3.Text = "Powrót";
             this.returnButton3.UseVisualStyleBackColor = true;
+            this.returnButton3.Click += new System.EventHandler(this.returnButton3_Click);
             // 
             // confirmButton
             // 
@@ -376,6 +396,7 @@
             this.confirmButton.TabIndex = 52;
             this.confirmButton.Text = "Zatwierdź";
             this.confirmButton.UseVisualStyleBackColor = true;
+            this.confirmButton.Click += new System.EventHandler(this.confirmButton_Click);
             // 
             // label7
             // 
@@ -420,66 +441,6 @@
             this.confirmationDateLabel.Size = new System.Drawing.Size(250, 20);
             this.confirmationDateLabel.TabIndex = 49;
             // 
-            // searchButton
-            // 
-            this.searchButton.Location = new System.Drawing.Point(881, 57);
-            this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(100, 50);
-            this.searchButton.TabIndex = 61;
-            this.searchButton.Text = "Wyszukaj badanie";
-            this.searchButton.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label1.Location = new System.Drawing.Point(293, 49);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(90, 20);
-            this.label1.TabIndex = 60;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(228, 56);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(59, 13);
-            this.label10.TabIndex = 59;
-            this.label10.Text = "ID badania";
-            // 
-            // codeLabel
-            // 
-            this.codeLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.codeLabel.Location = new System.Drawing.Point(133, 49);
-            this.codeLabel.Name = "codeLabel";
-            this.codeLabel.Size = new System.Drawing.Size(76, 20);
-            this.codeLabel.TabIndex = 58;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(60, 56);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(67, 13);
-            this.label13.TabIndex = 57;
-            this.label13.Text = "Kod badania";
-            // 
-            // examinationLabel
-            // 
-            this.examinationLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.examinationLabel.Location = new System.Drawing.Point(133, 19);
-            this.examinationLabel.Name = "examinationLabel";
-            this.examinationLabel.Size = new System.Drawing.Size(250, 20);
-            this.examinationLabel.TabIndex = 56;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(46, 26);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(81, 13);
-            this.label14.TabIndex = 55;
-            this.label14.Text = "Nazwa badania";
-            // 
             // DetailedLaboratoryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -488,11 +449,11 @@
             this.Controls.Add(this.supervisorPanel);
             this.Controls.Add(this.laboratorianPanel);
             this.Controls.Add(this.doctorPanel);
-            this.Controls.Add(this.toolStrip);
             this.Name = "DetailedLaboratoryForm";
             this.Text = "Badanie laboratoryjne";
-            this.toolStrip.ResumeLayout(false);
-            this.toolStrip.PerformLayout();
+            this.Controls.SetChildIndex(this.doctorPanel, 0);
+            this.Controls.SetChildIndex(this.laboratorianPanel, 0);
+            this.Controls.SetChildIndex(this.supervisorPanel, 0);
             this.doctorPanel.ResumeLayout(false);
             this.doctorPanel.PerformLayout();
             this.laboratorianPanel.ResumeLayout(false);
@@ -505,12 +466,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.ToolStrip toolStrip;
-        private System.Windows.Forms.ToolStripSplitButton userButton;
-        private System.Windows.Forms.ToolStripMenuItem profilToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem wylogujToolStripMenuItem;
         private System.Windows.Forms.Label requestDateLabel;
         private System.Windows.Forms.Label doctorLabel;
         private System.Windows.Forms.Label patientLabel;

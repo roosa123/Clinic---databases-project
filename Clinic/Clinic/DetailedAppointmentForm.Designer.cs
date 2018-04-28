@@ -1,4 +1,6 @@
-﻿namespace Przychodnia
+﻿using DataLayer;
+
+namespace Przychodnia
 {
     partial class DetailedAppointmentForm
     {
@@ -28,12 +30,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DetailedAppointmentForm));
-            this.toolStrip = new System.Windows.Forms.ToolStrip();
-            this.userButton = new System.Windows.Forms.ToolStripSplitButton();
-            this.profilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.wylogujToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.patientGroupBox = new System.Windows.Forms.GroupBox();
             this.patientButton = new System.Windows.Forms.Button();
             this.birthdateLabel = new System.Windows.Forms.Label();
@@ -48,6 +44,9 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.appointmentGroupBox = new System.Windows.Forms.GroupBox();
+            this.doctorLabel = new System.Windows.Forms.Label();
+            this.timeLabel = new System.Windows.Forms.Label();
+            this.dateLabel = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -55,76 +54,31 @@
             this.statusLabel = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.tabControl = new System.Windows.Forms.TabControl();
-            this.examinationTabPage = new System.Windows.Forms.TabPage();
-            this.examinationsDataGrid = new System.Windows.Forms.DataGridView();
-            this.laboratoryTabPage = new System.Windows.Forms.TabPage();
-            this.laboratoryDataGrid = new System.Windows.Forms.DataGridView();
             this.descriptionTabPage = new System.Windows.Forms.TabPage();
             this.descriptionTextBox = new System.Windows.Forms.RichTextBox();
             this.diagnosisTabPage = new System.Windows.Forms.TabPage();
             this.diagnosisTextBox = new System.Windows.Forms.RichTextBox();
-            this.returnButton2 = new System.Windows.Forms.Button();
-            this.confirmButton = new System.Windows.Forms.Button();
-            this.dateLabel = new System.Windows.Forms.Label();
-            this.timeLabel = new System.Windows.Forms.Label();
-            this.doctorLabel = new System.Windows.Forms.Label();
+            this.examinationTabPage = new System.Windows.Forms.TabPage();
             this.examinationDetailsButton = new System.Windows.Forms.Button();
             this.addExaminationButton = new System.Windows.Forms.Button();
+            this.examinationsDataGrid = new System.Windows.Forms.DataGridView();
+            this.laboratoryTabPage = new System.Windows.Forms.TabPage();
             this.laboratoryDetailsButton = new System.Windows.Forms.Button();
             this.addLaboratoryButton = new System.Windows.Forms.Button();
+            this.laboratoryDataGrid = new System.Windows.Forms.DataGridView();
+            this.returnButton2 = new System.Windows.Forms.Button();
+            this.confirmButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
-            this.toolStrip.SuspendLayout();
             this.patientGroupBox.SuspendLayout();
             this.appointmentGroupBox.SuspendLayout();
             this.tabControl.SuspendLayout();
+            this.descriptionTabPage.SuspendLayout();
+            this.diagnosisTabPage.SuspendLayout();
             this.examinationTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.examinationsDataGrid)).BeginInit();
             this.laboratoryTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.laboratoryDataGrid)).BeginInit();
-            this.descriptionTabPage.SuspendLayout();
-            this.diagnosisTabPage.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // toolStrip
-            // 
-            this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.userButton});
-            this.toolStrip.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip.Name = "toolStrip";
-            this.toolStrip.Size = new System.Drawing.Size(1008, 25);
-            this.toolStrip.TabIndex = 13;
-            this.toolStrip.Text = "toolStrip1";
-            // 
-            // userButton
-            // 
-            this.userButton.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.userButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.userButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.profilToolStripMenuItem,
-            this.toolStripSeparator1,
-            this.wylogujToolStripMenuItem});
-            this.userButton.Image = ((System.Drawing.Image)(resources.GetObject("userButton.Image")));
-            this.userButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.userButton.Name = "userButton";
-            this.userButton.Size = new System.Drawing.Size(107, 22);
-            this.userButton.Text = "<<username>>";
-            // 
-            // profilToolStripMenuItem
-            // 
-            this.profilToolStripMenuItem.Name = "profilToolStripMenuItem";
-            this.profilToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
-            this.profilToolStripMenuItem.Text = "Profil";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(115, 6);
-            // 
-            // wylogujToolStripMenuItem
-            // 
-            this.wylogujToolStripMenuItem.Name = "wylogujToolStripMenuItem";
-            this.wylogujToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
-            this.wylogujToolStripMenuItem.Text = "Wyloguj";
             // 
             // patientGroupBox
             // 
@@ -152,6 +106,7 @@
             this.patientButton.TabIndex = 23;
             this.patientButton.Text = "Karta pacjenta";
             this.patientButton.UseVisualStyleBackColor = true;
+            this.patientButton.Click += new System.EventHandler(this.patientButton_Click);
             // 
             // birthdateLabel
             // 
@@ -269,6 +224,30 @@
             this.appointmentGroupBox.TabStop = false;
             this.appointmentGroupBox.Text = "Wizyta";
             // 
+            // doctorLabel
+            // 
+            this.doctorLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.doctorLabel.Location = new System.Drawing.Point(92, 38);
+            this.doctorLabel.Name = "doctorLabel";
+            this.doctorLabel.Size = new System.Drawing.Size(407, 16);
+            this.doctorLabel.TabIndex = 34;
+            // 
+            // timeLabel
+            // 
+            this.timeLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.timeLabel.Location = new System.Drawing.Point(250, 15);
+            this.timeLabel.Name = "timeLabel";
+            this.timeLabel.Size = new System.Drawing.Size(100, 16);
+            this.timeLabel.TabIndex = 33;
+            // 
+            // dateLabel
+            // 
+            this.dateLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dateLabel.Location = new System.Drawing.Point(92, 15);
+            this.dateLabel.Name = "dateLabel";
+            this.dateLabel.Size = new System.Drawing.Size(100, 16);
+            this.dateLabel.TabIndex = 32;
+            // 
             // label12
             // 
             this.label12.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -332,48 +311,6 @@
             this.tabControl.Size = new System.Drawing.Size(984, 540);
             this.tabControl.TabIndex = 24;
             // 
-            // examinationTabPage
-            // 
-            this.examinationTabPage.BackColor = System.Drawing.SystemColors.Control;
-            this.examinationTabPage.Controls.Add(this.examinationDetailsButton);
-            this.examinationTabPage.Controls.Add(this.addExaminationButton);
-            this.examinationTabPage.Controls.Add(this.examinationsDataGrid);
-            this.examinationTabPage.Location = new System.Drawing.Point(4, 22);
-            this.examinationTabPage.Name = "examinationTabPage";
-            this.examinationTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.examinationTabPage.Size = new System.Drawing.Size(976, 514);
-            this.examinationTabPage.TabIndex = 0;
-            this.examinationTabPage.Text = "Badania fizykalne";
-            // 
-            // examinationsDataGrid
-            // 
-            this.examinationsDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.examinationsDataGrid.Location = new System.Drawing.Point(0, 0);
-            this.examinationsDataGrid.Name = "examinationsDataGrid";
-            this.examinationsDataGrid.Size = new System.Drawing.Size(864, 511);
-            this.examinationsDataGrid.TabIndex = 0;
-            // 
-            // laboratoryTabPage
-            // 
-            this.laboratoryTabPage.BackColor = System.Drawing.SystemColors.Control;
-            this.laboratoryTabPage.Controls.Add(this.laboratoryDetailsButton);
-            this.laboratoryTabPage.Controls.Add(this.addLaboratoryButton);
-            this.laboratoryTabPage.Controls.Add(this.laboratoryDataGrid);
-            this.laboratoryTabPage.Location = new System.Drawing.Point(4, 22);
-            this.laboratoryTabPage.Name = "laboratoryTabPage";
-            this.laboratoryTabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.laboratoryTabPage.Size = new System.Drawing.Size(976, 514);
-            this.laboratoryTabPage.TabIndex = 1;
-            this.laboratoryTabPage.Text = "Badania laboratoryjne";
-            // 
-            // laboratoryDataGrid
-            // 
-            this.laboratoryDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.laboratoryDataGrid.Location = new System.Drawing.Point(0, 0);
-            this.laboratoryDataGrid.Name = "laboratoryDataGrid";
-            this.laboratoryDataGrid.Size = new System.Drawing.Size(864, 511);
-            this.laboratoryDataGrid.TabIndex = 1;
-            // 
             // descriptionTabPage
             // 
             this.descriptionTabPage.Controls.Add(this.descriptionTextBox);
@@ -410,47 +347,18 @@
             this.diagnosisTextBox.TabIndex = 0;
             this.diagnosisTextBox.Text = "";
             // 
-            // returnButton2
+            // examinationTabPage
             // 
-            this.returnButton2.Location = new System.Drawing.Point(890, 679);
-            this.returnButton2.Name = "returnButton2";
-            this.returnButton2.Size = new System.Drawing.Size(100, 32);
-            this.returnButton2.TabIndex = 25;
-            this.returnButton2.Text = "Powrót";
-            this.returnButton2.UseVisualStyleBackColor = true;
-            // 
-            // confirmButton
-            // 
-            this.confirmButton.Location = new System.Drawing.Point(678, 679);
-            this.confirmButton.Name = "confirmButton";
-            this.confirmButton.Size = new System.Drawing.Size(100, 32);
-            this.confirmButton.TabIndex = 26;
-            this.confirmButton.Text = "Zakończ";
-            this.confirmButton.UseVisualStyleBackColor = true;
-            // 
-            // dateLabel
-            // 
-            this.dateLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dateLabel.Location = new System.Drawing.Point(92, 15);
-            this.dateLabel.Name = "dateLabel";
-            this.dateLabel.Size = new System.Drawing.Size(100, 16);
-            this.dateLabel.TabIndex = 32;
-            // 
-            // timeLabel
-            // 
-            this.timeLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.timeLabel.Location = new System.Drawing.Point(250, 15);
-            this.timeLabel.Name = "timeLabel";
-            this.timeLabel.Size = new System.Drawing.Size(100, 16);
-            this.timeLabel.TabIndex = 33;
-            // 
-            // doctorLabel
-            // 
-            this.doctorLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.doctorLabel.Location = new System.Drawing.Point(92, 38);
-            this.doctorLabel.Name = "doctorLabel";
-            this.doctorLabel.Size = new System.Drawing.Size(407, 16);
-            this.doctorLabel.TabIndex = 34;
+            this.examinationTabPage.BackColor = System.Drawing.SystemColors.Control;
+            this.examinationTabPage.Controls.Add(this.examinationDetailsButton);
+            this.examinationTabPage.Controls.Add(this.addExaminationButton);
+            this.examinationTabPage.Controls.Add(this.examinationsDataGrid);
+            this.examinationTabPage.Location = new System.Drawing.Point(4, 22);
+            this.examinationTabPage.Name = "examinationTabPage";
+            this.examinationTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.examinationTabPage.Size = new System.Drawing.Size(976, 514);
+            this.examinationTabPage.TabIndex = 0;
+            this.examinationTabPage.Text = "Badania fizykalne";
             // 
             // examinationDetailsButton
             // 
@@ -460,6 +368,7 @@
             this.examinationDetailsButton.TabIndex = 30;
             this.examinationDetailsButton.Text = "Szczegóły";
             this.examinationDetailsButton.UseVisualStyleBackColor = true;
+            this.examinationDetailsButton.Click += new System.EventHandler(this.examinationDetailsButton_Click);
             // 
             // addExaminationButton
             // 
@@ -469,6 +378,28 @@
             this.addExaminationButton.TabIndex = 29;
             this.addExaminationButton.Text = "Dodaj";
             this.addExaminationButton.UseVisualStyleBackColor = true;
+            this.addExaminationButton.Click += new System.EventHandler(this.addExaminationButton_Click);
+            // 
+            // examinationsDataGrid
+            // 
+            this.examinationsDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.examinationsDataGrid.Location = new System.Drawing.Point(0, 0);
+            this.examinationsDataGrid.Name = "examinationsDataGrid";
+            this.examinationsDataGrid.Size = new System.Drawing.Size(864, 511);
+            this.examinationsDataGrid.TabIndex = 0;
+            // 
+            // laboratoryTabPage
+            // 
+            this.laboratoryTabPage.BackColor = System.Drawing.SystemColors.Control;
+            this.laboratoryTabPage.Controls.Add(this.laboratoryDetailsButton);
+            this.laboratoryTabPage.Controls.Add(this.addLaboratoryButton);
+            this.laboratoryTabPage.Controls.Add(this.laboratoryDataGrid);
+            this.laboratoryTabPage.Location = new System.Drawing.Point(4, 22);
+            this.laboratoryTabPage.Name = "laboratoryTabPage";
+            this.laboratoryTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.laboratoryTabPage.Size = new System.Drawing.Size(976, 514);
+            this.laboratoryTabPage.TabIndex = 1;
+            this.laboratoryTabPage.Text = "Badania laboratoryjne";
             // 
             // laboratoryDetailsButton
             // 
@@ -478,6 +409,7 @@
             this.laboratoryDetailsButton.TabIndex = 30;
             this.laboratoryDetailsButton.Text = "Szczegóły";
             this.laboratoryDetailsButton.UseVisualStyleBackColor = true;
+            this.laboratoryDetailsButton.Click += new System.EventHandler(this.laboratoryDetailsButton_Click);
             // 
             // addLaboratoryButton
             // 
@@ -487,6 +419,35 @@
             this.addLaboratoryButton.TabIndex = 29;
             this.addLaboratoryButton.Text = "Dodaj";
             this.addLaboratoryButton.UseVisualStyleBackColor = true;
+            this.addLaboratoryButton.Click += new System.EventHandler(this.addLaboratoryButton_Click);
+            // 
+            // laboratoryDataGrid
+            // 
+            this.laboratoryDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.laboratoryDataGrid.Location = new System.Drawing.Point(0, 0);
+            this.laboratoryDataGrid.Name = "laboratoryDataGrid";
+            this.laboratoryDataGrid.Size = new System.Drawing.Size(864, 511);
+            this.laboratoryDataGrid.TabIndex = 1;
+            // 
+            // returnButton2
+            // 
+            this.returnButton2.Location = new System.Drawing.Point(890, 679);
+            this.returnButton2.Name = "returnButton2";
+            this.returnButton2.Size = new System.Drawing.Size(100, 32);
+            this.returnButton2.TabIndex = 25;
+            this.returnButton2.Text = "Powrót";
+            this.returnButton2.UseVisualStyleBackColor = true;
+            this.returnButton2.Click += new System.EventHandler(this.returnButton2_Click);
+            // 
+            // confirmButton
+            // 
+            this.confirmButton.Location = new System.Drawing.Point(678, 679);
+            this.confirmButton.Name = "confirmButton";
+            this.confirmButton.Size = new System.Drawing.Size(100, 32);
+            this.confirmButton.TabIndex = 26;
+            this.confirmButton.Text = "Zakończ";
+            this.confirmButton.UseVisualStyleBackColor = true;
+            this.confirmButton.Click += new System.EventHandler(this.confirmButton_Click);
             // 
             // cancelButton
             // 
@@ -496,6 +457,7 @@
             this.cancelButton.TabIndex = 27;
             this.cancelButton.Text = "Anuluj";
             this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // DetailedAppointmentForm
             // 
@@ -508,34 +470,31 @@
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.appointmentGroupBox);
             this.Controls.Add(this.patientGroupBox);
-            this.Controls.Add(this.toolStrip);
             this.Name = "DetailedAppointmentForm";
             this.Text = "Wizyta";
-            this.toolStrip.ResumeLayout(false);
-            this.toolStrip.PerformLayout();
+            this.Controls.SetChildIndex(this.patientGroupBox, 0);
+            this.Controls.SetChildIndex(this.appointmentGroupBox, 0);
+            this.Controls.SetChildIndex(this.tabControl, 0);
+            this.Controls.SetChildIndex(this.returnButton2, 0);
+            this.Controls.SetChildIndex(this.confirmButton, 0);
+            this.Controls.SetChildIndex(this.cancelButton, 0);
             this.patientGroupBox.ResumeLayout(false);
             this.patientGroupBox.PerformLayout();
             this.appointmentGroupBox.ResumeLayout(false);
             this.appointmentGroupBox.PerformLayout();
             this.tabControl.ResumeLayout(false);
+            this.descriptionTabPage.ResumeLayout(false);
+            this.diagnosisTabPage.ResumeLayout(false);
             this.examinationTabPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.examinationsDataGrid)).EndInit();
             this.laboratoryTabPage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.laboratoryDataGrid)).EndInit();
-            this.descriptionTabPage.ResumeLayout(false);
-            this.diagnosisTabPage.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.ToolStrip toolStrip;
-        private System.Windows.Forms.ToolStripSplitButton userButton;
-        private System.Windows.Forms.ToolStripMenuItem profilToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem wylogujToolStripMenuItem;
         private System.Windows.Forms.GroupBox patientGroupBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -575,5 +534,6 @@
         private System.Windows.Forms.Button laboratoryDetailsButton;
         private System.Windows.Forms.Button addLaboratoryButton;
         private System.Windows.Forms.Button cancelButton;
+       
     }
 }
