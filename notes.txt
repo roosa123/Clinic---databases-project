@@ -1,0 +1,11 @@
+TODO:
+Angelika Marzec: Laboratorium
+Diana Tyrna: Rejestratorka + admin + logowanie (if needed) 
+Karol Marszalek: Lekarz
+
+UC: 
+1) Rejestratorka - Diana Tyrna
+2) Laborant - Angelika Marzec
+3) Lekarz - Karol Marszalek
+4) Admin + logowanie- Diana Tyrna
+5) Kierownik laboratorium - Angelika Marzec
