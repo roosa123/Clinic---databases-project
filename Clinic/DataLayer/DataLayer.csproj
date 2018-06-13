@@ -113,7 +113,9 @@
     </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.Config" />
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="ClinicDb.edmx.diagram">
       <DependentUpon>ClinicDb.edmx</DependentUpon>
     </None>

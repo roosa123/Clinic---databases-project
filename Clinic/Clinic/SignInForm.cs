@@ -1,4 +1,5 @@
-﻿using DataLayer;
+﻿using BusinessLayer;
+using DataLayer;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,45 +21,51 @@ namespace Przychodnia
 
         private void signInButton_Click(object sender, EventArgs e)
         {
-            //TODO authorization
-
-            if (loginTextBox.Text == "Doctor" || loginTextBox.Text == "Registrar"
-                || loginTextBox.Text == "Laboratorian" || loginTextBox.Text == "Supervisor"
-                || loginTextBox.Text == "Admin")
+            if(loginTextBox.Text==null)
             {
-                Program.CurrentUser = new Employee();
-                Program.CurrentUser.Position = loginTextBox.Text;
-                Program.CurrentUser.Login = loginTextBox.Text;
-                loginTextBox.Text = "";
-                passwordTextBox.Text = "";
-                switch (Program.CurrentUser.Position)
-                {
-                    case "Registrar":
-                        new RegistrationForm().Show();
-                        this.Hide();
-                        break;
-                    case "Doctor":
-                        new AppointmentsForm().Show();
-                        this.Hide();
-                        break;
-                    case "Laboratorian":
-                        new LaboratoryForm().Show();
-                        this.Hide();
-                        break;
-                    case "Supervisor":
-                        new LaboratoryForm().Show();
-                        this.Hide();
-                        break;
-                    case "Admin":
-                        new UsersForm().Show();
-                        this.Hide();
-                        break;
-                }
+                MessageBox.Show("Wprowadź login i hasło!","Brak poświadczeń");
+                return;
             }
-            else
-                MessageBox.Show(@"W polu login wprowadź jedną z ról: 
-                    Doctor, Registrar, Laboratorian, Supervisor, Admin",
-                    "Użytkownik nie istnieje");
+
+            if(!Authorization.UserExists(loginTextBox.Text))
+            {
+                MessageBox.Show("Wprowadono błędny login!", "Użytkownik nie istnieje");
+                return;
+            }
+
+            if(!Authorization.LogIn(loginTextBox.Text,passwordTextBox.Text))
+            {
+                MessageBox.Show("Wprowadono błędne hasło!", "Błąd logowania");
+                return;
+            }
+
+            Program.CurrentUser = Authorization.GetUser(loginTextBox.Text, passwordTextBox.Text);
+            switch (Program.CurrentUser.Position)
+            {
+                case "RegistrationPerson":
+                    new RegistrationForm().Show();
+                    this.Hide();
+                    break;
+                case "Doctor":
+                    new AppointmentsForm().Show();
+                    this.Hide();
+                    break;
+                case "LaboratoryPerson":
+                    new LaboratoryForm().Show();
+                    this.Hide();
+                    break;
+                case "LaboratorySupervisor":
+                    new LaboratoryForm().Show();
+                    this.Hide();
+                    break;
+                case "Admin":
+                    new UsersForm().Show();
+                    this.Hide();
+                    break;
+            }
+
+            loginTextBox.Text = "";
+            passwordTextBox.Text = "";
         }
     }
 }
