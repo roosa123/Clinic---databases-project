@@ -44,11 +44,15 @@ namespace Przychodnia
             appointmentGridInfo.Add(new Tuple<string, string>("status", "Status"));
             appointmentGridInfo.Add(new Tuple<string, string>("registerDT", "Register Date"));
             appointmentGridInfo.Add(new Tuple<string, string>("completeDT", "Complete Date"));
+            appointmentGridInfo.Add(new Tuple<string, string>("id", "Appointment ID"));
             foreach (Tuple <string, string> desc in appointmentGridInfo)
             {
                 appointmentsDataGrid.Columns.Add(desc.Item1, desc.Item2);
             }
             //TODO: resize grid to fit the window.
+            appointmentsDataGrid.AutoGenerateColumns = false;
+            int columnsCount = appointmentsDataGrid.ColumnCount;
+            appointmentsDataGrid.Columns[columnsCount - 1].Visible = false;
             appointmentsDataGrid.RowHeadersVisible = false; // = appointmentsDataGrid.Width;
         }
 
@@ -57,8 +61,12 @@ namespace Przychodnia
             string[] ducky = doctorComboBox.SelectedItem.ToString().Split(' ');
             string firstName = ducky[0];
             string lastName = ducky[1];
-            FillAppointmentsGrid(Common.GetAppointmentsForDoctor(firstName, lastName, 
-                fromDateTimePicker.Value, statusComboBox.SelectedItem.ToString()));
+            DateTime dt = fromDateTimePicker.Value;
+            if (!fromDateTimePicker.Checked)
+                dt = DateTime.MinValue;
+            List<Appointment> appointmentsList = Common.GetAppointmentsForDoctor(firstName, lastName,
+                dt, statusComboBox.SelectedItem.ToString());
+            FillAppointmentsGrid(appointmentsList);
         }
 
         private void FillAppointmentsGrid(List<Appointment> content)
@@ -75,6 +83,7 @@ namespace Przychodnia
                 row.Add(app.Status);
                 row.Add(app.dt_Register.ToString());
                 row.Add(app.dt_Complete_Cancel.ToString());
+                row.Add(app.Id.ToString());
                 DataGridViewRow gridRow = new DataGridViewRow();
                 gridRow.CreateCells(appointmentsDataGrid, row.ToArray());
                 gridRow.ReadOnly = true;
@@ -84,18 +93,49 @@ namespace Przychodnia
             appointmentsDataGrid.AutoResizeRows();
         }
 
+        private Appointment GetSelectedAppointment()
+        {
+            int id;
+            try {
+                var cells = appointmentsDataGrid.SelectedCells;
+                var row = cells[0].OwningRow;
+                var IDcell = row.Cells[row.Cells.Count - 1];
+                id = int.Parse( IDcell.Value.ToString());
+                foreach (DataGridViewCell cell in cells)
+                {
+                    if(cell.OwningRow!= row)
+                    {
+                        MessageBox.Show("Please select only one appointment");
+                        return null;
+                    }
+                }
+            }
+            catch(IndexOutOfRangeException)
+            {
+                MessageBox.Show("internal error - invalid cell index");
+                return null;
+            }
+            catch( FormatException )
+            {
+                MessageBox.Show("internal error - index parsing");
+                return null;
+
+            }
+            return Common.GetAppointmentById(id);
+        }
+
         private void executeButton_Click(object sender, EventArgs e)
         {
-            Appointment appointment = new Appointment();
-            //TODO assign selected appointment to variable appointment
-            OpenForm(new DetailedAppointmentForm(appointment, true));
+            Appointment appointment = GetSelectedAppointment();
+            if (appointment != null)
+                OpenForm(new DetailedAppointmentForm(appointment, false));
         }
 
         private void appointmentDetailsButton_Click(object sender, EventArgs e)
         {
-            Appointment appointment = new Appointment();
-            //TODO assign selected appointment to variable appointment
-            OpenForm(new DetailedAppointmentForm(appointment, false));
+            Appointment appointment = GetSelectedAppointment();
+            if(appointment!=null)
+                OpenForm(new DetailedAppointmentForm(appointment, false));
         }
     }
 }

@@ -78,6 +78,14 @@ namespace BusinessLayer
                 return GetAppointmentsForDoctor(GetDoctorByName(firstName, lastName), dateTime);
             return GetAppointmentsForDoctor(GetDoctorByName(firstName, lastName), dateTime, state);
         }
+        public static Appointment GetAppointmentById(int id)
+        {
+            clinicEntities db = new clinicEntities();
+            Appointment retVal = (from appointment in db.Appointment
+                                  where appointment.Id == id
+                                  select appointment).First();
+            return retVal;
 
+        }
     }
 }
