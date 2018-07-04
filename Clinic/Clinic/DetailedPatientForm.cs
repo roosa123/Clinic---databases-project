@@ -29,7 +29,7 @@ namespace Przychodnia
 
             //TODO download patient data from DB, fill in controls
             this.patient = patient;
-
+            FillTextBoxes();
             if (editable)
             {
                 tabControl.Enabled = false;
@@ -63,6 +63,31 @@ namespace Przychodnia
                     saveButton.Visible = false;
                     returnButton1.Visible = false;
                 }
+            }
+        }
+
+        private void FillTextBoxes()
+        {
+            try {
+                Person p = patient.Person;
+                nameTextBox.Text = p.First_Name;
+                surnameTextBox.Text = p.Last_Name;
+                if (p.Date_of_birth.HasValue)
+                    birthdatePicker.Value = p.Date_of_birth.Value;
+                peselTextBox.Text = patient.PESEL;
+                insuranceTextBox.Text = patient.Insurance_Number;
+                phoneTextBox.Text = p.Phone_number;
+                sexComboBox.SelectedItem = p.Sex;
+                cityTextBox.Text = p.Address.City;
+                streetTextBox.Text = p.Address.Street;
+                countryTextBox.Text = p.Address.Country;
+                postcodeTextBox.Text = p.Address.Post_Code;
+                apartmentTextBox.Text = p.Address.Flat_Number.ToString();
+                houseTextBox.Text = p.Address.House_Number.ToString();
+            }
+            catch(NullReferenceException)
+            {
+                
             }
         }
 
