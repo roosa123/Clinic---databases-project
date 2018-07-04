@@ -17,7 +17,8 @@ namespace Przychodnia
     {
         private const int INTERNAL_ERROR_FLAG = -1;
         private const int MULTIPLE_SELECTION_FLAG = -2;
- 
+        private const int NO_SELECTION = -3;
+
         private Appointment appointment;
         private Patient patient;
         private List<Tuple<string,string>> ExaminationGridInfo;
@@ -54,6 +55,9 @@ namespace Przychodnia
                     break;
                 case MULTIPLE_SELECTION_FLAG:
                     MessageBox.Show("Please select single item");
+                    break;
+                case NO_SELECTION:
+                    MessageBox.Show("Please select record");
                     break;
             }
             return flag;
@@ -189,7 +193,7 @@ namespace Przychodnia
             }
             catch (IndexOutOfRangeException )  { return INTERNAL_ERROR_FLAG;}
             catch (FormatException) { return INTERNAL_ERROR_FLAG; }
-            catch(NullReferenceException) { return INTERNAL_ERROR_FLAG; }
+            catch(NullReferenceException) { return NO_SELECTION; }
             return id;
         }
         private PhysicalExamination GetSelectedPhysicalExamination()

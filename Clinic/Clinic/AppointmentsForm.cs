@@ -119,7 +119,11 @@ namespace Przychodnia
             {
                 MessageBox.Show("internal error - index parsing");
                 return null;
-
+            }
+            catch ( NullReferenceException )
+            {
+                MessageBox.Show("Please select the appointment");
+                return null;
             }
             return Common.GetAppointmentById(id);
         }
