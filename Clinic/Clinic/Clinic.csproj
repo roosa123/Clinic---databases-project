@@ -68,6 +68,7 @@
     <Compile Include="ExaminationListForm.Designer.cs">
       <DependentUpon>ExaminationListForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GridWrapper.cs" />
     <Compile Include="LaboratoryForm.cs">
       <SubType>Form</SubType>
     </Compile>

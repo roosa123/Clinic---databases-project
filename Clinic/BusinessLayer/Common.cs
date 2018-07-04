@@ -64,7 +64,7 @@ namespace BusinessLayer
             clinicEntities db = new clinicEntities();
             var result = from appointment in db.Appointment
                          where appointment.DoctorId == doctor.Id
-                         && appointment.dt_Register >= dateTime
+                         && appointment.dt_Complete_Cancel >= dateTime
                          select appointment;
             foreach (var item in result)
             {

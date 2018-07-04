@@ -15,9 +15,14 @@ namespace Przychodnia
     
     public partial class DetailedAppointmentForm : BaseForm
     {
+        private GridWrapper ExaminationGrid;
+        private GridScheme ExaminationGridScheme;
+        private GridWrapper LaboratoryGrid;
+        private GridScheme LaboratoryGridScheme;
         private const int INTERNAL_ERROR_FLAG = -1;
         private const int MULTIPLE_SELECTION_FLAG = -2;
- 
+        private const int NO_SELECTION = -3;
+
         private Appointment appointment;
         private Patient patient;
         private List<Tuple<string,string>> ExaminationGridInfo;
@@ -55,6 +60,9 @@ namespace Przychodnia
                 case MULTIPLE_SELECTION_FLAG:
                     MessageBox.Show("Please select single item");
                     break;
+                case NO_SELECTION:
+                    MessageBox.Show("Please select record");
+                    break;
             }
             return flag;
         }
@@ -90,38 +98,18 @@ namespace Przychodnia
 
         private void InitializeExaminationsGrid()
         {
-            ExaminationGridInfo = new List<Tuple<string, string>>();
-            ExaminationGridInfo.Add(new Tuple<string, string>("code", "Code"));
-            ExaminationGridInfo.Add(new Tuple<string, string>("name", "Name"));
-            ExaminationGridInfo.Add(new Tuple<string, string>("result", "Result"));
-            ExaminationGridInfo.Add(new Tuple<string, string>("id", "ID"));
-            foreach (Tuple<string, string> desc in ExaminationGridInfo)
-            {
-                examinationsDataGrid.Columns.Add(desc.Item1, desc.Item2);
-            }
-            examinationsDataGrid.AutoGenerateColumns = false;
-            examinationsDataGrid.RowHeadersVisible = false;
-            int columnsCount = examinationsDataGrid.ColumnCount;
-            examinationsDataGrid.Columns[columnsCount - 1].Visible = false;
+            ExaminationGridScheme = new GridScheme();
+            ExaminationGridScheme.AddColumn("code", "Code").AddColumn("name", "Name").AddColumn("result", "Result");
+            ExaminationGridScheme.AddColumn("id", "ID", true);
+            ExaminationGrid = new GridWrapper(examinationsDataGrid, ExaminationGridScheme);
         }
 
         private void InitializeLaboratyGrid()
         {
-            LaboratoryGridInfo = new List<Tuple<string, string>>();
-            LaboratoryGridInfo.Add(new Tuple<string, string>("code", "Code"));
-            LaboratoryGridInfo.Add(new Tuple<string, string>("name", "Name"));
-            LaboratoryGridInfo.Add(new Tuple<string, string>("result", "Result"));
-            LaboratoryGridInfo.Add(new Tuple<string, string>("status", "Status"));
-            LaboratoryGridInfo.Add(new Tuple<string, string>("note", "Supervisor note"));
-            LaboratoryGridInfo.Add(new Tuple<string, string>("id", "ID"));
-            foreach (Tuple<string, string> desc in LaboratoryGridInfo)
-            {
-                laboratoryDataGrid.Columns.Add(desc.Item1, desc.Item2);
-            }
-            laboratoryDataGrid.AutoGenerateColumns = false;
-            laboratoryDataGrid.RowHeadersVisible = false;
-            int columnsCount = laboratoryDataGrid.ColumnCount;
-            laboratoryDataGrid.Columns[columnsCount - 1].Visible = false;
+            LaboratoryGridScheme = new GridScheme();
+            LaboratoryGridScheme.AddColumn("code", "Code").AddColumn("name", "Name").AddColumn("result", "Result");
+            LaboratoryGridScheme.AddColumn("status", "Status").AddColumn("note", "Supervisor note").AddColumn("id", "ID", true);
+            LaboratoryGrid = new GridWrapper(laboratoryDataGrid, LaboratoryGridScheme);
         }
 
         private void FillGrids()
@@ -132,8 +120,8 @@ namespace Przychodnia
         
         private void FillLaboratoryGrid()
         {
-            laboratoryDataGrid.Rows.Clear();
-            foreach(LaboratoryExamination lExam in appointment.LaboratoryExamination)
+            List<Tuple<List<string>, bool>> scheme = new List<Tuple<List<string>, bool>>();
+            foreach (LaboratoryExamination lExam in appointment.LaboratoryExamination)
             {
                 DataGridViewRow gridRow = new DataGridViewRow();
                 List<string> row = new List<string>();
@@ -143,18 +131,15 @@ namespace Przychodnia
                 row.Add(lExam.Status);
                 row.Add(lExam.Supervisor_Note);
                 row.Add(lExam.Id.ToString());
-                gridRow.CreateCells(laboratoryDataGrid, row.ToArray());
-                gridRow.ReadOnly = true;
-                laboratoryDataGrid.Rows.Add(gridRow);
+                scheme.Add(new Tuple<List<string>, bool>(row, true));
             }
-            laboratoryDataGrid.AutoResizeColumns();
-            laboratoryDataGrid.AutoResizeRows();
+            LaboratoryGrid.SetRows(scheme);
         }
 
         private void FillExaminationGrid()
         {
-            examinationsDataGrid.Rows.Clear();
-            foreach( PhysicalExamination pExam in appointment.PhysicalExamination)
+            List<Tuple<List<string>, bool>> scheme = new List<Tuple<List<string>, bool>>();
+            foreach ( PhysicalExamination pExam in appointment.PhysicalExamination)
             {
                 DataGridViewRow gridRow = new DataGridViewRow();
                 List<string> row = new List<string>();
@@ -162,12 +147,9 @@ namespace Przychodnia
                 row.Add(pExam.Examinations.Name);
                 row.Add(pExam.Result);
                 row.Add(pExam.Id.ToString());
-                gridRow.CreateCells(examinationsDataGrid, row.ToArray());
-                gridRow.ReadOnly = true;
-                examinationsDataGrid.Rows.Add(gridRow);
+                scheme.Add(new Tuple<List<string>, bool>(row, true));
             }
-            examinationsDataGrid.AutoResizeColumns();
-            examinationsDataGrid.AutoResizeRows();
+            ExaminationGrid.SetRows(scheme);
         }
 
         private int GetSelectedIndex(DataGridView grid)
@@ -189,12 +171,12 @@ namespace Przychodnia
             }
             catch (IndexOutOfRangeException )  { return INTERNAL_ERROR_FLAG;}
             catch (FormatException) { return INTERNAL_ERROR_FLAG; }
-            catch(NullReferenceException) { return INTERNAL_ERROR_FLAG; }
+            catch(NullReferenceException) { return NO_SELECTION; }
             return id;
         }
         private PhysicalExamination GetSelectedPhysicalExamination()
         {
-            int idx = HandleErrorFlag(GetSelectedIndex(examinationsDataGrid));
+            int idx = HandleErrorFlag(GetSelectedIndex(ExaminationGrid.Grid));
             foreach (PhysicalExamination pExam in appointment.PhysicalExamination)
             {
                 if (pExam.Id == idx)
@@ -206,7 +188,7 @@ namespace Przychodnia
         }
         private LaboratoryExamination GetSelectedLaboratoryExamination()
         {
-            int idx = HandleErrorFlag(GetSelectedIndex(laboratoryDataGrid));
+            int idx = HandleErrorFlag(GetSelectedIndex(LaboratoryGrid.Grid));
             foreach (LaboratoryExamination lExam in appointment.LaboratoryExamination)
             {
                 if (lExam.Id == idx)

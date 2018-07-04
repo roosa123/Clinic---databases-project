@@ -14,7 +14,8 @@ namespace Przychodnia
 {
     public partial class AppointmentsForm : BaseForm
     {
-        private List<Tuple<string, string>> appointmentGridInfo;
+        private GridWrapper custromGrid;
+        private GridScheme gridScheme;
 
         public AppointmentsForm()
         {
@@ -36,24 +37,12 @@ namespace Przychodnia
 
         private void InitializeAppointmentGrid()
         {
-            appointmentGridInfo = new List<Tuple<string, string>>();
-            appointmentGridInfo.Add(new Tuple<string, string>("firstName", "Patient first name"));
-            appointmentGridInfo.Add(new Tuple<string, string>("lastName", "Patient last name"));
-            appointmentGridInfo.Add(new Tuple<string, string>("desc", "Description"));
-            appointmentGridInfo.Add(new Tuple<string, string>("diag", "Diagnosis"));
-            appointmentGridInfo.Add(new Tuple<string, string>("status", "Status"));
-            appointmentGridInfo.Add(new Tuple<string, string>("registerDT", "Register Date"));
-            appointmentGridInfo.Add(new Tuple<string, string>("completeDT", "Complete Date"));
-            appointmentGridInfo.Add(new Tuple<string, string>("id", "Appointment ID"));
-            foreach (Tuple <string, string> desc in appointmentGridInfo)
-            {
-                appointmentsDataGrid.Columns.Add(desc.Item1, desc.Item2);
-            }
-            //TODO: resize grid to fit the window.
-            appointmentsDataGrid.AutoGenerateColumns = false;
-            int columnsCount = appointmentsDataGrid.ColumnCount;
-            appointmentsDataGrid.Columns[columnsCount - 1].Visible = false;
-            appointmentsDataGrid.RowHeadersVisible = false; // = appointmentsDataGrid.Width;
+            
+            gridScheme = new GridScheme();
+            gridScheme.AddColumn("firstName", "Patient first name").AddColumn("lastName", "Patient last name").AddColumn("desc", "Description");
+            gridScheme.AddColumn("diag", "Diagnosis").AddColumn("status", "Status").AddColumn("registerDT", "Register Date").AddColumn("completeDT", "Complete Date");
+            gridScheme.AddColumn("id", "Appointment ID", true);
+            custromGrid = new GridWrapper(appointmentsDataGrid, gridScheme);
         }
 
         private void searchButton_Click(object sender, EventArgs e)
@@ -71,7 +60,7 @@ namespace Przychodnia
 
         private void FillAppointmentsGrid(List<Appointment> content)
         {
-            appointmentsDataGrid.Rows.Clear();
+            List<Tuple<List<string>, bool>> scheme = new List<Tuple<List<string>, bool>>();
             foreach ( Appointment app in content)
             {
                 Patient patient = Common.GetPatientById(app.PatientId);
@@ -84,20 +73,16 @@ namespace Przychodnia
                 row.Add(app.dt_Register.ToString());
                 row.Add(app.dt_Complete_Cancel.ToString());
                 row.Add(app.Id.ToString());
-                DataGridViewRow gridRow = new DataGridViewRow();
-                gridRow.CreateCells(appointmentsDataGrid, row.ToArray());
-                gridRow.ReadOnly = true;
-                appointmentsDataGrid.Rows.Add(gridRow);
+                scheme.Add(new Tuple<List<string>, bool>(row, true));
             }
-            appointmentsDataGrid.AutoResizeColumns();
-            appointmentsDataGrid.AutoResizeRows();
+            custromGrid.SetRows(scheme);
         }
 
         private Appointment GetSelectedAppointment()
         {
             int id;
             try {
-                var cells = appointmentsDataGrid.SelectedCells;
+                var cells = custromGrid.Grid.SelectedCells;
                 var row = cells[0].OwningRow;
                 var IDcell = row.Cells[row.Cells.Count - 1];
                 id = int.Parse( IDcell.Value.ToString());
@@ -119,7 +104,11 @@ namespace Przychodnia
             {
                 MessageBox.Show("internal error - index parsing");
                 return null;
-
+            }
+            catch ( NullReferenceException )
+            {
+                MessageBox.Show("Please select the appointment");
+                return null;
             }
             return Common.GetAppointmentById(id);
         }
