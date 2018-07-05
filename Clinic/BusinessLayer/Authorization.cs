@@ -15,8 +15,8 @@ namespace BusinessLayer
         {
             if(LogIn(login,passwd))
             {
-                clinicEntities db = new clinicEntities();
-                var result = from user in db.Employee
+                //clinicEntities db = new clinicEntities();
+                var result = from user in Common.db.Employee
                              where user.Login == login
                              select user;
                 List<Employee> list = new List<Employee>();
@@ -33,8 +33,8 @@ namespace BusinessLayer
         {
             if (login == null || passwd == null)
                 return false;
-            clinicEntities db = new clinicEntities();
-            var result = from user in db.Employee
+            //clinicEntities db = new clinicEntities();
+            var result = from user in Common.db.Employee
                          where user.Login == login
                          select user;
             List<Employee> list = new List<Employee>();
@@ -54,8 +54,8 @@ namespace BusinessLayer
         {
             if (login == null)
                 return false;
-            clinicEntities db = new clinicEntities();
-            var result = from user in db.Employee
+            //clinicEntities db = new clinicEntities();
+            var result = from user in Common.db.Employee
                          where user.Login == login
                          select user;
             return result.Count() == 1;
