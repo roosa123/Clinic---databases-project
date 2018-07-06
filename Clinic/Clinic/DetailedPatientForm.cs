@@ -87,6 +87,10 @@ namespace Przychodnia
                     returnButton1.Visible = false;
                 }
             }
+
+            FillAppointmentGrid(Common.GetAppointmentByPatinetId(patient.Id));
+            FillLaboratoryExaminationGrid(Common.GetLabExamiantionByPatinetId(patient.Id));
+            FillPhysicalExaminationGrid(Common.GetPhysExaminationByPatinetId(patient.Id));
         }
 
         private void saveButton_Click(object sender, EventArgs e)
@@ -116,22 +120,70 @@ namespace Przychodnia
         private void InitializeGrids()
         {
             appointmentsGridScheme = new GridScheme();
-            appointmentsGridScheme.AddColumn("firstName", "Patient first name").AddColumn("lastName", "Patient last name").AddColumn("desc", "Description");
             appointmentsGridScheme.AddColumn("diag", "Diagnosis").AddColumn("status", "Status").AddColumn("registerDT", "Register Date").AddColumn("completeDT", "Complete Date");
             appointmentsGridScheme.AddColumn("id", "Appointment ID", true);
             appointmentsCustomGrid = new GridWrapper(appointmentsDataGrid, appointmentsGridScheme);
             
             examinationGridScheme = new GridScheme();
-            examinationGridScheme.AddColumn("firstName", "Patient first name").AddColumn("lastName", "Patient last name");
-            examinationGridScheme.AddColumn("exCode", "Examination Code").AddColumn("name", "Name").AddColumn("type", "Type").AddColumn("labEx", "Laboratory Examinations").AddColumn("physEx", "Physical Examinations").AddColumn("res", "Result");
+            examinationGridScheme.AddColumn("exCode", "Examination Code").AddColumn("name", "Name").AddColumn("type", "Type").AddColumn("res", "Result");
             examinationGridScheme.AddColumn("id", "Examination ID", true);
-            examinationsCustomGrid = new GridWrapper(appointmentsDataGrid, appointmentsGridScheme);
+            examinationsCustomGrid = new GridWrapper(examinationsDataGrid, examinationGridScheme);
 
             laboratoryGridScheme = new GridScheme();
-            laboratoryGridScheme.AddColumn("firstName", "Patient first name").AddColumn("lastName", "Patient last name");
-            laboratoryGridScheme.AddColumn("dNote", "Doctor Note").AddColumn("requestDT", "Date of request").AddColumn("labPers", "Laboratory Person").AddColumn("stat", "Status").AddColumn("res", "Result").AddColumn("supNote", "Laboratory Supervisor Note");
+            laboratoryGridScheme.AddColumn("requestDT", "Date of request").AddColumn("labPers", "Laboratory Person").AddColumn("stat", "Status").AddColumn("res", "Result").AddColumn("supNote", "Laboratory Supervisor Note").AddColumn("dNote", "Doctor Note");
             laboratoryGridScheme.AddColumn("exCode", "Examination Code").AddColumn("id", "Examination ID", true);
-            laboratoryCustomGrid = new GridWrapper(appointmentsDataGrid, appointmentsGridScheme);
+            laboratoryCustomGrid = new GridWrapper(laboratoryDataGrid, laboratoryGridScheme);
+        }
+
+        void FillAppointmentGrid(List<Appointment> appointments)
+        {
+            List<Tuple<List<string>, bool>> scheme = new List<Tuple<List<string>, bool>>();
+            foreach (Appointment app in appointments)
+            {
+                Patient patient = Common.GetPatientById(app.PatientId);
+                List<string> row = new List<string>();
+                row.Add(app.Diagnosis);
+                row.Add(app.Status);
+                row.Add(app.dt_Register.ToString());
+                row.Add(app.dt_Complete_Cancel.ToString());
+                row.Add(app.Id.ToString());
+                scheme.Add(new Tuple<List<string>, bool>(row, true));
+            }
+            appointmentsCustomGrid.SetRows(scheme);
+        }
+
+        void FillLaboratoryExaminationGrid(List<LaboratoryExamination> labExaminations)
+        {
+            List<Tuple<List<string>, bool>> scheme = new List<Tuple<List<string>, bool>>();
+            foreach (LaboratoryExamination ex in labExaminations)
+            {
+                List<string> row = new List<string>();
+                row.Add(ex.dt_Request.ToString());
+                row.Add(ex.LaboratoryPerson.Employee.Person.First_Name + " " + ex.LaboratoryPerson.Employee.Person.Last_Name);
+                row.Add(ex.Status);
+                row.Add(ex.Result);
+                row.Add(ex.Supervisor_Note);
+                row.Add(ex.Doctor_Note);
+                row.Add(ex.ExaminationCode);
+                scheme.Add(new Tuple<List<string>, bool>(row, true));
+            }
+            laboratoryCustomGrid.SetRows(scheme);
+        }
+
+        void FillPhysicalExaminationGrid(List<PhysicalExamination> physExaminations)
+        {
+            List<Tuple<List<string>, bool>> scheme = new List<Tuple<List<string>, bool>>();
+            foreach (PhysicalExamination ex in physExaminations)
+            {
+                List<string> row = new List<string>();
+                row.Add(ex.ExaminationCode);
+                row.Add(ex.Examinations.Name);
+                row.Add(ex.Examinations.Type);
+                row.Add(ex.Result);
+                row.Add(ex.Id.ToString());
+                scheme.Add(new Tuple<List<string>, bool>(row, true));
+            }
+            examinationsCustomGrid.SetRows(scheme);
         }
 
         private void returnButton1_Click(object sender, EventArgs e)

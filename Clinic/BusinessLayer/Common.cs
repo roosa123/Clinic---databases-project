@@ -75,11 +75,90 @@ namespace BusinessLayer
             }
             return appointments;
         }
+        public static LaboratoryExamination GetLaboratoryExaminationByName(string name)
+        {
+            LaboratoryExamination retVal = (from examination in db.Examinations
+                                          join labEx in db.LaboratoryExamination on examination.Code equals labEx.ExaminationCode
+                                          where examination.Name == name
+                                          select labEx).First();
+            return retVal;
+        }
+        public static PhysicalExamination GetPhysicalExaminationByName(string name)
+        {
+            PhysicalExamination retVal = (from examination in db.Examinations
+                                          join physEx in db.PhysicalExamination on examination.Code equals physEx.ExaminationCode
+                                          where examination.Name == name
+                                          select physEx).First();
+            return retVal;
+        }
+        public static LaboratoryExamination GetLaboratoryExaminationByCodeAndName(int code, string name)
+        {
+            LaboratoryExamination retVal = (from examination in db.Examinations
+                                          join physEx in db.LaboratoryExamination on examination.Code equals physEx.ExaminationCode
+                                          where examination.Name == name && physEx.ExaminationCode == code.ToString()
+                                          select physEx).First();
+            return retVal;
+        }
+        public static PhysicalExamination GetPhysicalExaminationByCodeAndName(int code, string name)
+        {
+            PhysicalExamination retVal = (from examination in db.Examinations
+                                          join physEx in db.PhysicalExamination on examination.Code equals physEx.ExaminationCode
+                                          where examination.Name == name && physEx.ExaminationCode == code.ToString()
+                                          select physEx).First();
+            return retVal;
+        }
         public static List<Appointment> GetAppointmentsForDoctor(string firstName, string lastName,DateTime dateTime, string state)
         {
             if (state == "-")
                 return GetAppointmentsForDoctor(GetDoctorByName(firstName, lastName), dateTime);
             return GetAppointmentsForDoctor(GetDoctorByName(firstName, lastName), dateTime, state);
+        }
+        public static List<PhysicalExamination> GetPhysExaminationByPatinetId(int id)
+        {
+            List<PhysicalExamination> results = new List<PhysicalExamination>();
+
+            var result = from appointment in db.Appointment
+                         join examination in db.PhysicalExamination on appointment.Id equals examination.AppointmentId
+                         where appointment.Patient.Id == id
+                         select examination;
+
+            foreach (var item in result)
+            {
+                results.Add(item);
+            }
+
+            return results;
+        }
+        public static List<LaboratoryExamination> GetLabExamiantionByPatinetId(int id)
+        {
+            List<LaboratoryExamination> results = new List<LaboratoryExamination>();
+
+            var result = from appointment in db.Appointment
+                         join examination in db.LaboratoryExamination on appointment.Id equals examination.AppointmentId
+                         where appointment.Patient.Id == id
+                         select examination;
+
+            foreach (var item in result)
+            {
+                results.Add(item);
+            }
+
+            return results;
+        }
+        public static List<Appointment> GetAppointmentByPatinetId(int id)
+        {
+            List<Appointment> results = new List<Appointment>();
+
+            var result = from appointment in db.Appointment
+                         where appointment.Patient.Id == id
+                         select appointment;
+
+            foreach (var item in result)
+            {
+                results.Add(item);
+            }
+
+            return results;
         }
         public static Appointment GetAppointmentById(int id)
         {
@@ -90,7 +169,6 @@ namespace BusinessLayer
             return retVal;
 
         }
-
         public static List<Person> GetPatients()
         {
             List<Person> patients = new List<Person>();
@@ -104,14 +182,14 @@ namespace BusinessLayer
             }
             return patients;
         }
-        public static void UpdatePatient(Patient patient)
+        public static int UpdatePatient(Patient patient)
         {
             var res = (from el in db.Patient
                        where el.Id == patient.Id
                        select el).SingleOrDefault();
 
             if(res == null)
-                return;
+                return 0;
 
             res.Person.First_Name = patient.Person.First_Name;
             res.Person.Last_Name = patient.Person.Last_Name;
@@ -127,7 +205,24 @@ namespace BusinessLayer
             res.Person.Address.Flat_Number = patient.Person.Address.Flat_Number;
             res.Person.Phone_number = patient.Person.Phone_number;
 
-            db.SaveChanges();
+            return db.SaveChanges();
+        }
+        public static int UpdateLaboratoryExamination(LaboratoryExamination examination)
+        {
+            var res = (from el in db.LaboratoryExamination
+                       where el.Id == examination.Id
+                       select el).SingleOrDefault();
+
+            if (res == null)
+                return 0;
+
+            res.dt_Complete_Cancel = examination.dt_Complete_Cancel;
+            res.dt_Confirmation = examination.dt_Confirmation;
+            res.Result = examination.Result;
+            res.Status = examination.Status;
+            res.Supervisor_Note = res.Supervisor_Note;
+
+            return db.SaveChanges();
         }
         public static Patient GetPatientByNameAndPESEL(string firstName, string lastName, string PESEL)
         {
@@ -219,6 +314,49 @@ namespace BusinessLayer
                                           where labEx.ExaminationCode == code.ToString()
                                           select labEx).First();
             return retVal;
+        }
+        public static List<LaboratoryExamination> GetLaboratoryExaminationByDateAndStatus(DateTime dt, string status)
+        {
+            List<LaboratoryExamination> results = new List<LaboratoryExamination>();
+
+            var result = from examination in db.Examinations
+                                            join labEx in db.LaboratoryExamination on examination.Code equals labEx.ExaminationCode
+                                            where labEx.dt_Request == dt && labEx.Status == status
+                                            select labEx;
+
+            foreach(var item in result)
+            {
+                results.Add(item);
+            }
+
+            return results;
+        }
+        public static int InsertLaboratoryExamination(LaboratoryExamination examination)
+        {
+            int result = 0;
+            db.LaboratoryExamination.Add(examination);
+            //result = db.SaveChanges();
+
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (DbEntityValidationException dbEx)
+            {
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        System.Console.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                    }
+                }
+            }
+            catch (System.Data.Entity.Infrastructure.DbUpdateException exc)
+            {
+                System.Console.WriteLine("Error: {1}", exc.Message);
+            }
+
+            return result;
         }
     }
 }
