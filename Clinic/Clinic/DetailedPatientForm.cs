@@ -28,12 +28,15 @@ namespace Przychodnia
             tabControl.Enabled = false;
             detailsButton.Visible = false;
             returnButton2.Visible = false;
+
+            InitializeGrids();
         }
 
         public DetailedPatientForm(Patient patient, bool editable)
         {
             InitializeComponent();
 
+            InitializeGrids();
             this.patient = patient;
 
             nameTextBox.Text = patient.Person.First_Name;
@@ -95,6 +98,21 @@ namespace Przychodnia
 
         private void saveButton_Click(object sender, EventArgs e)
         {
+            if (patient == null)
+            {
+                patient = new Patient();
+            }
+
+            if (patient.Person == null)
+            {
+                patient.Person = new Person();
+            }
+
+            if(patient.Person.Address == null)
+            {
+                patient.Person.Address = new Address();
+            }
+
             patient.Person.First_Name = nameTextBox.Text;
             patient.Person.Last_Name = surnameTextBox.Text;
             patient.Person.Date_of_birth = birthdatePicker.Value;
