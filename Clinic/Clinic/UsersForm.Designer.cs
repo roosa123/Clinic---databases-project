@@ -41,9 +41,10 @@
             // 
             // addButton
             // 
-            this.addButton.Location = new System.Drawing.Point(878, 137);
+            this.addButton.Location = new System.Drawing.Point(1171, 169);
+            this.addButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(118, 32);
+            this.addButton.Size = new System.Drawing.Size(157, 39);
             this.addButton.TabIndex = 17;
             this.addButton.Text = "Dodaj użytkownika";
             this.addButton.UseVisualStyleBackColor = true;
@@ -51,9 +52,10 @@
             // 
             // editButton
             // 
-            this.editButton.Location = new System.Drawing.Point(878, 100);
+            this.editButton.Location = new System.Drawing.Point(1171, 123);
+            this.editButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.editButton.Name = "editButton";
-            this.editButton.Size = new System.Drawing.Size(118, 32);
+            this.editButton.Size = new System.Drawing.Size(157, 39);
             this.editButton.TabIndex = 16;
             this.editButton.Text = "Edytuj użytkownika";
             this.editButton.UseVisualStyleBackColor = true;
@@ -62,9 +64,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(216, 60);
+            this.label1.Location = new System.Drawing.Point(288, 74);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(37, 13);
+            this.label1.Size = new System.Drawing.Size(48, 17);
             this.label1.TabIndex = 15;
             this.label1.Text = "Status";
             // 
@@ -73,30 +76,32 @@
             this.statusComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.statusComboBox.FormattingEnabled = true;
             this.statusComboBox.Items.AddRange(new object[] {
-            "-",
             "Użytkownik bezterminowy",
             "Użytkownik z ograniczeniami",
             "Użytkownik aktywny",
             "Użytkownik nieaktywny"});
-            this.statusComboBox.Location = new System.Drawing.Point(259, 52);
+            this.statusComboBox.Location = new System.Drawing.Point(345, 64);
+            this.statusComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.statusComboBox.Name = "statusComboBox";
-            this.statusComboBox.Size = new System.Drawing.Size(192, 21);
+            this.statusComboBox.Size = new System.Drawing.Size(255, 24);
             this.statusComboBox.TabIndex = 14;
             // 
             // usersDataGrid
             // 
             this.usersDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.usersDataGrid.Location = new System.Drawing.Point(33, 100);
+            this.usersDataGrid.Location = new System.Drawing.Point(44, 123);
+            this.usersDataGrid.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.usersDataGrid.Name = "usersDataGrid";
-            this.usersDataGrid.Size = new System.Drawing.Size(839, 604);
+            this.usersDataGrid.Size = new System.Drawing.Size(1119, 743);
             this.usersDataGrid.TabIndex = 13;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(30, 60);
+            this.label2.Location = new System.Drawing.Point(40, 74);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(29, 13);
+            this.label2.Size = new System.Drawing.Size(37, 17);
             this.label2.TabIndex = 20;
             this.label2.Text = "Rola";
             // 
@@ -105,22 +110,23 @@
             this.roleComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.roleComboBox.FormattingEnabled = true;
             this.roleComboBox.Items.AddRange(new object[] {
-            "-",
             "Rejestratorka",
             "Lekarz",
             "Laborant",
             "Kierownik laboratorium",
             "Administrator"});
-            this.roleComboBox.Location = new System.Drawing.Point(65, 52);
+            this.roleComboBox.Location = new System.Drawing.Point(87, 64);
+            this.roleComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.roleComboBox.Name = "roleComboBox";
-            this.roleComboBox.Size = new System.Drawing.Size(128, 21);
+            this.roleComboBox.Size = new System.Drawing.Size(169, 24);
             this.roleComboBox.TabIndex = 19;
             // 
             // searchButton
             // 
-            this.searchButton.Location = new System.Drawing.Point(499, 45);
+            this.searchButton.Location = new System.Drawing.Point(665, 55);
+            this.searchButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(100, 32);
+            this.searchButton.Size = new System.Drawing.Size(133, 39);
             this.searchButton.TabIndex = 27;
             this.searchButton.Text = "Szukaj";
             this.searchButton.UseVisualStyleBackColor = true;
@@ -128,9 +134,9 @@
             // 
             // UsersForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.ClientSize = new System.Drawing.Size(1344, 897);
             this.Controls.Add(this.searchButton);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.roleComboBox);
@@ -139,6 +145,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.statusComboBox);
             this.Controls.Add(this.usersDataGrid);
+            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Name = "UsersForm";
             this.Text = "Użytkownicy";
             this.Controls.SetChildIndex(this.usersDataGrid, 0);

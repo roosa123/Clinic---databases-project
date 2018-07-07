@@ -75,6 +75,137 @@ namespace BusinessLayer
             }
             return appointments;
         }
+        public static List<Appointment> GetAppointmentsForDoctor(string firstName, string lastName,DateTime dateTime, string state)
+        {
+            if (state == "-")
+                return GetAppointmentsForDoctor(GetDoctorByName(firstName, lastName), dateTime);
+            return GetAppointmentsForDoctor(GetDoctorByName(firstName, lastName), dateTime, state);
+        }
+        public static Appointment GetAppointmentById(int id)
+        {
+            //clinicEntities db = new clinicEntities();
+            Appointment retVal = (from appointment in db.Appointment
+                                  where appointment.Id == id
+                                  select appointment).First();
+            return retVal;
+
+        }
+
+        public static List<Employee> GetEmployees()
+        {
+            List<Employee> employees = new List<Employee>();
+            //clinicEntities db = new clinicEntities();
+            var result = from employee in db.Employee
+                         join person in db.Person on employee.PersonId equals person.Id
+                         select employee;
+            foreach (var item in result)
+            {
+                employees.Add(item);
+            }
+            return employees;
+        }
+        public static List<Employee> GetEmployeeByRoleAndStatus(string role, int status)
+        {
+            DateTime date = DateTime.Today;
+            List<Employee> results = new List<Employee>();
+
+            IQueryable<Employee> result;
+
+            switch (status)
+            {
+                case 0:
+                    result = from employee in db.Employee
+                                 where employee.Position == role
+                                 select employee;
+                    break;
+                case 1:
+                    result = from employee in db.Employee
+                                 where employee.Position == role && employee.dt_AccountValidityFrom <= date && employee.dt_AccountValidityTo >= date
+                                 select employee;
+                    break;
+                case 2:
+                    result = from employee in db.Employee
+                                 where employee.Position == role && employee.dt_AccountValidityFrom <= date && employee.dt_AccountValidityTo >= date
+                                 select employee;
+                    break;
+                case 3:
+                    result = from employee in db.Employee
+                                 where employee.Position == role && (employee.dt_AccountValidityFrom >= date ||  employee.dt_AccountValidityTo <= date)
+                                 select employee;
+                    break;
+                default:
+                    result = null;
+                    break;
+            }
+
+            if (result == null)
+                return new List<Employee>();
+
+            foreach (var item in result)
+            {
+                results.Add(item);
+            }
+
+            return results;
+        }
+        public static Doctor GetDoctorById(int id)
+        {
+            //clinicEntities db = new clinicEntities();
+            Doctor retVal = (from doctor in db.Doctor
+                             join employee in db.Employee on doctor.EmployeeId equals employee.Id
+                             join person in db.Person on employee.PersonId equals person.Id
+                             where person.Id == id
+                             select doctor).First();
+            return retVal;
+        }
+        public static int UpdatePassword(Employee user)
+        {
+            //clinicEntities db = new clinicEntities();
+            Employee res = (from employee in db.Employee
+                             join person in db.Person on employee.PersonId equals person.Id
+                             where employee.Id == user.Id
+                             select employee).SingleOrDefault();
+
+            if (res == null)
+                return 0;
+
+            res.Password = user.Password;
+
+            return db.SaveChanges();
+        }
+        public static int UpdateEmployee(Employee user)
+        {
+            var res = (from employee in db.Employee
+                       join person in db.Person on employee.Id equals person.Id
+                       join address in db.Address on person.AddressId equals address.Id
+                       where employee.Id == person.Id
+                       select employee).SingleOrDefault();
+
+            if (res == null)
+                return 0;
+
+            res.Person.First_Name = user.Person.First_Name;
+            res.Person.Last_Name = user.Person.Last_Name;
+            res.Person.Date_of_birth = user.Person.Date_of_birth;
+            res.Person.Sex = user.Person.Sex;
+            res.Person.Address.Country = user.Person.Address.Country;
+            res.Person.Address.City = user.Person.Address.City;
+            res.Person.Address.Post_Code = user.Person.Address.Post_Code;
+            res.Person.Address.Street = user.Person.Address.Street;
+            res.Person.Address.House_Number = user.Person.Address.House_Number;
+            res.Person.Address.Flat_Number = user.Person.Address.Flat_Number;
+            res.Person.Phone_number = user.Person.Phone_number;
+
+            return db.SaveChanges();
+        }
+        public static Employee GetEmployeeById(int id)
+        {
+            Employee retVal = (from employee in db.Employee
+                              join person in db.Person on employee.PersonId equals person.Id
+                              where employee.Id == id
+                              select employee).First();
+            return retVal;
+        }
         public static LaboratoryExamination GetLaboratoryExaminationByName(string name)
         {
             LaboratoryExamination retVal = (from examination in db.Examinations
@@ -106,12 +237,6 @@ namespace BusinessLayer
                                           where examination.Name == name && physEx.ExaminationCode == code.ToString()
                                           select physEx).First();
             return retVal;
-        }
-        public static List<Appointment> GetAppointmentsForDoctor(string firstName, string lastName,DateTime dateTime, string state)
-        {
-            if (state == "-")
-                return GetAppointmentsForDoctor(GetDoctorByName(firstName, lastName), dateTime);
-            return GetAppointmentsForDoctor(GetDoctorByName(firstName, lastName), dateTime, state);
         }
         public static List<PhysicalExamination> GetPhysExaminationByPatinetId(int id)
         {
@@ -160,15 +285,6 @@ namespace BusinessLayer
 
             return results;
         }
-        public static Appointment GetAppointmentById(int id)
-        {
-            //clinicEntities db = new clinicEntities();
-            Appointment retVal = (from appointment in db.Appointment
-                                  where appointment.Id == id
-                                  select appointment).First();
-            return retVal;
-
-        }
         public static List<Person> GetPatients()
         {
             List<Person> patients = new List<Person>();
@@ -185,6 +301,8 @@ namespace BusinessLayer
         public static int UpdatePatient(Patient patient)
         {
             var res = (from el in db.Patient
+                       join person in db.Person on el.Id equals person.Id
+                       join address in db.Address on person.AddressId equals address.Id
                        where el.Id == patient.Id
                        select el).SingleOrDefault();
 
@@ -248,7 +366,7 @@ namespace BusinessLayer
             }
             return patients;
         }
-        public static int InsertAppointment(DateTime date, DateTime time, string doctor, Patient patient)
+        public static int InsertAppointment(DateTime date, DateTime time, string doctor, Patient patient, int registrarId)
         {
             string[] ducky = doctor.Split(' ');
             string firstName = ducky[0];
@@ -264,32 +382,15 @@ namespace BusinessLayer
             appointment.DoctorId = appointment.Doctor.Id;
 
             appointment.dt_Register = date;
+            appointment.dt_Complete_Cancel = DateTime.Today;
             appointment.Patient = patient;
             appointment.PatientId = appointment.Patient.Id;
             appointment.Description = "";
-            appointment.Status = "Nowa wizyta";
+            appointment.Status = "Zarejestrowana";
+            appointment.RegisterPersonId = registrarId;
 
             db.Appointment.Add(appointment);
-            //result = db.SaveChanges();
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbEntityValidationException dbEx)
-            {
-                foreach (var validationErrors in dbEx.EntityValidationErrors)
-                {
-                    foreach (var validationError in validationErrors.ValidationErrors)
-                    {
-                        System.Console.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
-                    }
-                }
-            }
-            catch(System.Data.Entity.Infrastructure.DbUpdateException exc)
-            {
-                    System.Console.WriteLine("Error: {1}", exc.Message);
-            }
+            result = db.SaveChanges();
 
             return result;
         }

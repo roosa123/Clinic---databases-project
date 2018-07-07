@@ -223,7 +223,22 @@ namespace Przychodnia
                 return;
             }
 
-            if (Common.InsertAppointment(date, time, doctor, patient) == 1)
+            int registrarId = 0;
+
+            if(Program.CurrentUser.Position == "RegistrationPerson")
+            {
+                int regCount = Program.CurrentUser.RegistrationPerson.Count;
+
+                if (regCount != 1)
+                    return;
+
+                RegistrationPerson reg = Program.CurrentUser.RegistrationPerson.First();
+
+                if(reg != null)
+                    registrarId = reg.Id;
+            }
+
+            if (Common.InsertAppointment(date, time, doctor, patient, registrarId) == 1)
             {
                 MessageBox.Show("Zarejestrowano wizytę");
             }
