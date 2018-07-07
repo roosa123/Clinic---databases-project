@@ -21,6 +21,7 @@ namespace Przychodnia
         private GridScheme appointmentsGridScheme;
         private GridScheme examinationGridScheme;
         private GridScheme laboratoryGridScheme;
+        private bool ifNewPatient = false;
 
         public DetailedPatientForm()
         {
@@ -28,6 +29,7 @@ namespace Przychodnia
             tabControl.Enabled = false;
             detailsButton.Visible = false;
             returnButton2.Visible = false;
+            ifNewPatient = true;
 
             InitializeGrids();
         }
@@ -41,16 +43,16 @@ namespace Przychodnia
 
             nameTextBox.Text = patient.Person.First_Name;
             surnameTextBox.Text = patient.Person.Last_Name;
-            birthdatePicker.Value = patient.Person.Date_of_birth.Value;
-            sexComboBox.Text = patient.Person.Sex;
+            birthdatePicker.Value = (patient.Person.Date_of_birth == null ? DateTime.Today : patient.Person.Date_of_birth.Value);
+            sexComboBox.SelectedItem = (patient.Person.Sex == "Male" ? sexComboBox.Items[0] : sexComboBox.Items[1]);
             peselTextBox.Text = patient.PESEL;
             insuranceTextBox.Text = patient.Insurance_Number;
-            countryTextBox.Text = patient.Person.Address.Country;
-            cityTextBox.Text = patient.Person.Address.City;
-            postcodeTextBox.Text = patient.Person.Address.Post_Code;
-            streetTextBox.Text = patient.Person.Address.Street;
-            houseTextBox.Text = patient.Person.Address.House_Number == null ? "" : patient.Person.Address.House_Number.Value.ToString();
-            apartmentTextBox.Text = patient.Person.Address.Flat_Number == null ? "" : patient.Person.Address.Flat_Number.Value.ToString();
+            countryTextBox.Text = (patient.Person.Address == null ? "" : patient.Person.Address.Country);
+            cityTextBox.Text = (patient.Person.Address == null ? "" : patient.Person.Address.City);
+            postcodeTextBox.Text = (patient.Person.Address == null ? "" : patient.Person.Address.Post_Code);
+            streetTextBox.Text = (patient.Person.Address == null ? "" : patient.Person.Address.Street);
+            houseTextBox.Text = (patient.Person.Address == null ? "" : (patient.Person.Address.House_Number == null ? "" : patient.Person.Address.House_Number.Value.ToString()));
+            apartmentTextBox.Text = (patient.Person.Address == null ? "" : (patient.Person.Address.Flat_Number == null ? "" : patient.Person.Address.Flat_Number.Value.ToString()));
             phoneTextBox.Text = patient.Person.Phone_number;
 
             saveButton.Enabled = editable;
@@ -116,7 +118,7 @@ namespace Przychodnia
             patient.Person.First_Name = nameTextBox.Text;
             patient.Person.Last_Name = surnameTextBox.Text;
             patient.Person.Date_of_birth = birthdatePicker.Value;
-            patient.Person.Sex = sexComboBox.Text;
+            patient.Person.Sex = (sexComboBox.SelectedIndex == 0 ? "Male" : "Female");
             patient.PESEL = peselTextBox.Text;
             patient.Insurance_Number = insuranceTextBox.Text;
             patient.Person.Address.Country = countryTextBox.Text;
@@ -130,7 +132,17 @@ namespace Przychodnia
             patient.Person.Address.Flat_Number = number;
             patient.Person.Phone_number = phoneTextBox.Text;
 
-            Common.UpdatePatient(patient);
+            int result = 0;
+
+            if (ifNewPatient)
+                result = Common.InsertPatient(patient);
+            else
+                result = Common.UpdatePatient(patient);
+
+            if(result != 0)
+                MessageBox.Show("Zaktualizowano dane pacjenta.");
+            else
+                MessageBox.Show("Nie udało się zaktualizować danych pacjenta!");
 
             Return();
         }
@@ -344,15 +356,24 @@ namespace Przychodnia
             {
             case 0:
                     Appointment appointment = GetAppointmentFromGrid();
-                    OpenForm(new DetailedAppointmentForm(appointment, false));
+
+                    if (appointment != null)
+                        OpenForm(new DetailedAppointmentForm(appointment, false));
+
                     break;
             case 1:
                     PhysicalExamination examination = GetExaminationFromGrid();
-                    OpenForm(new ExaminationForm(examination));
-                break;
+
+                    if (examination == null)
+                        OpenForm(new ExaminationForm(examination));
+
+                    break;
              case 2:
                     LaboratoryExamination laboratory = GetLaboratoryExaminationFromGrid();
-                    OpenForm(new DetailedLaboratoryForm(laboratory, false));
+
+                    if (laboratory == null)
+                        OpenForm(new DetailedLaboratoryForm(laboratory, false));
+
                     break;
             }
         }

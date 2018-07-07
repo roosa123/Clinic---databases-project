@@ -59,7 +59,9 @@ namespace Przychodnia
         private void editButton_Click(object sender, EventArgs e)
         {
             Employee user = GetUserFromGrid();
-            OpenForm(new DetailedUserForm(user, true));
+
+            if(user != null)
+                OpenForm(new DetailedUserForm(user, true));
         }
 
         private Employee GetUserFromGrid()

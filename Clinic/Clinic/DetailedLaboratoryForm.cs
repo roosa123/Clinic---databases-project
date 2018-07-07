@@ -145,7 +145,7 @@ namespace Przychodnia
             examination.dt_Confirmation = date;
             examination.Supervisor_Note = supervisorCommentTextBox.Text;
 
-            if (Common.InsertLaboratoryExamination(examination) == 1)
+            if (Common.InsertLaboratoryExamination(examination) != 0)
                 MessageBox.Show("Zlecono badanie.");
             else
                 MessageBox.Show("Nie udało się zlecić badania!");
@@ -164,7 +164,7 @@ namespace Przychodnia
             examination.Result = resultsTextBox.Text;
             examination.dt_Complete_Cancel = DateTime.Today;
 
-            if (Common.UpdateLaboratoryExamination(examination) == 1)
+            if (Common.UpdateLaboratoryExamination(examination) != 0)
                 MessageBox.Show("Badanie wykonano.");
             else
                 MessageBox.Show("Nie udało się wykonać badania!");
@@ -178,7 +178,7 @@ namespace Przychodnia
             examination.Result = resultsTextBox.Text;
             examination.dt_Complete_Cancel = DateTime.Today;
 
-            if (Common.UpdateLaboratoryExamination(examination) == 1)
+            if (Common.UpdateLaboratoryExamination(examination) != 0)
                 MessageBox.Show("Badanie anulowano.");
             else
                 MessageBox.Show("Nie udało się anulować badania!");
@@ -197,7 +197,7 @@ namespace Przychodnia
             examination.Supervisor_Note = supervisorCommentTextBox.Text;
             examination.dt_Confirmation = DateTime.Today;
 
-            if (Common.UpdateLaboratoryExamination(examination) == 1)
+            if (Common.UpdateLaboratoryExamination(examination) != 0)
                 MessageBox.Show("Badanie potwierdzono.");
             else
                 MessageBox.Show("Nie udało się potwierdzić badania!");
@@ -211,7 +211,7 @@ namespace Przychodnia
             examination.Supervisor_Note = supervisorCommentTextBox.Text;
             examination.dt_Complete_Cancel = DateTime.Today;
 
-            if (Common.UpdateLaboratoryExamination(examination) == 1)
+            if (Common.UpdateLaboratoryExamination(examination) != 0)
                 MessageBox.Show("Badanie anulowano.");
             else
                 MessageBox.Show("Nie udało się anulować badania!");

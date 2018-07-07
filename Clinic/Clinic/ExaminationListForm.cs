@@ -205,6 +205,10 @@ namespace Przychodnia
             if (ifPhysical)
             {
                 PhysicalExamination ex = GetPhysicalExaminationFromGrid();
+
+                if (ex == null)
+                    return;
+
                 assignPhysicalExamination(ex);
 
                 name = ex.Examinations.Name;
@@ -213,6 +217,10 @@ namespace Przychodnia
             else
             {
                 LaboratoryExamination ex = GetLaboratoryExaminationFromGrid();
+
+                if (ex == null)
+                    return;
+
                 assignLaboratoryExamination(ex);
 
                 name = ex.Examinations.Name;

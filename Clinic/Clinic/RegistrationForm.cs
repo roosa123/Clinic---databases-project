@@ -33,8 +33,10 @@ namespace Przychodnia
             foreach (Person doc in doctors)
             {
                 doctorComboBox.Items.Add(doc.First_Name + " " + doc.Last_Name);
+                doctorComboBox1.Items.Add(doc.First_Name + " " + doc.Last_Name);
             }
             doctorComboBox.SelectedItem = doctorComboBox.Items[0];
+            doctorComboBox1.SelectedItem = doctorComboBox.Items[0];
         }
 
         private void InitializeGrids()
@@ -219,9 +221,7 @@ namespace Przychodnia
             Patient patient = GetPatientFromGrid();
 
             if(patient == null)
-            {
                 return;
-            }
 
             int registrarId = 0;
 
@@ -238,19 +238,15 @@ namespace Przychodnia
                     registrarId = reg.Id;
             }
 
-            if (Common.InsertAppointment(date, time, doctor, patient, registrarId) == 1)
-            {
+            if (Common.InsertAppointment(date, time, doctor, patient, registrarId) != 0)
                 MessageBox.Show("Zarejestrowano wizytę");
-            }
             else
-            {
                 MessageBox.Show("Błąd rejestracji");
-            }
         }
 
         private void searchAppointmentButton_Click(object sender, EventArgs e)
         {
-            string[] ducky = doctorComboBox.SelectedItem.ToString().Split(' ');
+            string[] ducky = doctorComboBox1.SelectedItem.ToString().Split(' ');
             string firstName = ducky[0];
             string lastName = ducky[1];
             DateTime dt = fromDateTimePicker.Value;
@@ -271,14 +267,10 @@ namespace Przychodnia
             if (appointment == null)
                 return;
 
-            if (Common.DeleteAppointment(appointment) == 1)
-            {
+            if (Common.DeleteAppointment(appointment) != 0)
                 MessageBox.Show("Wizyta została anulowana");
-            }
             else
-            {
                 MessageBox.Show("Nie udało się usunąć wizyty.");
-            }
         }
     }
 }

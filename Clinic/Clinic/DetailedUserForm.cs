@@ -114,14 +114,10 @@ namespace Przychodnia
             passwd = BitConverter.ToString(sha.ComputeHash(Encoding.UTF8.GetBytes(passTextBox1.Text)));
             passwd = passwd.Replace("-", "");
 
-            if (Common.UpdatePassword(user) == 1)
-            {
+            if (Common.UpdatePassword(user) != 0)
                 MessageBox.Show("Hasło zostało zmienione");
-            }
             else
-            {
                 MessageBox.Show("Nie udało się zmienić hasła!");
-            }
 
             passTextBox1.Text = "";
             passTextBox2.Text = "";
@@ -129,14 +125,10 @@ namespace Przychodnia
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-            if(Common.UpdateEmployee(user) == 1)
-            {
+            if(Common.UpdateEmployee(user) != 0)
                 MessageBox.Show("Dane zaktualizowano pomyślnie.");
-            }
             else
-            {
                 MessageBox.Show("Nie udało się zaktualizować danych.");
-            }
 
             Return();
         }

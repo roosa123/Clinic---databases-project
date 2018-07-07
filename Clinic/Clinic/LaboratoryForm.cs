@@ -114,13 +114,17 @@ namespace Przychodnia
         private void executeButton_Click(object sender, EventArgs e)
         {
             LaboratoryExamination examination = GetLaboratoryExaminationFromGrid();
-            OpenForm(new DetailedLaboratoryForm(examination, true));
+
+            if(examination != null)
+                OpenForm(new DetailedLaboratoryForm(examination, true));
         }
 
         private void showButton_Click(object sender, EventArgs e)
         {
             LaboratoryExamination examination = GetLaboratoryExaminationFromGrid();
-            OpenForm(new DetailedLaboratoryForm(examination, false));
+
+            if(examination != null)
+                OpenForm(new DetailedLaboratoryForm(examination, false));
         }
     }
 }

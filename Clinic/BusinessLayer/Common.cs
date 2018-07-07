@@ -148,6 +148,11 @@ namespace BusinessLayer
 
             return results;
         }
+        public static int InsertPatient(Patient patient)
+        {
+            db.Patient.Add(patient);
+            return db.SaveChanges();
+        }
         public static Doctor GetDoctorById(int id)
         {
             //clinicEntities db = new clinicEntities();
@@ -301,7 +306,7 @@ namespace BusinessLayer
         public static int UpdatePatient(Patient patient)
         {
             var res = (from el in db.Patient
-                       join person in db.Person on el.Id equals person.Id
+                       join person in db.Person on el.PersonId equals person.Id
                        join address in db.Address on person.AddressId equals address.Id
                        where el.Id == patient.Id
                        select el).SingleOrDefault();
@@ -374,7 +379,6 @@ namespace BusinessLayer
 
             date = date.AddHours(time.Hour);
             date = date.AddMinutes(time.Minute);
-            int result = 0;
 
             Appointment appointment = new Appointment();
 
@@ -390,9 +394,7 @@ namespace BusinessLayer
             appointment.RegisterPersonId = registrarId;
 
             db.Appointment.Add(appointment);
-            result = db.SaveChanges();
-
-            return result;
+            return db.SaveChanges();
         }
         public static int DeleteAppointment(Appointment appointment)
         {
