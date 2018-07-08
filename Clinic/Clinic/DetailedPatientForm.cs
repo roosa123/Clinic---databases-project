@@ -156,12 +156,12 @@ namespace Przychodnia
             
             examinationGridScheme = new GridScheme();
             examinationGridScheme.AddColumn("exCode", "Examination Code").AddColumn("name", "Name").AddColumn("type", "Type").AddColumn("res", "Result");
-            examinationGridScheme.AddColumn("id", "Examination ID", true);
+ //           examinationGridScheme.AddColumn("id", "Examination ID", true);
             examinationsCustomGrid = new GridWrapper(examinationsDataGrid, examinationGridScheme);
 
             laboratoryGridScheme = new GridScheme();
             laboratoryGridScheme.AddColumn("requestDT", "Date of request").AddColumn("labPers", "Laboratory Person").AddColumn("stat", "Status").AddColumn("res", "Result").AddColumn("supNote", "Laboratory Supervisor Note").AddColumn("dNote", "Doctor Note");
-            laboratoryGridScheme.AddColumn("exCode", "Examination Code").AddColumn("id", "Examination ID", true);
+            laboratoryGridScheme.AddColumn("exCode", "Examination Code");//.AddColumn("id", "Examination ID", true);
             laboratoryCustomGrid = new GridWrapper(laboratoryDataGrid, laboratoryGridScheme);
         }
 
@@ -210,7 +210,7 @@ namespace Przychodnia
                 row.Add(ex.Examinations.Name);
                 row.Add(ex.Examinations.Type);
                 row.Add(ex.Result);
-                row.Add(ex.Id.ToString());
+//                row.Add(ex.Id.ToString());
                 scheme.Add(new Tuple<List<string>, bool>(row, true));
             }
             examinationsCustomGrid.SetRows(scheme);
@@ -278,7 +278,7 @@ namespace Przychodnia
             {
                 var cells = examinationsCustomGrid.Grid.SelectedCells;
                 var row = cells[0].OwningRow;
-                var IDcell = row.Cells[row.Cells.Count - 2];
+                var IDcell = row.Cells[0];
                 code = int.Parse(IDcell.Value.ToString());
                 foreach (DataGridViewCell cell in cells)
                 {
@@ -321,7 +321,7 @@ namespace Przychodnia
             {
                 var cells = laboratoryCustomGrid.Grid.SelectedCells;
                 var row = cells[0].OwningRow;
-                var IDcell = row.Cells[row.Cells.Count - 2];
+                var IDcell = row.Cells[row.Cells.Count - 1];
                 code = int.Parse(IDcell.Value.ToString());
                 foreach (DataGridViewCell cell in cells)
                 {
@@ -364,14 +364,14 @@ namespace Przychodnia
             case 1:
                     PhysicalExamination examination = GetExaminationFromGrid();
 
-                    if (examination == null)
+                    if (examination != null)
                         OpenForm(new ExaminationForm(examination));
 
                     break;
              case 2:
                     LaboratoryExamination laboratory = GetLaboratoryExaminationFromGrid();
 
-                    if (laboratory == null)
+                    if (laboratory != null)
                         OpenForm(new DetailedLaboratoryForm(laboratory, false));
 
                     break;

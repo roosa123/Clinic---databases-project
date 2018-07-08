@@ -62,24 +62,35 @@ namespace Przychodnia
                 _Grid.Columns[_Grid.Columns.Count - 1].Visible = !(column.Item3);
             }
         }
+        private int CountVisibleColumns()
+        {
+            int ctr = 0;
+            foreach (DataGridViewColumn column in _Grid.Columns)
+            {
+                if (column.Visible)
+                    ctr++;
+            }
+            return ctr;
+        }
         private void FitToWindow()
         {
             int GridWidth = _Grid.Width;
             ScrollBar verticalScroll = VerticalScrollBar;
             int scrollWidth = verticalScroll.Width;
             int ColumnsWidth = _Grid.Columns.GetColumnsWidth(DataGridViewElementStates.Visible);
-            int diff = GridWidth -ColumnsWidth;
-            if (diff <=4)
+            int diff = GridWidth - ColumnsWidth;
+            if (diff <=0)
                 return;
-            if (diff > scrollWidth)
-                diff += scrollWidth;
-            double margin = diff / _Grid.ColumnCount;
-            foreach(DataGridViewColumn column in _Grid.Columns)
+            double margin = diff / CountVisibleColumns();
+            foreach (DataGridViewColumn column in _Grid.Columns)
             {
-                column.Width += (int)margin;
-                diff -= (int)margin;
+                if (column.Visible)
+                {
+                    column.Width += (int)margin;
+                    diff -= (int)margin;
+                }
             }
-            _Grid.Columns.GetFirstColumn(DataGridViewElementStates.Visible).Width += (diff-1);
+            _Grid.Columns.GetFirstColumn(DataGridViewElementStates.Visible).Width += diff;
         }
         public GridWrapper AddRow(List<string>row, bool readOnly=true)
         {
@@ -100,7 +111,6 @@ namespace Przychodnia
             {
                 AddRow(row.Item1, row.Item2);
             }
-            FitToWindow();
             return this;
         }
         public System.Windows.Forms.DataGridView Grid
