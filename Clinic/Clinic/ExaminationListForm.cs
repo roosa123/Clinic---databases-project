@@ -16,8 +16,7 @@ namespace Przychodnia
     {
         LaboratoryExamination laboratoryExamination;
         PhysicalExamination physicalExamination;
-        List<LaboratoryExamination> laboratoryExaminationList = new List<LaboratoryExamination>();
-        List<PhysicalExamination> physicalExaminationList = new List<PhysicalExamination>();
+        private List<Examinations> examinationsList = new List<Examinations>();
         private GridWrapper examinationsCustomGrid;
         private GridScheme examinationGridScheme;
         bool ifPhysical;
@@ -26,21 +25,25 @@ namespace Przychodnia
         {
             InitializeComponent();
             this.physicalExamination = examination;
+            this.physicalExamination.Examinations = new Examinations();
             ifPhysical = true;
+            InitializeGrids();
         }
 
         public ExaminationListForm(ref LaboratoryExamination examination)
         {
             InitializeComponent();
             this.laboratoryExamination = examination;
+            this.laboratoryExamination.Examinations = new Examinations();
             ifPhysical = false;
+            InitializeGrids();
         }
+
 
         private void InitializeGrids()
         {
             examinationGridScheme = new GridScheme();
             examinationGridScheme.AddColumn("exCode", "Examination Code").AddColumn("name", "Name").AddColumn("type", "Type");
-            examinationGridScheme.AddColumn("id", "Examination ID", true);
             examinationsCustomGrid = new GridWrapper(dataGridView1, examinationGridScheme);
         }
 
@@ -55,6 +58,20 @@ namespace Przychodnia
             physicalExamination.Id = newExamination.Id;
         }
 
+        private void FillGrid()
+        {
+            List<Tuple<List<string>, bool>> scheme = new List<Tuple<List<string>, bool>>();
+            foreach (Examinations ex in examinationsList)
+            {
+                List<string> row = new List<string>();
+                row.Add(ex.Code);
+                row.Add(ex.Name);
+                row.Add(ex.Type);
+                scheme.Add(new Tuple<List<string>, bool>(row, true));
+            }
+            examinationsCustomGrid.SetRows(scheme);
+        }
+
         private void assignLaboratoryExamination(LaboratoryExamination newExamination)
         {
             if (newExamination == null)
@@ -65,51 +82,44 @@ namespace Przychodnia
             laboratoryExamination.Examinations.Type = newExamination.Examinations.Type;
             laboratoryExamination.Id = newExamination.Id;
         }
+        private Examinations handleError(Examinations querryResult)
+        {
+            if (querryResult == null)
+                MessageBox.Show("Nie znaleziono badania", "Brak danych", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return querryResult;
+        }
 
         private void searchButton_Click(object sender, EventArgs e)
         {
             int number = 0;
-
+            int.TryParse(codeTextBox.Text, out number);
+            Examinations exam = null;
             if (codeTextBox.Text == string.Empty && nameTextBox.Text != string.Empty)
             {
-                int.TryParse(codeTextBox.Text, out number);
-
+                
                 if (ifPhysical)
-                {
-                    physicalExaminationList.Add(Common.GetPhysicalExaminationByName(nameTextBox.Text));
-                }
+                    exam = handleError(Common.GetOnlyPhysicalExaminationByName(nameTextBox.Text));
                 else
-                {
-                    laboratoryExaminationList.Add(Common.GetLaboratoryExaminationByName(nameTextBox.Text));
-                }
+                    exam = handleError( Common.GetOnlyLaboratoryExaminationByName(nameTextBox.Text));                
 
             }
             else if (codeTextBox.Text != string.Empty && nameTextBox.Text == string.Empty)
             {
                 if (ifPhysical)
-                {
-                    physicalExaminationList.Add(Common.GetPhysicalExaminationByCode(number));
-                }
+                    exam = handleError(Common.GetOnlyPhysicalExaminationByCode(number));
                 else
-                {
-                    laboratoryExaminationList.Add(Common.GetLaboratoryExaminationByCode(number));
-                }
+                    exam = handleError(Common.GetOnlyLaboratoryExaminationByCode(number));
             }
             else if (codeTextBox.Text != string.Empty && nameTextBox.Text != string.Empty)
             {
-                int.TryParse(codeTextBox.Text, out number);
-
                 if (ifPhysical)
-                {
-                    physicalExaminationList.Add(Common.GetPhysicalExaminationByCodeAndName(number, nameTextBox.Text));
-                }
+                    exam = handleError( Common.GetOnlyPhysicalExaminationByCodeAndName(number, nameTextBox.Text));
                 else
-                {
-                    laboratoryExaminationList.Add(Common.GetLaboratoryExaminationByCodeAndName(number, nameTextBox.Text));
-                }
+                    exam = handleError(Common.GetOnlyLaboratoryExaminationByCodeAndName(number, nameTextBox.Text));
             }
-            else
-                return;
+            if (exam!= null)
+                examinationsList.Add(exam);
+            FillGrid();
         }
 
         private PhysicalExamination GetPhysicalExaminationFromGrid()
@@ -126,7 +136,7 @@ namespace Przychodnia
             {
                 var cells = examinationsCustomGrid.Grid.SelectedCells;
                 var row = cells[0].OwningRow;
-                var IDcell = row.Cells[row.Cells.Count - 1];
+                var IDcell = row.Cells[0];
                 code = int.Parse(IDcell.Value.ToString());
                 foreach (DataGridViewCell cell in cells)
                 {
@@ -169,7 +179,7 @@ namespace Przychodnia
             {
                 var cells = examinationsCustomGrid.Grid.SelectedCells;
                 var row = cells[0].OwningRow;
-                var IDcell = row.Cells[row.Cells.Count - 1];
+                var IDcell = row.Cells[0];
                 code = int.Parse(IDcell.Value.ToString());
                 foreach (DataGridViewCell cell in cells)
                 {
@@ -229,9 +239,10 @@ namespace Przychodnia
 
             codeTextBox.Text = code;
             nameTextBox.Text = name;
-
+            
             Return();
         }
+
 
         private void returnButton_Click(object sender, EventArgs e)
         {

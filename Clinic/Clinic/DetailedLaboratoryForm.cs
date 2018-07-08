@@ -10,10 +10,12 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BusinessLayer;
 
+
 namespace Przychodnia
 {
     public partial class DetailedLaboratoryForm : BaseForm
     {
+        
         LaboratoryExamination examination;
 
         public DetailedLaboratoryForm(Appointment appointment)
@@ -23,6 +25,14 @@ namespace Przychodnia
             InitializeComponent();
             examination = new LaboratoryExamination();
             examination.Appointment = appointment;
+            examination.AppointmentId = appointment.Id;
+            examination.LaboratoryPerson = new LaboratoryPerson();
+            examination.LaboratorySupervisor = new LaboratorySupervisor();
+            examination.LaboratoryPerson.Employee = new Employee();
+            examination.LaboratorySupervisor.Employee = new Employee();
+            examination.LaboratoryPerson.Employee.Person = new Person();
+            examination.LaboratorySupervisor.Employee.Person = new Person();
+
 
             laboratorianPanel.Enabled = false;
             supervisorPanel.Enabled = false;
@@ -88,24 +98,30 @@ namespace Przychodnia
 
         private void searchButton_Click(object sender, EventArgs e)
         {
-            OpenForm(new ExaminationListForm(ref examination));
-
-            examinationLabel.Text = examination.Examinations.Name;
-            codeLabel.Text = examination.ExaminationCode;
-            label1.Text = examination.Id.ToString();
-            doctorCommentTextBox.Text = examination.Doctor_Note;
-            laboratorianLabel.Text = examination.LaboratoryPerson.Employee.Person.First_Name + " " + examination.LaboratoryPerson.Employee.Person.Last_Name;
-            executionDateLlabel.Text = examination.dt_Complete_Cancel.ToString();
-            resultsTextBox.Text = examination.Result;
-            supervisorLabel.Text = examination.LaboratorySupervisor.Employee.Person.First_Name + " " + examination.LaboratorySupervisor.Employee.Person.Last_Name;
-            confirmationDateLabel.Text = examination.dt_Confirmation.ToString();
-            supervisorCommentTextBox.Text = examination.Supervisor_Note;
-        }
+            ExaminationListForm examinationList = new ExaminationListForm(ref examination);
+            DialogResult res = examinationList.ShowDialog(this);
+            if (res == DialogResult.Cancel)
+            {
+                examination.Id = Common.GetLaboratoryExaminationsCount() + 1;
+                
+                examinationLabel.Text = examination.Examinations.Name;
+                codeLabel.Text = examination.ExaminationCode;
+                label1.Text = examination.Id.ToString();
+                doctorCommentTextBox.Text = examination.Doctor_Note;
+                laboratorianLabel.Text = examination.LaboratoryPerson.Employee.Person.First_Name + " " + examination.LaboratoryPerson.Employee.Person.Last_Name;
+                executionDateLlabel.Text = examination.dt_Complete_Cancel.ToString();
+                resultsTextBox.Text = examination.Result;
+                supervisorLabel.Text = examination.LaboratorySupervisor.Employee.Person.First_Name + " " + examination.LaboratorySupervisor.Employee.Person.Last_Name;
+                confirmationDateLabel.Text = examination.dt_Confirmation.ToString();
+                supervisorCommentTextBox.Text = examination.Supervisor_Note;
+            }
+         }
 
         private void requestButton_Click(object sender, EventArgs e)
         {
             examination.Examinations.Name = examinationLabel.Text;
             examination.ExaminationCode = codeLabel.Text;
+            examination.Examinations.Code = codeLabel.Text;
             int number = 0;
             int.TryParse(label1.Text, out number);
             examination.Id = number;
@@ -121,31 +137,44 @@ namespace Przychodnia
 
             DateTime date;
             DateTime.TryParse(requestDateLabel.Text, out date);
-
             examination.dt_Request = date;
             examination.Doctor_Note = doctorCommentTextBox.Text;
-
+            if(date== DateTime.MinValue)
+            {
+                date = Common.DefaultDT;
+            }
             ducky = laboratorianLabel.Text.Split(' ');
 
             examination.LaboratoryPerson.Employee.Person.First_Name = ducky[0];
             examination.LaboratoryPerson.Employee.Person.Last_Name = ducky[1];
 
             DateTime.TryParse(executionDateLlabel.Text, out date);
-
+            if (date == DateTime.MinValue)
+            {
+                date = Common.DefaultDT;
+            }
             examination.dt_Complete_Cancel = date;
             examination.Result = resultsTextBox.Text;
+            if (examination.Result == "")
+                examination.Result = " ";
 
-            ducky = supervisorLabel.Text.Split(' ');
+                ducky = supervisorLabel.Text.Split(' ');
 
             examination.LaboratorySupervisor.Employee.Person.First_Name = ducky[0];
             examination.LaboratorySupervisor.Employee.Person.Last_Name = ducky[1];
 
             DateTime.TryParse(confirmationDateLabel.Text, out date);
-
+            if (date == DateTime.MinValue)
+            {
+                date = Common.DefaultDT;
+            }
             examination.dt_Confirmation = date;
             examination.Supervisor_Note = supervisorCommentTextBox.Text;
-
-            if (Common.InsertLaboratoryExamination(examination) != 0)
+            if (examination.Supervisor_Note == "")
+                examination.Supervisor_Note = " ";
+            
+            examination.Status = "Zlecone";
+            if (Common.InsertLaboratoryExamination(examination) == 0)
                 MessageBox.Show("Zlecono badanie.");
             else
                 MessageBox.Show("Nie udało się zlecić badania!");
