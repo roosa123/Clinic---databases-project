@@ -29,22 +29,34 @@ namespace BusinessLayer
         }
         public static Doctor GetDoctorByName(string firstName, string lastName)
         {
+            try { 
             //clinicEntities db = new clinicEntities();
-            Doctor retVal = (from doctor in db.Doctor
-                             join employee in db.Employee on doctor.EmployeeId equals employee.Id
-                             join person in db.Person on employee.PersonId equals person.Id
-                             where person.First_Name == firstName && person.Last_Name == lastName
-                             select doctor).First();
-            return retVal;
+                Doctor retVal = (from doctor in db.Doctor
+                                 join employee in db.Employee on doctor.EmployeeId equals employee.Id
+                                 join person in db.Person on employee.PersonId equals person.Id
+                                 where person.First_Name == firstName && person.Last_Name == lastName
+                                 select doctor).First();
+                return retVal;
+            }
+            catch (InvalidOperationException)
+            {
+                return null;
+            }
         }
         public static Patient GetPatientById(int id)
         {
-            //clinicEntities db = new clinicEntities();
-            Patient retVal = (from patient in db.Patient
-                             join person in db.Person on patient.PersonId equals person.Id
-                             where patient.Id == id
-                             select patient).First();
-            return retVal;
+            try {
+                //clinicEntities db = new clinicEntities();
+                Patient retVal = (from patient in db.Patient
+                                  join person in db.Person on patient.PersonId equals person.Id
+                                  where patient.Id == id
+                                  select patient).First();
+                return retVal;
+            }
+            catch (InvalidOperationException)
+            {
+                return null;
+            }
         }
         public static List<Appointment> GetAppointmentsForDoctor(Doctor doctor, DateTime dateTime, string state)
         {
@@ -83,11 +95,18 @@ namespace BusinessLayer
         }
         public static Appointment GetAppointmentById(int id)
         {
+            try
+            {
             //clinicEntities db = new clinicEntities();
-            Appointment retVal = (from appointment in db.Appointment
-                                  where appointment.Id == id
-                                  select appointment).First();
-            return retVal;
+                Appointment retVal = (from appointment in db.Appointment
+                                      where appointment.Id == id
+                                      select appointment).First();
+                return retVal;
+            }
+            catch (InvalidOperationException)
+            {
+                return null;
+            }
 
         }
 
@@ -226,13 +245,25 @@ namespace BusinessLayer
         }
         public static Doctor GetDoctorById(int id)
         {
+            try { 
             //clinicEntities db = new clinicEntities();
-            Doctor retVal = (from doctor in db.Doctor
+                Doctor retVal = (from doctor in db.Doctor
                              join employee in db.Employee on doctor.EmployeeId equals employee.Id
                              join person in db.Person on employee.PersonId equals person.Id
+<<<<<<< HEAD
                              where employee.Id == id
                              select doctor).FirstOrDefault();
             return retVal;
+=======
+                             where person.Id == id
+                             select doctor).First();
+                return retVal;
+            }
+            catch (InvalidOperationException)
+            {
+                return null;
+            }
+>>>>>>> b9ec2890eeb63e6c5a188d1a0cd67ba098d7a854
         }
         public static int UpdatePassword(Employee user)
         {
@@ -274,44 +305,101 @@ namespace BusinessLayer
         }
         public static Employee GetEmployeeById(int id)
         {
-            Employee retVal = (from employee in db.Employee
+            try
+            {
+                Employee retVal = (from employee in db.Employee
                               join person in db.Person on employee.PersonId equals person.Id
                               where employee.Id == id
+<<<<<<< HEAD
                               select employee).FirstOrDefault();
             return retVal;
+=======
+                              select employee).First();
+                return retVal;
+            }
+            catch (InvalidOperationException)
+            {
+                return null;
+            }
+>>>>>>> b9ec2890eeb63e6c5a188d1a0cd67ba098d7a854
         }
         public static LaboratoryExamination GetLaboratoryExaminationByName(string name)
         {
-            LaboratoryExamination retVal = (from examination in db.Examinations
+            try
+            {
+                LaboratoryExamination retVal = (from examination in db.Examinations
                                           join labEx in db.LaboratoryExamination on examination.Code equals labEx.ExaminationCode
                                           where examination.Name == name
+<<<<<<< HEAD
                                           select labEx).FirstOrDefault();
             return retVal;
+=======
+                                          select labEx).First();
+                return retVal;
+            }
+            catch (InvalidOperationException)
+            {
+                return null;
+            }
+>>>>>>> b9ec2890eeb63e6c5a188d1a0cd67ba098d7a854
         }
         public static PhysicalExamination GetPhysicalExaminationByName(string name)
         {
-            PhysicalExamination retVal = (from examination in db.Examinations
+            try
+            {
+                PhysicalExamination retVal = (from examination in db.Examinations
                                           join physEx in db.PhysicalExamination on examination.Code equals physEx.ExaminationCode
                                           where examination.Name == name
+<<<<<<< HEAD
                                           select physEx).FirstOrDefault();
             return retVal;
+=======
+                                          select physEx).First();
+                return retVal;
+            }
+            catch (InvalidOperationException)
+            {
+                return null;
+            }
+>>>>>>> b9ec2890eeb63e6c5a188d1a0cd67ba098d7a854
         }
         public static LaboratoryExamination GetLaboratoryExaminationByCodeAndName(int code, string name)
         {
-            LaboratoryExamination retVal = (from examination in db.Examinations
+            try
+            {
+                LaboratoryExamination retVal = (from examination in db.Examinations
                                           join physEx in db.LaboratoryExamination on examination.Code equals physEx.ExaminationCode
                                           where examination.Name == name && physEx.ExaminationCode == code.ToString()
+<<<<<<< HEAD
                                           select physEx).FirstOrDefault();
             return retVal;
+=======
+                                          select physEx).First();
+                return retVal;
+            }
+            catch (InvalidOperationException)
+            {
+                return null;
+            }
+
+>>>>>>> b9ec2890eeb63e6c5a188d1a0cd67ba098d7a854
         }
         public static PhysicalExamination GetPhysicalExaminationByCodeAndName(int code, string name)
         {
-            PhysicalExamination retVal = (from examination in db.Examinations
+            try
+            {
+                PhysicalExamination retVal = (from examination in db.Examinations
                                           join physEx in db.PhysicalExamination on examination.Code equals physEx.ExaminationCode
                                           where examination.Name == name && physEx.ExaminationCode == code.ToString()
                                           select physEx).FirstOrDefault();
             return retVal;
+            }
+            catch (InvalidOperationException)
+            {
+                return null;
+            }
         }
+
         public static List<PhysicalExamination> GetPhysExaminationByPatinetId(int id)
         {
             List<PhysicalExamination> results = new List<PhysicalExamination>();
@@ -418,12 +506,19 @@ namespace BusinessLayer
         }
         public static Patient GetPatientByNameAndPESEL(string firstName, string lastName, string PESEL)
         {
-            //clinicEntities db = new clinicEntities();
-            Patient result = (from patient in db.Patient
+            try
+            {
+                //clinicEntities db = new clinicEntities();
+                Patient result = (from patient in db.Patient
                              join person in db.Person on patient.PersonId equals person.Id
                              where person.First_Name == firstName && person.Last_Name == lastName && patient.PESEL == PESEL
                              select patient).FirstOrDefault();
             return result;
+            }
+            catch (InvalidOperationException)
+            {
+                return null;
+            }
         }
         public static List<Patient> GetPatientByName(string firstName, string lastName)
         {
@@ -481,12 +576,120 @@ namespace BusinessLayer
         }
         public static LaboratoryExamination GetLaboratoryExaminationByCode(int code)
         {
-            LaboratoryExamination retVal = (from examination in db.Examinations
+            try
+            {
+                LaboratoryExamination retVal = (from examination in db.Examinations
                                           join labEx in db.LaboratoryExamination on examination.Code equals labEx.ExaminationCode
                                           where labEx.ExaminationCode == code.ToString()
                                           select labEx).FirstOrDefault();
             return retVal;
+            }
+            catch (InvalidOperationException)
+            {
+                return null;
+            }
         }
+        public static Examinations GetOnlyPhysicalExaminationByCode(int code)
+        {
+            try
+            {
+                Examinations retVal = (from examination in db.Examinations
+                                              where examination.Code == code.ToString() && examination.Type== "Phisycal"
+                                       select examination).First();
+                return retVal;
+            }
+            catch (InvalidOperationException)
+            {
+                return null;
+            }
+        }
+        public static Examinations GetOnlyLaboratoryExaminationByCode(int code)
+        {
+            try
+            {
+                Examinations retVal = (from examination in db.Examinations
+                                       where examination.Code == code.ToString() && examination.Type == "Laboratory"
+                                       select examination).First();
+                return retVal;
+            }
+            catch (InvalidOperationException)
+            {
+                return null;
+            }
+        }
+        public static Examinations GetOnlyLaboratoryExaminationByName(string name)
+        {
+            try
+            {
+                Examinations retVal = (from examination in db.Examinations
+                                       where examination.Name == name && examination.Type == "Laboratory"
+                                       select examination).First();
+                return retVal;
+            }
+            catch (InvalidOperationException)
+            {
+                return null;
+            }
+        }
+        public static void SetDiagnosisAndDescpritionForAppointment(string diagnosis, string description, int id)
+        {
+            Appointment retVal = GetAppointmentById(id);
+            retVal.Description = description;
+            retVal.Diagnosis = diagnosis;
+            db.SaveChanges();
+        }
+        public static DateTime DefaultDT
+        {
+            get
+            {
+                return Convert.ToDateTime("1753/2/2");
+            }
+        }
+        public static Examinations GetOnlyPhysicalExaminationByName(string name)
+        {
+            try
+            {
+                Examinations retVal = (from examination in db.Examinations
+                                       where examination.Name == name && examination.Type == "Phisycal"
+                                       select examination).First();
+                return retVal;
+            }
+            catch (InvalidOperationException)
+            {
+                return null;
+            }
+        }
+        public static Examinations GetOnlyLaboratoryExaminationByCodeAndName(int code, string name)
+        {
+            try
+            {
+                Examinations retVal = (from examination in db.Examinations
+                                       where examination.Name == name && examination.Type == "Laboratory" && examination.Code == code.ToString()
+                                       select examination).First();
+                return retVal;
+            }
+            catch (InvalidOperationException)
+            {
+                return null;
+            }
+
+        }
+        public static Examinations GetOnlyPhysicalExaminationByCodeAndName(int code, string name)
+        {
+            try
+            {
+                Examinations retVal = (from examination in db.Examinations
+                                       where examination.Name == name && examination.Type == "Phisycal" && examination.Code == code.ToString()
+                                       select examination).First();
+                return retVal;
+            }
+            catch (InvalidOperationException)
+            {
+                return null;
+            }
+        }
+
+
         public static List<LaboratoryExamination> GetLaboratoryExaminationByDateAndStatus(DateTime dt, string status)
         {
             List<LaboratoryExamination> results = new List<LaboratoryExamination>();
@@ -503,9 +706,38 @@ namespace BusinessLayer
 
             return results;
         }
+        public static int GetPhysicalExaminationsCount()
+        {
+            int maxID = (from physEx in db.PhysicalExamination
+                          select physEx.Id).Max();
+            return maxID;
+
+        }
+        public static int GetLaboratoryExaminationsCount()
+        {
+            int maxID = (from labEx in db.LaboratoryExamination
+                         select labEx.Id).Max();
+            return maxID;
+
+        }
+
+        public static void InsertPhysicalExamination(PhysicalExamination examination)
+        {
+            examination.Examinations = null;
+            db.PhysicalExamination.Add(examination);
+            try {
+                db.SaveChanges();
+            }
+            catch (System.Data.Entity.Infrastructure.DbUpdateException exc)
+            {
+                System.Console.WriteLine("Error: {1}", exc.Message);
+            }
+        }
+
         public static int InsertLaboratoryExamination(LaboratoryExamination examination)
         {
             int result = 0;
+            examination.Examinations = null;
             db.LaboratoryExamination.Add(examination);
             //result = db.SaveChanges();
 
@@ -519,13 +751,16 @@ namespace BusinessLayer
                 {
                     foreach (var validationError in validationErrors.ValidationErrors)
                     {
+                        
                         System.Console.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
                     }
                 }
+                return 1;
             }
             catch (System.Data.Entity.Infrastructure.DbUpdateException exc)
             {
                 System.Console.WriteLine("Error: {1}", exc.Message);
+                return 1;
             }
 
             return result;

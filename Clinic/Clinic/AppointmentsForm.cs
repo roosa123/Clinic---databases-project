@@ -47,6 +47,11 @@ namespace Przychodnia
 
         private void searchButton_Click(object sender, EventArgs e)
         {
+            GetAppointmentsData();
+        }
+
+        private void GetAppointmentsData()
+        {
             string[] ducky = doctorComboBox.SelectedItem.ToString().Split(' ');
             string firstName = ducky[0];
             string lastName = ducky[1];
@@ -56,6 +61,7 @@ namespace Przychodnia
             List<Appointment> appointmentsList = Common.GetAppointmentsForDoctor(firstName, lastName,
                 dt, statusComboBox.SelectedItem.ToString());
             FillAppointmentsGrid(appointmentsList);
+
         }
 
         private void FillAppointmentsGrid(List<Appointment> content)
@@ -105,6 +111,11 @@ namespace Przychodnia
                 MessageBox.Show("internal error - index parsing");
                 return null;
             }
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("Please select the appointment");
+                return null;
+            }
             catch ( NullReferenceException )
             {
                 MessageBox.Show("Please select the appointment");
@@ -117,14 +128,21 @@ namespace Przychodnia
         {
             Appointment appointment = GetSelectedAppointment();
             if (appointment != null)
-                OpenForm(new DetailedAppointmentForm(appointment, false));
+            {
+                DetailedAppointmentForm detailedAppointmentForm = new DetailedAppointmentForm(appointment, true);
+                DialogResult res = detailedAppointmentForm.ShowDialog(this);
+                if(res==DialogResult.Cancel)
+                    GetAppointmentsData();
+            }
         }
 
         private void appointmentDetailsButton_Click(object sender, EventArgs e)
         {
             Appointment appointment = GetSelectedAppointment();
-            if(appointment!=null)
+            if (appointment != null)
+            {
                 OpenForm(new DetailedAppointmentForm(appointment, false));
+            }
         }
     }
 }

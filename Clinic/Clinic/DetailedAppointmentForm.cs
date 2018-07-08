@@ -25,8 +25,6 @@ namespace Przychodnia
 
         private Appointment appointment;
         private Patient patient;
-        private List<Tuple<string,string>> ExaminationGridInfo;
-        private List<Tuple<string, string>> LaboratoryGridInfo;
         public DetailedAppointmentForm(Appointment appointment, bool editable)
         {
             InitializeComponent();
@@ -202,14 +200,19 @@ namespace Przychodnia
 
         private void patientButton_Click(object sender, EventArgs e)
         {
-            if(appointment.Patient!=null)
-                OpenForm(new DetailedPatientForm(appointment.Patient, false));
+            if (appointment.Patient != null)
+            {
+                DetailedPatientForm detailedPatientForm = new DetailedPatientForm(appointment.Patient, false);
+                detailedPatientForm.ShowDialog(this);
+            }
         }
 
         private void confirmButton_Click(object sender, EventArgs e)
         {
             //TODO update DB
-
+            string description = descriptionTextBox.Text;
+            string diagnosis = diagnosisTextBox.Text;
+            Common.SetDiagnosisAndDescpritionForAppointment(diagnosis, description, appointment.Id);
             Return();
         }
 
@@ -227,8 +230,10 @@ namespace Przychodnia
 
         private void addExaminationButton_Click(object sender, EventArgs e)
         {
-            OpenForm(new ExaminationForm(appointment));
-            //TODO add examination to datagrid
+            ExaminationForm examinationForm = new ExaminationForm(ref appointment);
+            DialogResult res = examinationForm.ShowDialog(this);
+            if (res == DialogResult.Cancel)
+                FillExaminationGrid();
         }
 
         private void examinationDetailsButton_Click(object sender, EventArgs e)
@@ -240,15 +245,20 @@ namespace Przychodnia
 
         private void addLaboratoryButton_Click(object sender, EventArgs e)
         {
-            OpenForm(new DetailedLaboratoryForm(appointment));
+            DetailedLaboratoryForm detailedLabForm = new DetailedLaboratoryForm(appointment);
+            detailedLabForm.ShowDialog(this);
+            FillLaboratoryGrid();
             //TODO add examination to datagrid
         }
 
         private void laboratoryDetailsButton_Click(object sender, EventArgs e)
         {
             LaboratoryExamination laboratory = GetSelectedLaboratoryExamination();
-            if(laboratory!=null)
-                OpenForm(new DetailedLaboratoryForm(laboratory, false));
+            if (laboratory != null)
+            {
+                DetailedLaboratoryForm detailedLabForm = new DetailedLaboratoryForm(laboratory, false);
+                detailedLabForm.ShowDialog(this);
+            }
         }
     }
 }
