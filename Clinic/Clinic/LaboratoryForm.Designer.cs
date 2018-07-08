@@ -41,9 +41,10 @@
             // 
             // executeButton
             // 
-            this.executeButton.Location = new System.Drawing.Point(896, 100);
+            this.executeButton.Location = new System.Drawing.Point(1195, 123);
+            this.executeButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.executeButton.Name = "executeButton";
-            this.executeButton.Size = new System.Drawing.Size(100, 32);
+            this.executeButton.Size = new System.Drawing.Size(133, 39);
             this.executeButton.TabIndex = 23;
             this.executeButton.Text = "Obsłuż";
             this.executeButton.UseVisualStyleBackColor = true;
@@ -51,27 +52,30 @@
             // 
             // fromDateTimePicker
             // 
-            this.fromDateTimePicker.Location = new System.Drawing.Point(66, 51);
+            this.fromDateTimePicker.Location = new System.Drawing.Point(88, 63);
+            this.fromDateTimePicker.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.fromDateTimePicker.Name = "fromDateTimePicker";
             this.fromDateTimePicker.ShowCheckBox = true;
-            this.fromDateTimePicker.Size = new System.Drawing.Size(159, 20);
+            this.fromDateTimePicker.Size = new System.Drawing.Size(211, 22);
             this.fromDateTimePicker.TabIndex = 17;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(30, 55);
+            this.label2.Location = new System.Drawing.Point(40, 68);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(30, 13);
+            this.label2.Size = new System.Drawing.Size(38, 17);
             this.label2.TabIndex = 16;
             this.label2.Text = "Data";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(248, 55);
+            this.label1.Location = new System.Drawing.Point(331, 68);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(37, 13);
+            this.label1.Size = new System.Drawing.Size(48, 17);
             this.label1.TabIndex = 15;
             this.label1.Text = "Status";
             // 
@@ -84,25 +88,28 @@
             "Zlecone",
             "Wykonane",
             "Anulowane",
-            "Zatwierdzone"});
-            this.statusComboBox.Location = new System.Drawing.Point(291, 50);
+            "Zakończone"});
+            this.statusComboBox.Location = new System.Drawing.Point(388, 62);
+            this.statusComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.statusComboBox.Name = "statusComboBox";
-            this.statusComboBox.Size = new System.Drawing.Size(101, 21);
+            this.statusComboBox.Size = new System.Drawing.Size(133, 24);
             this.statusComboBox.TabIndex = 14;
             // 
             // examinationsDataGrid
             // 
             this.examinationsDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.examinationsDataGrid.Location = new System.Drawing.Point(33, 100);
+            this.examinationsDataGrid.Location = new System.Drawing.Point(44, 123);
+            this.examinationsDataGrid.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.examinationsDataGrid.Name = "examinationsDataGrid";
-            this.examinationsDataGrid.Size = new System.Drawing.Size(857, 604);
+            this.examinationsDataGrid.Size = new System.Drawing.Size(1143, 743);
             this.examinationsDataGrid.TabIndex = 13;
             // 
             // showButton
             // 
-            this.showButton.Location = new System.Drawing.Point(896, 138);
+            this.showButton.Location = new System.Drawing.Point(1195, 170);
+            this.showButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.showButton.Name = "showButton";
-            this.showButton.Size = new System.Drawing.Size(100, 32);
+            this.showButton.Size = new System.Drawing.Size(133, 39);
             this.showButton.TabIndex = 26;
             this.showButton.Text = "Pokaż";
             this.showButton.UseVisualStyleBackColor = true;
@@ -110,9 +117,10 @@
             // 
             // searchButton
             // 
-            this.searchButton.Location = new System.Drawing.Point(435, 43);
+            this.searchButton.Location = new System.Drawing.Point(580, 53);
+            this.searchButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(100, 32);
+            this.searchButton.Size = new System.Drawing.Size(133, 39);
             this.searchButton.TabIndex = 27;
             this.searchButton.Text = "Szukaj";
             this.searchButton.UseVisualStyleBackColor = true;
@@ -120,9 +128,9 @@
             // 
             // LaboratoryForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.ClientSize = new System.Drawing.Size(1344, 897);
             this.Controls.Add(this.searchButton);
             this.Controls.Add(this.showButton);
             this.Controls.Add(this.executeButton);
@@ -131,6 +139,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.statusComboBox);
             this.Controls.Add(this.examinationsDataGrid);
+            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Name = "LaboratoryForm";
             this.Text = "Laboratorium";
             this.Controls.SetChildIndex(this.examinationsDataGrid, 0);

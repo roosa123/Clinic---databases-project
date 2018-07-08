@@ -1,6 +1,6 @@
 TODO:
 Angelika Marzec: Laboratorium
-Diana Tyrna: Rejestratorka + admin + logowanie (if needed) 
+Diana Tyrna: Rejestratorka + admin
 Karol Marszalek: Lekarz
 
 UC: 

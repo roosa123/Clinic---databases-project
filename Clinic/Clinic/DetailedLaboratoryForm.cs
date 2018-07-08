@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BusinessLayer;
 
 namespace Przychodnia
 {
@@ -26,7 +27,9 @@ namespace Przychodnia
             laboratorianPanel.Enabled = false;
             supervisorPanel.Enabled = false;
 
-            //TODO fill in textboxes
+            doctorLabel.Text = appointment.Doctor.Employee.Person.First_Name + " " + appointment.Doctor.Employee.Person.Last_Name;
+            patientLabel.Text = appointment.Patient.Person.First_Name + " " + appointment.Patient.Person.Last_Name;
+            requestDateLabel.Text = DateTime.Today.ToString();
         }
 
         public DetailedLaboratoryForm(LaboratoryExamination examination, bool editable)
@@ -34,7 +37,19 @@ namespace Przychodnia
             InitializeComponent();
             this.examination = examination;
 
-            //TODO download data from DB, fill in controls
+            examinationLabel.Text = examination.Examinations.Name;
+            codeLabel.Text = examination.ExaminationCode;
+            label1.Text = examination.Id.ToString();
+            doctorLabel.Text = examination.Appointment.Doctor.Employee.Person.First_Name + " " + examination.Appointment.Doctor.Employee.Person.Last_Name;
+            patientLabel.Text = examination.Appointment.Patient.Person.First_Name + " " + examination.Appointment.Patient.Person.Last_Name;
+            requestDateLabel.Text = examination.dt_Request.ToString();
+            doctorCommentTextBox.Text = examination.Doctor_Note;
+            laboratorianLabel.Text = examination.LaboratoryPerson.Employee.Person.First_Name + " " + examination.LaboratoryPerson.Employee.Person.Last_Name;
+            executionDateLlabel.Text = examination.dt_Complete_Cancel.ToString();
+            resultsTextBox.Text = examination.Result;
+            supervisorLabel.Text = examination.LaboratorySupervisor.Employee.Person.First_Name + " " + examination.LaboratorySupervisor.Employee.Person.Last_Name;
+            confirmationDateLabel.Text = examination.dt_Confirmation.ToString();
+            supervisorCommentTextBox.Text = examination.Supervisor_Note;
 
             doctorPanel.Enabled = false;
             supervisorPanel.Enabled = false;
@@ -73,13 +88,67 @@ namespace Przychodnia
 
         private void searchButton_Click(object sender, EventArgs e)
         {
-            OpenForm(new ExaminationListForm(examination));
-            //TODO update controls values
+            OpenForm(new ExaminationListForm(ref examination));
+
+            examinationLabel.Text = examination.Examinations.Name;
+            codeLabel.Text = examination.ExaminationCode;
+            label1.Text = examination.Id.ToString();
+            doctorCommentTextBox.Text = examination.Doctor_Note;
+            laboratorianLabel.Text = examination.LaboratoryPerson.Employee.Person.First_Name + " " + examination.LaboratoryPerson.Employee.Person.Last_Name;
+            executionDateLlabel.Text = examination.dt_Complete_Cancel.ToString();
+            resultsTextBox.Text = examination.Result;
+            supervisorLabel.Text = examination.LaboratorySupervisor.Employee.Person.First_Name + " " + examination.LaboratorySupervisor.Employee.Person.Last_Name;
+            confirmationDateLabel.Text = examination.dt_Confirmation.ToString();
+            supervisorCommentTextBox.Text = examination.Supervisor_Note;
         }
 
         private void requestButton_Click(object sender, EventArgs e)
         {
-            //TODO update examination and appointment objects
+            examination.Examinations.Name = examinationLabel.Text;
+            examination.ExaminationCode = codeLabel.Text;
+            int number = 0;
+            int.TryParse(label1.Text, out number);
+            examination.Id = number;
+
+            string[] ducky = doctorLabel.Text.Split(' ');
+            examination.Appointment.Doctor.Employee.Person.First_Name = ducky[0];
+            examination.Appointment.Doctor.Employee.Person.Last_Name = ducky[1];
+
+            ducky = patientLabel.Text.Split(' ');
+
+            examination.Appointment.Patient.Person.First_Name = ducky[0];
+            examination.Appointment.Patient.Person.Last_Name = ducky[1];
+
+            DateTime date;
+            DateTime.TryParse(requestDateLabel.Text, out date);
+
+            examination.dt_Request = date;
+            examination.Doctor_Note = doctorCommentTextBox.Text;
+
+            ducky = laboratorianLabel.Text.Split(' ');
+
+            examination.LaboratoryPerson.Employee.Person.First_Name = ducky[0];
+            examination.LaboratoryPerson.Employee.Person.Last_Name = ducky[1];
+
+            DateTime.TryParse(executionDateLlabel.Text, out date);
+
+            examination.dt_Complete_Cancel = date;
+            examination.Result = resultsTextBox.Text;
+
+            ducky = supervisorLabel.Text.Split(' ');
+
+            examination.LaboratorySupervisor.Employee.Person.First_Name = ducky[0];
+            examination.LaboratorySupervisor.Employee.Person.Last_Name = ducky[1];
+
+            DateTime.TryParse(confirmationDateLabel.Text, out date);
+
+            examination.dt_Confirmation = date;
+            examination.Supervisor_Note = supervisorCommentTextBox.Text;
+
+            if (Common.InsertLaboratoryExamination(examination) != 0)
+                MessageBox.Show("Zlecono badanie.");
+            else
+                MessageBox.Show("Nie udało się zlecić badania!");
 
             Return();
         }
@@ -91,14 +160,28 @@ namespace Przychodnia
 
         private void executeButton_Click(object sender, EventArgs e)
         {
-            //TODO update examination and appointment objects
+            examination.Status = "done";
+            examination.Result = resultsTextBox.Text;
+            examination.dt_Complete_Cancel = DateTime.Today;
+
+            if (Common.UpdateLaboratoryExamination(examination) != 0)
+                MessageBox.Show("Badanie wykonano.");
+            else
+                MessageBox.Show("Nie udało się wykonać badania!");
 
             Return();
         }
 
         private void cancelButton1_Click(object sender, EventArgs e)
         {
-            //TODO update examination and appointment objects
+            examination.Status = "cancelled";
+            examination.Result = resultsTextBox.Text;
+            examination.dt_Complete_Cancel = DateTime.Today;
+
+            if (Common.UpdateLaboratoryExamination(examination) != 0)
+                MessageBox.Show("Badanie anulowano.");
+            else
+                MessageBox.Show("Nie udało się anulować badania!");
 
             Return();
         }
@@ -110,14 +193,28 @@ namespace Przychodnia
 
         private void confirmButton_Click(object sender, EventArgs e)
         {
-            //TODO update examination and appointment objects
+            examination.Status = "confirmed";
+            examination.Supervisor_Note = supervisorCommentTextBox.Text;
+            examination.dt_Confirmation = DateTime.Today;
+
+            if (Common.UpdateLaboratoryExamination(examination) != 0)
+                MessageBox.Show("Badanie potwierdzono.");
+            else
+                MessageBox.Show("Nie udało się potwierdzić badania!");
 
             Return();
         }
 
         private void cancelButton2_Click(object sender, EventArgs e)
         {
-            //TODO update examination and appointment objects
+            examination.Status = "cancelled";
+            examination.Supervisor_Note = supervisorCommentTextBox.Text;
+            examination.dt_Complete_Cancel = DateTime.Today;
+
+            if (Common.UpdateLaboratoryExamination(examination) != 0)
+                MessageBox.Show("Badanie anulowano.");
+            else
+                MessageBox.Show("Nie udało się anulować badania!");
 
             Return();
         }

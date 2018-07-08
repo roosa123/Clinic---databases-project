@@ -50,7 +50,7 @@ namespace Przychodnia
 
         private void searchButton_Click(object sender, EventArgs e)
         {
-            OpenForm(new ExaminationListForm(examination));
+            OpenForm(new ExaminationListForm(ref examination));
             //TODO update controls
         }
 
