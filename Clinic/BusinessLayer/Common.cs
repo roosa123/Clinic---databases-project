@@ -115,23 +115,23 @@ namespace BusinessLayer
             {
                 case 0:
                     result = from employee in db.Employee
-                                 where employee.Position == role
-                                 select employee;
+                             where employee.Position == role && employee.dt_AccountValidityFrom == null && employee.dt_AccountValidityTo == null
+                             select employee;
                     break;
                 case 1:
                     result = from employee in db.Employee
-                                 where employee.Position == role && employee.dt_AccountValidityFrom <= date && employee.dt_AccountValidityTo >= date
-                                 select employee;
+                             where employee.Position == role && employee.dt_AccountValidityFrom != null && employee.dt_AccountValidityTo != null
+                             select employee;
                     break;
                 case 2:
                     result = from employee in db.Employee
-                                 where employee.Position == role && employee.dt_AccountValidityFrom <= date && employee.dt_AccountValidityTo >= date
-                                 select employee;
+                             where employee.Position == role && employee.dt_AccountValidityFrom <= date && employee.dt_AccountValidityTo >= date
+                             select employee;
                     break;
                 case 3:
                     result = from employee in db.Employee
-                                 where employee.Position == role && (employee.dt_AccountValidityFrom >= date ||  employee.dt_AccountValidityTo <= date)
-                                 select employee;
+                             where employee.Position == role && (employee.dt_AccountValidityFrom >= date ||  employee.dt_AccountValidityTo <= date)
+                             select employee;
                     break;
                 default:
                     result = null;
@@ -148,6 +148,77 @@ namespace BusinessLayer
 
             return results;
         }
+        public static int CheckLogin(string login)
+        {
+            var logCheck = (from employee in db.Employee
+                            where employee.Login == login
+                            select employee).FirstOrDefault();
+
+            if (logCheck != null)
+                return -1;
+            else
+                return 0;
+        }
+        public static int DeleteLaboratorySupervisor(Employee user)
+        {
+            var res = (from klab in db.LaboratorySupervisor
+                       where klab.EmployeeId == user.Id
+                       select klab).FirstOrDefault();
+
+            db.LaboratorySupervisor.Remove(res);
+
+            return db.SaveChanges();
+        }
+        public static int InsertDoctor(Doctor user)
+        {
+            db.Doctor.Add(user);
+            return db.SaveChanges();
+        }
+        public static int InsertLaboratoryPerson(LaboratoryPerson user)
+        {
+            db.LaboratoryPerson.Add(user);
+            return db.SaveChanges();
+        }
+        public static int InsertRegistrar(RegistrationPerson user)
+        {
+            db.RegistrationPerson.Add(user);
+            return db.SaveChanges();
+        }
+        public static int DeleteLaboratoryPerson(Employee user)
+        {
+            var res = (from lab in db.LaboratoryPerson
+                       where lab.EmployeeId == user.Id
+                       select lab).FirstOrDefault();
+
+            db.LaboratoryPerson.Remove(res);
+
+            return db.SaveChanges();
+        }
+        public static int DeleteDoctor(Employee user)
+        {
+            var res = (from doctor in db.Doctor
+                       where doctor.EmployeeId == user.Id
+                       select doctor).FirstOrDefault();
+
+            db.Doctor.Remove(res);
+
+            return db.SaveChanges();
+        }
+        public static int InsertLaboratorySupervisor(LaboratorySupervisor user)
+        {
+            db.LaboratorySupervisor.Add(user);
+            return db.SaveChanges();
+        }
+        public static int DeleteRegistrar(Employee user)
+        {
+            var res = (from registrar in db.RegistrationPerson
+                       where registrar.EmployeeId == user.Id
+                       select registrar).FirstOrDefault();
+
+            db.RegistrationPerson.Remove(res);
+
+            return db.SaveChanges();
+        }
         public static int InsertPatient(Patient patient)
         {
             db.Patient.Add(patient);
@@ -159,8 +230,8 @@ namespace BusinessLayer
             Doctor retVal = (from doctor in db.Doctor
                              join employee in db.Employee on doctor.EmployeeId equals employee.Id
                              join person in db.Person on employee.PersonId equals person.Id
-                             where person.Id == id
-                             select doctor).First();
+                             where employee.Id == id
+                             select doctor).FirstOrDefault();
             return retVal;
         }
         public static int UpdatePassword(Employee user)
@@ -169,7 +240,7 @@ namespace BusinessLayer
             Employee res = (from employee in db.Employee
                              join person in db.Person on employee.PersonId equals person.Id
                              where employee.Id == user.Id
-                             select employee).SingleOrDefault();
+                             select employee).FirstOrDefault();
 
             if (res == null)
                 return 0;
@@ -178,13 +249,17 @@ namespace BusinessLayer
 
             return db.SaveChanges();
         }
+        public static int InsertEmployee(Employee user)
+        {
+            db.Employee.Add(user);
+            return db.SaveChanges();
+        }
         public static int UpdateEmployee(Employee user)
         {
-            var res = (from employee in db.Employee
-                       join person in db.Person on employee.Id equals person.Id
-                       join address in db.Address on person.AddressId equals address.Id
-                       where employee.Id == person.Id
-                       select employee).SingleOrDefault();
+             var res = (from employee in db.Employee
+                        join person in db.Person on employee.PersonId equals person.Id
+                        where employee.Position == user.Position && person.First_Name == user.Person.First_Name && person.Last_Name == user.Person.Last_Name
+                        select employee).FirstOrDefault();
 
             if (res == null)
                 return 0;
@@ -193,12 +268,6 @@ namespace BusinessLayer
             res.Person.Last_Name = user.Person.Last_Name;
             res.Person.Date_of_birth = user.Person.Date_of_birth;
             res.Person.Sex = user.Person.Sex;
-            res.Person.Address.Country = user.Person.Address.Country;
-            res.Person.Address.City = user.Person.Address.City;
-            res.Person.Address.Post_Code = user.Person.Address.Post_Code;
-            res.Person.Address.Street = user.Person.Address.Street;
-            res.Person.Address.House_Number = user.Person.Address.House_Number;
-            res.Person.Address.Flat_Number = user.Person.Address.Flat_Number;
             res.Person.Phone_number = user.Person.Phone_number;
 
             return db.SaveChanges();
@@ -208,7 +277,7 @@ namespace BusinessLayer
             Employee retVal = (from employee in db.Employee
                               join person in db.Person on employee.PersonId equals person.Id
                               where employee.Id == id
-                              select employee).First();
+                              select employee).FirstOrDefault();
             return retVal;
         }
         public static LaboratoryExamination GetLaboratoryExaminationByName(string name)
@@ -216,7 +285,7 @@ namespace BusinessLayer
             LaboratoryExamination retVal = (from examination in db.Examinations
                                           join labEx in db.LaboratoryExamination on examination.Code equals labEx.ExaminationCode
                                           where examination.Name == name
-                                          select labEx).First();
+                                          select labEx).FirstOrDefault();
             return retVal;
         }
         public static PhysicalExamination GetPhysicalExaminationByName(string name)
@@ -224,7 +293,7 @@ namespace BusinessLayer
             PhysicalExamination retVal = (from examination in db.Examinations
                                           join physEx in db.PhysicalExamination on examination.Code equals physEx.ExaminationCode
                                           where examination.Name == name
-                                          select physEx).First();
+                                          select physEx).FirstOrDefault();
             return retVal;
         }
         public static LaboratoryExamination GetLaboratoryExaminationByCodeAndName(int code, string name)
@@ -232,7 +301,7 @@ namespace BusinessLayer
             LaboratoryExamination retVal = (from examination in db.Examinations
                                           join physEx in db.LaboratoryExamination on examination.Code equals physEx.ExaminationCode
                                           where examination.Name == name && physEx.ExaminationCode == code.ToString()
-                                          select physEx).First();
+                                          select physEx).FirstOrDefault();
             return retVal;
         }
         public static PhysicalExamination GetPhysicalExaminationByCodeAndName(int code, string name)
@@ -240,7 +309,7 @@ namespace BusinessLayer
             PhysicalExamination retVal = (from examination in db.Examinations
                                           join physEx in db.PhysicalExamination on examination.Code equals physEx.ExaminationCode
                                           where examination.Name == name && physEx.ExaminationCode == code.ToString()
-                                          select physEx).First();
+                                          select physEx).FirstOrDefault();
             return retVal;
         }
         public static List<PhysicalExamination> GetPhysExaminationByPatinetId(int id)
@@ -309,7 +378,7 @@ namespace BusinessLayer
                        join person in db.Person on el.PersonId equals person.Id
                        join address in db.Address on person.AddressId equals address.Id
                        where el.Id == patient.Id
-                       select el).SingleOrDefault();
+                       select el).FirstOrDefault();
 
             if(res == null)
                 return 0;
@@ -334,7 +403,7 @@ namespace BusinessLayer
         {
             var res = (from el in db.LaboratoryExamination
                        where el.Id == examination.Id
-                       select el).SingleOrDefault();
+                       select el).FirstOrDefault();
 
             if (res == null)
                 return 0;
@@ -353,7 +422,7 @@ namespace BusinessLayer
             Patient result = (from patient in db.Patient
                              join person in db.Person on patient.PersonId equals person.Id
                              where person.First_Name == firstName && person.Last_Name == lastName && patient.PESEL == PESEL
-                             select patient).First();
+                             select patient).FirstOrDefault();
             return result;
         }
         public static List<Patient> GetPatientByName(string firstName, string lastName)
@@ -407,7 +476,7 @@ namespace BusinessLayer
             PhysicalExamination retVal = (from examination in db.Examinations
                                           join physEx in db.PhysicalExamination on examination.Code equals physEx.ExaminationCode
                                           where physEx.ExaminationCode == code.ToString()
-                                          select physEx).First();
+                                          select physEx).FirstOrDefault();
             return retVal;
         }
         public static LaboratoryExamination GetLaboratoryExaminationByCode(int code)
@@ -415,7 +484,7 @@ namespace BusinessLayer
             LaboratoryExamination retVal = (from examination in db.Examinations
                                           join labEx in db.LaboratoryExamination on examination.Code equals labEx.ExaminationCode
                                           where labEx.ExaminationCode == code.ToString()
-                                          select labEx).First();
+                                          select labEx).FirstOrDefault();
             return retVal;
         }
         public static List<LaboratoryExamination> GetLaboratoryExaminationByDateAndStatus(DateTime dt, string status)

@@ -46,7 +46,7 @@ namespace BusinessLayer
             passwd = BitConverter.ToString(sha.ComputeHash(Encoding.UTF8.GetBytes(passwd)));
             passwd = passwd.Replace("-", "");
             if (result.Count() == 1)
-                return passwd.ToUpper() == list[0].Password.ToUpper();
+                return (list[0].Password == null ? false : passwd.ToUpper() == list[0].Password.ToUpper());
             return false;
         }
 

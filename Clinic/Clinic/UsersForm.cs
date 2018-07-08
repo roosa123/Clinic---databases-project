@@ -21,6 +21,13 @@ namespace Przychodnia
         {
             InitializeComponent();
             InitializeGrid();
+            InitializeCombos();
+        }
+
+        private void InitializeCombos()
+        {
+            statusComboBox.SelectedItem = statusComboBox.Items[0];
+            roleComboBox.SelectedItem = roleComboBox.Items[0];
         }
 
         private void InitializeGrid()
@@ -34,7 +41,33 @@ namespace Przychodnia
 
         private void searchButton_Click(object sender, EventArgs e)
         {
-            List<Employee> employees = Common.GetEmployeeByRoleAndStatus(roleComboBox.SelectedItem.ToString(), statusComboBox.SelectedIndex);
+            string role = "";
+
+            switch (roleComboBox.SelectedIndex)
+            {
+                case 0:
+                    role = "RegistrationPerson";
+                    break;
+
+                case 1:
+                    role = "Doctor";
+                    break;
+
+                case 2:
+                    role = "LaboratoryPerson";
+                    break;
+
+                case 3:
+                    role = "LaboratorySupervisor";
+                    break;
+                case 4:
+                    role = "Admin";
+                    break;
+                default:
+                    return;
+            }
+
+            List<Employee> employees = Common.GetEmployeeByRoleAndStatus(role, statusComboBox.SelectedIndex);
             FillGrid(employees);
         }
 

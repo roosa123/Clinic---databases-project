@@ -64,8 +64,13 @@ namespace Przychodnia
         protected void Return()
         {
             userClose = true;
-            this.Owner.Location = this.Location;
-            this.Owner.Show();
+
+            if(Owner != null)
+            {
+                this.Owner.Location = this.Location;
+                this.Owner.Show();
+            }
+
             this.Close();
         }
 
