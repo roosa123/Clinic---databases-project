@@ -39,9 +39,9 @@ namespace Przychodnia
         {
             
             gridScheme = new GridScheme();
-            gridScheme.AddColumn("firstName", "Imię pacjenta").AddColumn("lastName", "Nazwisko pacjenta").AddColumn("desc", "Opis");
-            gridScheme.AddColumn("diag", "Diagnoza").AddColumn("status", "Status").AddColumn("registerDT", "Data rejestracji").AddColumn("completeDT", "Data wizyty");
-            gridScheme.AddColumn("id", "ID wizyty", true);
+            gridScheme.AddColumn("firstName", "Patient first name").AddColumn("lastName", "Patient last name").AddColumn("desc", "Description");
+            gridScheme.AddColumn("diag", "Diagnosis").AddColumn("status", "Status").AddColumn("registerDT", "Register Date").AddColumn("completeDT", "Complete Date");
+            gridScheme.AddColumn("id", "Appointment ID", true);
             custromGrid = new GridWrapper(appointmentsDataGrid, gridScheme);
         }
 
@@ -55,9 +55,9 @@ namespace Przychodnia
             string[] ducky = doctorComboBox.SelectedItem.ToString().Split(' ');
             string firstName = ducky[0];
             string lastName = ducky[1];
-            DateTime dt = fromDateTimePicker.Value;
+            DateTime? dt = fromDateTimePicker.Value;
             if (!fromDateTimePicker.Checked)
-                dt = DateTime.MinValue;
+                dt = null;
             List<Appointment> appointmentsList = Common.GetAppointmentsForDoctor(firstName, lastName,
                 dt, statusComboBox.SelectedItem.ToString());
             FillAppointmentsGrid(appointmentsList);

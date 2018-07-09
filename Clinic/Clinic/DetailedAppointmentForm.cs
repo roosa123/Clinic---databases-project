@@ -213,6 +213,7 @@ namespace Przychodnia
             string description = descriptionTextBox.Text;
             string diagnosis = diagnosisTextBox.Text;
             Common.SetDiagnosisAndDescpritionForAppointment(diagnosis, description, appointment.Id);
+            Common.SetStateForAppointment("Wykonana", appointment.Id);
             Return();
         }
 

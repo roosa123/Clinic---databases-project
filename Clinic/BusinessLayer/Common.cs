@@ -78,7 +78,7 @@ namespace BusinessLayer
             //clinicEntities db = new clinicEntities();
             var result = from appointment in db.Appointment
                              where appointment.DoctorId == doctor.Id && appointment.Status==state
-                             && appointment.dt_Complete_Cancel >= fromDT && appointment.dt_Complete_Cancel <= toDT
+                             && appointment.dt_Complete_Cancel >= fromDT && appointment.dt_Complete_Cancel<= toDT
                              select appointment;
             foreach (var item in result)
             {
@@ -99,7 +99,7 @@ namespace BusinessLayer
             //clinicEntities db = new clinicEntities();
             var result = from appointment in db.Appointment
                          where appointment.DoctorId == doctor.Id
-                         && appointment.dt_Complete_Cancel >= fromDT && appointment.dt_Complete_Cancel <= toDT
+                         && appointment.dt_Complete_Cancel >= fromDT && appointment.dt_Complete_Cancel<= toDT
                          select appointment;
             foreach (var item in result)
             {
@@ -658,6 +658,12 @@ namespace BusinessLayer
             Appointment retVal = GetAppointmentById(id);
             retVal.Description = description;
             retVal.Diagnosis = diagnosis;
+            db.SaveChanges();
+        }
+        public static void SetStateForAppointment(string state, int id)
+        {
+            Appointment retVal = GetAppointmentById(id);
+            retVal.Status = state;
             db.SaveChanges();
         }
 
