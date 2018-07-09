@@ -68,11 +68,17 @@ namespace BusinessLayer
         public static List<Appointment> GetAppointmentsForDoctor(Doctor doctor, DateTime dateTime, string state)
         {
             List<Appointment> appointments = new List<Appointment>();
+
+            // get appointments from this day - from 0:00 to 23:59
+            DateTime reference = dateTime;
+            DateTime fromDT = new DateTime(reference.Year, reference.Month, reference.Day);
+            reference = reference.AddDays(1.0);
+            DateTime toDT = new DateTime(reference.Year, reference.Month, reference.Day);
+
             //clinicEntities db = new clinicEntities();
             var result = from appointment in db.Appointment
-                             where appointment.DoctorId == doctor.Id
-                             && appointment.Status==state
-                             && appointment.dt_Register >= dateTime
+                             where appointment.DoctorId == doctor.Id && appointment.Status==state
+                             && appointment.dt_Complete_Cancel >= fromDT && appointment.dt_Complete_Cancel <= toDT
                              select appointment;
             foreach (var item in result)
             {
@@ -83,10 +89,17 @@ namespace BusinessLayer
         public static List<Appointment> GetAppointmentsForDoctor(Doctor doctor, DateTime dateTime)
         {
             List<Appointment> appointments = new List<Appointment>();
+
+            // get appointments from this day - from 0:00 to 23:59
+            DateTime reference = dateTime;
+            DateTime fromDT = new DateTime(reference.Year, reference.Month, reference.Day);
+            reference = reference.AddDays(1.0);
+            DateTime toDT = new DateTime(reference.Year, reference.Month, reference.Day);
+
             //clinicEntities db = new clinicEntities();
             var result = from appointment in db.Appointment
                          where appointment.DoctorId == doctor.Id
-                         && appointment.dt_Complete_Cancel >= dateTime
+                         && appointment.dt_Complete_Cancel >= fromDT && appointment.dt_Complete_Cancel <= toDT
                          select appointment;
             foreach (var item in result)
             {
@@ -94,11 +107,44 @@ namespace BusinessLayer
             }
             return appointments;
         }
-        public static List<Appointment> GetAppointmentsForDoctor(string firstName, string lastName,DateTime dateTime, string state)
+        public static List<Appointment> GetAppointmentsForDoctor(string firstName, string lastName, DateTime? dateTime, string state)
         {
-            if (state == "-")
-                return GetAppointmentsForDoctor(GetDoctorByName(firstName, lastName), dateTime);
-            return GetAppointmentsForDoctor(GetDoctorByName(firstName, lastName), dateTime, state);
+            if (state == "-" && dateTime != null)
+                return GetAppointmentsForDoctor(GetDoctorByName(firstName, lastName), dateTime.Value);
+            else if (state != "-" && dateTime != null)
+                return GetAppointmentsForDoctor(GetDoctorByName(firstName, lastName), dateTime.Value, state);
+            else if (state == "-" && dateTime == null)
+                return GetAppointmentsForDoctor(GetDoctorByName(firstName, lastName));
+            else
+                return GetAppointmentsForDoctor(GetDoctorByName(firstName, lastName), state);
+        }
+        private static List<Appointment> GetAppointmentsForDoctor(Doctor doctor, string state)
+        {
+            List<Appointment> appointments = new List<Appointment>();
+            //clinicEntities db = new clinicEntities();
+            var result = from appointment in db.Appointment
+                         where appointment.DoctorId == doctor.Id && appointment.Status == state
+                         select appointment;
+
+            foreach (var item in result)
+            {
+                appointments.Add(item);
+            }
+            return appointments;
+        }
+        private static List<Appointment> GetAppointmentsForDoctor(Doctor doctor)
+        {
+            List<Appointment> appointments = new List<Appointment>();
+            //clinicEntities db = new clinicEntities();
+            var result = from appointment in db.Appointment
+                         where appointment.DoctorId == doctor.Id
+                         select appointment;
+
+            foreach (var item in result)
+            {
+                appointments.Add(item);
+            }
+            return appointments;
         }
         public static Appointment GetAppointmentById(int id)
         {
@@ -117,6 +163,29 @@ namespace BusinessLayer
 
         }
 
+        public static LaboratoryExamination GetLaboratoryExaminationById(int id)
+        {
+            LaboratoryExamination retVal = (from examination in db.LaboratoryExamination
+                                            where examination.Id == id
+                                            select examination).FirstOrDefault();
+            return retVal;
+        }
+        public static List<LaboratoryExamination> GetLaboratoryExaminationByStatus(string status)
+        {
+            List<LaboratoryExamination> results = new List<LaboratoryExamination>();
+
+            var result = from examination in db.Examinations
+                         join labEx in db.LaboratoryExamination on examination.Code equals labEx.ExaminationCode
+                         where labEx.Status == status
+                         select labEx;
+
+            foreach (var item in result)
+            {
+                results.Add(item);
+            }
+
+            return results;
+        }
         public static List<Employee> GetEmployees()
         {
             List<Employee> employees = new List<Employee>();
@@ -495,8 +564,8 @@ namespace BusinessLayer
             appointment.Doctor = GetDoctorByName(firstName, lastName);
             appointment.DoctorId = appointment.Doctor.Id;
 
-            appointment.dt_Register = date;
-            appointment.dt_Complete_Cancel = DefaultDT;
+            appointment.dt_Register = DateTime.Today;
+            appointment.dt_Complete_Cancel = date;
             appointment.Patient = patient;
             appointment.PatientId = appointment.Patient.Id;
             appointment.Description = "";
@@ -535,7 +604,7 @@ namespace BusinessLayer
                                           join labEx in db.LaboratoryExamination on examination.Code equals labEx.ExaminationCode
                                           where labEx.ExaminationCode == code.ToString()
                                           select labEx).FirstOrDefault();
-            return retVal;
+                return retVal;
             }
             catch (InvalidOperationException)
             {
@@ -641,9 +710,15 @@ namespace BusinessLayer
         {
             List<LaboratoryExamination> results = new List<LaboratoryExamination>();
 
+            // get appointments from this day - from 0:00 to 23:59
+            DateTime reference = dt;
+            DateTime fromDT = new DateTime(reference.Year, reference.Month, reference.Day);
+            reference = reference.AddDays(1.0);
+            DateTime toDT = new DateTime(reference.Year, reference.Month, reference.Day);
+
             var result = from examination in db.Examinations
                                             join labEx in db.LaboratoryExamination on examination.Code equals labEx.ExaminationCode
-                                            where labEx.dt_Request == dt && labEx.Status == status
+                                            where labEx.dt_Request >= fromDT && labEx.dt_Request <= toDT && labEx.Status == status
                                             select labEx;
 
             foreach(var item in result)

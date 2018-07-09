@@ -20,7 +20,7 @@ namespace Przychodnia
         public LaboratoryForm()
         {
             InitializeComponent();
-            if (Program.CurrentUser.Position == "Laboratorian")
+            if (Program.CurrentUser.Position == "LaboratoryPerson")
                 statusComboBox.SelectedItem = "Zlecone";
             else
                 statusComboBox.SelectedItem = "Wykonane";
@@ -31,21 +31,20 @@ namespace Przychodnia
         private void InitializeGrid()
         {
             examinationGridScheme = new GridScheme();
-            examinationGridScheme.AddColumn("exCode", "Examination Code").AddColumn("name", "Name").AddColumn("type", "Type").AddColumn("res", "Result");
+            examinationGridScheme.AddColumn("exCode", "Examination Code").AddColumn("name", "Name").AddColumn("lab", "Laboratory Person").AddColumn("reqDT", "Request Date").AddColumn("complDT", "Complete Date").AddColumn("confDT", "Confirmation Date").AddColumn("res", "Result").AddColumn("status", "Status");
             examinationGridScheme.AddColumn("id", "Examination ID", true);
             examinationCustomGrid = new GridWrapper(examinationsDataGrid, examinationGridScheme);
         }
 
         private void searchButton_Click(object sender, EventArgs e)
         {
-            DateTime dt = fromDateTimePicker.Value;
+            string status = statusComboBox.SelectedItem.ToString();
+            List<LaboratoryExamination> examinationsList;
 
             if (!fromDateTimePicker.Checked)
-                dt = DateTime.MinValue;
-
-            string status = statusComboBox.SelectedItem.ToString();
-
-            List<LaboratoryExamination> examinationsList = Common.GetLaboratoryExaminationByDateAndStatus(dt, status);
+                examinationsList = Common.GetLaboratoryExaminationByStatus(status);
+            else
+                examinationsList = Common.GetLaboratoryExaminationByDateAndStatus(fromDateTimePicker.Value, status);
 
             FillExaminationGrid(examinationsList);
         }
@@ -56,13 +55,15 @@ namespace Przychodnia
             foreach (LaboratoryExamination ex in examinationsList)
             {
                 List<string> row = new List<string>();
-                row.Add(ex.dt_Request.ToString());
-                row.Add(ex.LaboratoryPerson.Employee.Person.First_Name + " " + ex.LaboratoryPerson.Employee.Person.Last_Name);
-                row.Add(ex.Status);
-                row.Add(ex.Result);
-                row.Add(ex.Supervisor_Note);
-                row.Add(ex.Doctor_Note);
                 row.Add(ex.ExaminationCode);
+                row.Add(ex.Examinations.Name);
+                row.Add(ex.LaboratoryPerson.Employee.Person.First_Name + " " + ex.LaboratoryPerson.Employee.Person.Last_Name);
+                row.Add(ex.dt_Request.ToString());
+                row.Add(ex.dt_Complete_Cancel.ToString());
+                row.Add(ex.dt_Confirmation.ToString());
+                row.Add(ex.Result);
+                row.Add(ex.Status);
+                row.Add(ex.Id.ToString());
                 scheme.Add(new Tuple<List<string>, bool>(row, true));
             }
             examinationCustomGrid.SetRows(scheme);
@@ -70,7 +71,7 @@ namespace Przychodnia
 
         private LaboratoryExamination GetLaboratoryExaminationFromGrid()
         {
-            int code;
+            int id;
             int cellsNo = examinationCustomGrid.Grid.GetCellCount(DataGridViewElementStates.Selected);
             if (cellsNo == 0)
             {
@@ -82,8 +83,8 @@ namespace Przychodnia
             {
                 var cells = examinationCustomGrid.Grid.SelectedCells;
                 var row = cells[0].OwningRow;
-                var IDcell = row.Cells[0];
-                code = int.Parse(IDcell.Value.ToString());
+                var IDcell = row.Cells[row.Cells.Count - 1];
+                id = int.Parse(IDcell.Value.ToString());
                 foreach (DataGridViewCell cell in cells)
                 {
                     if (cell.OwningRow != row)
@@ -108,15 +109,17 @@ namespace Przychodnia
                 MessageBox.Show("Please select the appointment");
                 return null;
             }
-            return Common.GetLaboratoryExaminationByCode(code);
+            return Common.GetLaboratoryExaminationById(id);
         }
 
         private void executeButton_Click(object sender, EventArgs e)
         {
             LaboratoryExamination examination = GetLaboratoryExaminationFromGrid();
 
-            if(examination != null)
+            if (examination != null)
                 OpenForm(new DetailedLaboratoryForm(examination, true));
+            else
+                MessageBox.Show("Nierozpoznane ID badania.");
         }
 
         private void showButton_Click(object sender, EventArgs e)

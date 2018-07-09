@@ -62,7 +62,7 @@
             // codeTextBox
             // 
             this.codeTextBox.Location = new System.Drawing.Point(133, 43);
-            this.codeTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.codeTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.codeTextBox.Name = "codeTextBox";
             this.codeTextBox.Size = new System.Drawing.Size(132, 22);
             this.codeTextBox.TabIndex = 2;
@@ -70,7 +70,7 @@
             // nameTextBox
             // 
             this.nameTextBox.Location = new System.Drawing.Point(448, 43);
-            this.nameTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nameTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.nameTextBox.Name = "nameTextBox";
             this.nameTextBox.Size = new System.Drawing.Size(243, 22);
             this.nameTextBox.TabIndex = 3;
@@ -78,7 +78,7 @@
             // searchButton
             // 
             this.searchButton.Location = new System.Drawing.Point(757, 34);
-            this.searchButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.searchButton.Margin = new System.Windows.Forms.Padding(4);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(133, 39);
             this.searchButton.TabIndex = 4;
@@ -90,7 +90,7 @@
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(39, 90);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(1269, 746);
             this.dataGridView1.TabIndex = 5;
@@ -98,7 +98,7 @@
             // selectButton
             // 
             this.selectButton.Location = new System.Drawing.Point(1033, 843);
-            this.selectButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.selectButton.Margin = new System.Windows.Forms.Padding(4);
             this.selectButton.Name = "selectButton";
             this.selectButton.Size = new System.Drawing.Size(133, 39);
             this.selectButton.TabIndex = 27;
@@ -109,7 +109,7 @@
             // returnButton
             // 
             this.returnButton.Location = new System.Drawing.Point(1175, 843);
-            this.returnButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.returnButton.Margin = new System.Windows.Forms.Padding(4);
             this.returnButton.Name = "returnButton";
             this.returnButton.Size = new System.Drawing.Size(133, 39);
             this.returnButton.TabIndex = 28;
@@ -121,6 +121,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1344, 897);
             this.Controls.Add(this.returnButton);
             this.Controls.Add(this.selectButton);
@@ -130,7 +131,7 @@
             this.Controls.Add(this.codeTextBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "ExaminationListForm";
             this.Text = "Badania";
             this.Controls.SetChildIndex(this.label1, 0);

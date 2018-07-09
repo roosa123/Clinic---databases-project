@@ -141,7 +141,7 @@
             // doctorCommentTextBox
             // 
             this.doctorCommentTextBox.Location = new System.Drawing.Point(521, 23);
-            this.doctorCommentTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.doctorCommentTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.doctorCommentTextBox.Name = "doctorCommentTextBox";
             this.doctorCommentTextBox.Size = new System.Drawing.Size(644, 168);
             this.doctorCommentTextBox.TabIndex = 43;
@@ -150,7 +150,7 @@
             // returnButton1
             // 
             this.returnButton1.Location = new System.Drawing.Point(1175, 69);
-            this.returnButton1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.returnButton1.Margin = new System.Windows.Forms.Padding(4);
             this.returnButton1.Name = "returnButton1";
             this.returnButton1.Size = new System.Drawing.Size(133, 39);
             this.returnButton1.TabIndex = 44;
@@ -161,7 +161,7 @@
             // requestButton
             // 
             this.requestButton.Location = new System.Drawing.Point(1175, 23);
-            this.requestButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.requestButton.Margin = new System.Windows.Forms.Padding(4);
             this.requestButton.Name = "requestButton";
             this.requestButton.Size = new System.Drawing.Size(133, 39);
             this.requestButton.TabIndex = 45;
@@ -190,7 +190,7 @@
             this.doctorPanel.Controls.Add(this.label4);
             this.doctorPanel.Controls.Add(this.requestDateLabel);
             this.doctorPanel.Location = new System.Drawing.Point(16, 34);
-            this.doctorPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.doctorPanel.Margin = new System.Windows.Forms.Padding(4);
             this.doctorPanel.Name = "doctorPanel";
             this.doctorPanel.Size = new System.Drawing.Size(1311, 208);
             this.doctorPanel.TabIndex = 46;
@@ -198,7 +198,7 @@
             // searchButton
             // 
             this.searchButton.Location = new System.Drawing.Point(432, 23);
-            this.searchButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.searchButton.Margin = new System.Windows.Forms.Padding(4);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(81, 62);
             this.searchButton.TabIndex = 61;
@@ -276,7 +276,7 @@
             this.laboratorianPanel.Controls.Add(this.label9);
             this.laboratorianPanel.Controls.Add(this.executionDateLlabel);
             this.laboratorianPanel.Location = new System.Drawing.Point(16, 250);
-            this.laboratorianPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.laboratorianPanel.Margin = new System.Windows.Forms.Padding(4);
             this.laboratorianPanel.Name = "laboratorianPanel";
             this.laboratorianPanel.Size = new System.Drawing.Size(1311, 411);
             this.laboratorianPanel.TabIndex = 47;
@@ -284,7 +284,7 @@
             // cancelButton1
             // 
             this.cancelButton1.Location = new System.Drawing.Point(1172, 107);
-            this.cancelButton1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cancelButton1.Margin = new System.Windows.Forms.Padding(4);
             this.cancelButton1.Name = "cancelButton1";
             this.cancelButton1.Size = new System.Drawing.Size(133, 39);
             this.cancelButton1.TabIndex = 54;
@@ -295,7 +295,7 @@
             // resultsTextBox
             // 
             this.resultsTextBox.Location = new System.Drawing.Point(13, 60);
-            this.resultsTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.resultsTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.resultsTextBox.Name = "resultsTextBox";
             this.resultsTextBox.Size = new System.Drawing.Size(1156, 344);
             this.resultsTextBox.TabIndex = 53;
@@ -304,7 +304,7 @@
             // returnButton2
             // 
             this.returnButton2.Location = new System.Drawing.Point(1172, 154);
-            this.returnButton2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.returnButton2.Margin = new System.Windows.Forms.Padding(4);
             this.returnButton2.Name = "returnButton2";
             this.returnButton2.Size = new System.Drawing.Size(133, 39);
             this.returnButton2.TabIndex = 51;
@@ -315,7 +315,7 @@
             // executeButton
             // 
             this.executeButton.Location = new System.Drawing.Point(1172, 60);
-            this.executeButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.executeButton.Margin = new System.Windows.Forms.Padding(4);
             this.executeButton.Name = "executeButton";
             this.executeButton.Size = new System.Drawing.Size(133, 39);
             this.executeButton.TabIndex = 52;
@@ -384,7 +384,7 @@
             this.supervisorPanel.Controls.Add(this.label12);
             this.supervisorPanel.Controls.Add(this.confirmationDateLabel);
             this.supervisorPanel.Location = new System.Drawing.Point(16, 668);
-            this.supervisorPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.supervisorPanel.Margin = new System.Windows.Forms.Padding(4);
             this.supervisorPanel.Name = "supervisorPanel";
             this.supervisorPanel.Size = new System.Drawing.Size(1311, 214);
             this.supervisorPanel.TabIndex = 48;
@@ -392,7 +392,7 @@
             // cancelButton2
             // 
             this.cancelButton2.Location = new System.Drawing.Point(1175, 118);
-            this.cancelButton2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cancelButton2.Margin = new System.Windows.Forms.Padding(4);
             this.cancelButton2.Name = "cancelButton2";
             this.cancelButton2.Size = new System.Drawing.Size(133, 39);
             this.cancelButton2.TabIndex = 54;
@@ -403,7 +403,7 @@
             // supervisorCommentTextBox
             // 
             this.supervisorCommentTextBox.Location = new System.Drawing.Point(9, 71);
-            this.supervisorCommentTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.supervisorCommentTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.supervisorCommentTextBox.Name = "supervisorCommentTextBox";
             this.supervisorCommentTextBox.Size = new System.Drawing.Size(1156, 132);
             this.supervisorCommentTextBox.TabIndex = 53;
@@ -412,7 +412,7 @@
             // returnButton3
             // 
             this.returnButton3.Location = new System.Drawing.Point(1175, 165);
-            this.returnButton3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.returnButton3.Margin = new System.Windows.Forms.Padding(4);
             this.returnButton3.Name = "returnButton3";
             this.returnButton3.Size = new System.Drawing.Size(133, 39);
             this.returnButton3.TabIndex = 51;
@@ -423,7 +423,7 @@
             // confirmButton
             // 
             this.confirmButton.Location = new System.Drawing.Point(1175, 71);
-            this.confirmButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.confirmButton.Margin = new System.Windows.Forms.Padding(4);
             this.confirmButton.Name = "confirmButton";
             this.confirmButton.Size = new System.Drawing.Size(133, 39);
             this.confirmButton.TabIndex = 52;
@@ -483,11 +483,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1344, 897);
             this.Controls.Add(this.supervisorPanel);
             this.Controls.Add(this.laboratorianPanel);
             this.Controls.Add(this.doctorPanel);
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "DetailedLaboratoryForm";
             this.Text = "Badanie laboratoryjne";
             this.Controls.SetChildIndex(this.doctorPanel, 0);

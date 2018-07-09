@@ -64,7 +64,7 @@ namespace Przychodnia
             doctorPanel.Enabled = false;
             supervisorPanel.Enabled = false;
             laboratorianPanel.Enabled = false;
-            if (Program.CurrentUser.Position == "Laboratorian")
+            if (Program.CurrentUser.Position == "LaboratoryPerson")
             {
                 laboratorianPanel.Enabled = true;
                 if(!editable)
@@ -74,7 +74,7 @@ namespace Przychodnia
                     resultsTextBox.ReadOnly = true;
                 }
             }
-            else if (Program.CurrentUser.Position == "Supervisor")
+            else if (Program.CurrentUser.Position == "LaboratorySupervisor")
             {
                 supervisorPanel.Enabled = true;
                 if (!editable)
@@ -189,7 +189,7 @@ namespace Przychodnia
 
         private void executeButton_Click(object sender, EventArgs e)
         {
-            examination.Status = "done";
+            examination.Status = "Wykonane";
             examination.Result = resultsTextBox.Text;
             examination.dt_Complete_Cancel = DateTime.Today;
 
@@ -203,7 +203,7 @@ namespace Przychodnia
 
         private void cancelButton1_Click(object sender, EventArgs e)
         {
-            examination.Status = "cancelled";
+            examination.Status = "Anulowane";
             examination.Result = resultsTextBox.Text;
             examination.dt_Complete_Cancel = DateTime.Today;
 
@@ -222,7 +222,7 @@ namespace Przychodnia
 
         private void confirmButton_Click(object sender, EventArgs e)
         {
-            examination.Status = "confirmed";
+            examination.Status = "Zakończone";
             examination.Supervisor_Note = supervisorCommentTextBox.Text;
             examination.dt_Confirmation = DateTime.Today;
 

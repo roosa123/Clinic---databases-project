@@ -251,11 +251,12 @@ namespace Przychodnia
             string lastName = ducky[1];
             DateTime dt = fromDateTimePicker.Value;
 
-            if (!fromDateTimePicker.Checked)
-                dt = DateTime.MinValue;
+            List<Appointment> appointmentsList;
 
-            List<Appointment> appointmentsList = Common.GetAppointmentsForDoctor(firstName, lastName,
-                dt, statusComboBox.SelectedItem.ToString());
+            if (!fromDateTimePicker.Checked)
+                appointmentsList = Common.GetAppointmentsForDoctor(firstName, lastName, null, statusComboBox.SelectedItem.ToString());
+            else
+                appointmentsList = Common.GetAppointmentsForDoctor(firstName, lastName, dt, statusComboBox.SelectedItem.ToString());
 
             FillAppointmentGrid(appointmentsList);
         }

@@ -87,9 +87,9 @@
             this.personalGroupBox.Controls.Add(this.label6);
             this.personalGroupBox.Controls.Add(this.phoneTextBox);
             this.personalGroupBox.Location = new System.Drawing.Point(16, 34);
-            this.personalGroupBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.personalGroupBox.Margin = new System.Windows.Forms.Padding(4);
             this.personalGroupBox.Name = "personalGroupBox";
-            this.personalGroupBox.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.personalGroupBox.Padding = new System.Windows.Forms.Padding(4);
             this.personalGroupBox.Size = new System.Drawing.Size(1312, 94);
             this.personalGroupBox.TabIndex = 27;
             this.personalGroupBox.TabStop = false;
@@ -108,7 +108,7 @@
             // nameTextBox
             // 
             this.nameTextBox.Location = new System.Drawing.Point(121, 23);
-            this.nameTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nameTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.nameTextBox.Name = "nameTextBox";
             this.nameTextBox.Size = new System.Drawing.Size(183, 22);
             this.nameTextBox.TabIndex = 1;
@@ -136,7 +136,7 @@
             // mailTextBox
             // 
             this.mailTextBox.Location = new System.Drawing.Point(812, 54);
-            this.mailTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.mailTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.mailTextBox.Name = "mailTextBox";
             this.mailTextBox.Size = new System.Drawing.Size(147, 22);
             this.mailTextBox.TabIndex = 30;
@@ -164,7 +164,7 @@
             // surnameTextBox
             // 
             this.surnameTextBox.Location = new System.Drawing.Point(121, 55);
-            this.surnameTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.surnameTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.surnameTextBox.Name = "surnameTextBox";
             this.surnameTextBox.Size = new System.Drawing.Size(183, 22);
             this.surnameTextBox.TabIndex = 3;
@@ -182,7 +182,7 @@
             // birthdatePicker
             // 
             this.birthdatePicker.Location = new System.Drawing.Point(515, 55);
-            this.birthdatePicker.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.birthdatePicker.Margin = new System.Windows.Forms.Padding(4);
             this.birthdatePicker.Name = "birthdatePicker";
             this.birthdatePicker.Size = new System.Drawing.Size(183, 22);
             this.birthdatePicker.TabIndex = 5;
@@ -195,7 +195,7 @@
             "M",
             "K"});
             this.sexComboBox.Location = new System.Drawing.Point(445, 22);
-            this.sexComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.sexComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.sexComboBox.Name = "sexComboBox";
             this.sexComboBox.Size = new System.Drawing.Size(41, 24);
             this.sexComboBox.TabIndex = 13;
@@ -203,7 +203,7 @@
             // peselTextBox
             // 
             this.peselTextBox.Location = new System.Drawing.Point(589, 23);
-            this.peselTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.peselTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.peselTextBox.Mask = "00000000000";
             this.peselTextBox.Name = "peselTextBox";
             this.peselTextBox.Size = new System.Drawing.Size(108, 22);
@@ -222,7 +222,7 @@
             // phoneTextBox
             // 
             this.phoneTextBox.Location = new System.Drawing.Point(812, 22);
-            this.phoneTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.phoneTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.phoneTextBox.Mask = "000-000-000";
             this.phoneTextBox.Name = "phoneTextBox";
             this.phoneTextBox.Size = new System.Drawing.Size(147, 22);
@@ -231,7 +231,7 @@
             // returnButton1
             // 
             this.returnButton1.Location = new System.Drawing.Point(1195, 796);
-            this.returnButton1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.returnButton1.Margin = new System.Windows.Forms.Padding(4);
             this.returnButton1.Name = "returnButton1";
             this.returnButton1.Size = new System.Drawing.Size(133, 39);
             this.returnButton1.TabIndex = 25;
@@ -242,7 +242,7 @@
             // saveButton
             // 
             this.saveButton.Location = new System.Drawing.Point(1195, 843);
-            this.saveButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.saveButton.Margin = new System.Windows.Forms.Padding(4);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(133, 39);
             this.saveButton.TabIndex = 24;
@@ -263,7 +263,7 @@
             // permissionTextBox
             // 
             this.permissionTextBox.Location = new System.Drawing.Point(876, 30);
-            this.permissionTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.permissionTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.permissionTextBox.Mask = "0000000";
             this.permissionTextBox.Name = "permissionTextBox";
             this.permissionTextBox.Size = new System.Drawing.Size(132, 22);
@@ -283,9 +283,9 @@
             this.workerGroupBox.Controls.Add(this.label5);
             this.workerGroupBox.Controls.Add(this.permissionTextBox);
             this.workerGroupBox.Location = new System.Drawing.Point(16, 135);
-            this.workerGroupBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.workerGroupBox.Margin = new System.Windows.Forms.Padding(4);
             this.workerGroupBox.Name = "workerGroupBox";
-            this.workerGroupBox.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.workerGroupBox.Padding = new System.Windows.Forms.Padding(4);
             this.workerGroupBox.Size = new System.Drawing.Size(1312, 135);
             this.workerGroupBox.TabIndex = 29;
             this.workerGroupBox.TabStop = false;
@@ -304,7 +304,7 @@
             // validityDateToPicker
             // 
             this.validityDateToPicker.Location = new System.Drawing.Point(432, 76);
-            this.validityDateToPicker.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.validityDateToPicker.Margin = new System.Windows.Forms.Padding(4);
             this.validityDateToPicker.Name = "validityDateToPicker";
             this.validityDateToPicker.Size = new System.Drawing.Size(205, 22);
             this.validityDateToPicker.TabIndex = 38;
@@ -312,7 +312,7 @@
             // specializationTextBox
             // 
             this.specializationTextBox.Location = new System.Drawing.Point(876, 76);
-            this.specializationTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.specializationTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.specializationTextBox.Name = "specializationTextBox";
             this.specializationTextBox.Size = new System.Drawing.Size(132, 22);
             this.specializationTextBox.TabIndex = 37;
@@ -333,7 +333,7 @@
             this.termlessCheckBox.Checked = true;
             this.termlessCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.termlessCheckBox.Location = new System.Drawing.Point(176, 107);
-            this.termlessCheckBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.termlessCheckBox.Margin = new System.Windows.Forms.Padding(4);
             this.termlessCheckBox.Name = "termlessCheckBox";
             this.termlessCheckBox.Size = new System.Drawing.Size(117, 21);
             this.termlessCheckBox.TabIndex = 35;
@@ -343,7 +343,7 @@
             // validityDateFromPicker
             // 
             this.validityDateFromPicker.Location = new System.Drawing.Point(176, 76);
-            this.validityDateFromPicker.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.validityDateFromPicker.Margin = new System.Windows.Forms.Padding(4);
             this.validityDateFromPicker.Name = "validityDateFromPicker";
             this.validityDateFromPicker.Size = new System.Drawing.Size(205, 22);
             this.validityDateFromPicker.TabIndex = 33;
@@ -370,7 +370,7 @@
             "Kierownik laboratorium",
             "Administrator"});
             this.roleComboBox.Location = new System.Drawing.Point(176, 28);
-            this.roleComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.roleComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.roleComboBox.Name = "roleComboBox";
             this.roleComboBox.Size = new System.Drawing.Size(205, 24);
             this.roleComboBox.TabIndex = 31;
@@ -395,9 +395,9 @@
             this.profileGroupBox.Controls.Add(this.label18);
             this.profileGroupBox.Controls.Add(this.loginTextBox);
             this.profileGroupBox.Location = new System.Drawing.Point(16, 271);
-            this.profileGroupBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.profileGroupBox.Margin = new System.Windows.Forms.Padding(4);
             this.profileGroupBox.Name = "profileGroupBox";
-            this.profileGroupBox.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.profileGroupBox.Padding = new System.Windows.Forms.Padding(4);
             this.profileGroupBox.Size = new System.Drawing.Size(1312, 100);
             this.profileGroupBox.TabIndex = 30;
             this.profileGroupBox.TabStop = false;
@@ -406,7 +406,7 @@
             // newPasswordButton
             // 
             this.newPasswordButton.Location = new System.Drawing.Point(601, 30);
-            this.newPasswordButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.newPasswordButton.Margin = new System.Windows.Forms.Padding(4);
             this.newPasswordButton.Name = "newPasswordButton";
             this.newPasswordButton.Size = new System.Drawing.Size(133, 39);
             this.newPasswordButton.TabIndex = 26;
@@ -427,7 +427,7 @@
             // passTextBox2
             // 
             this.passTextBox2.Location = new System.Drawing.Point(391, 62);
-            this.passTextBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.passTextBox2.Margin = new System.Windows.Forms.Padding(4);
             this.passTextBox2.Name = "passTextBox2";
             this.passTextBox2.PasswordChar = '*';
             this.passTextBox2.Size = new System.Drawing.Size(183, 22);
@@ -446,7 +446,7 @@
             // passTextBox1
             // 
             this.passTextBox1.Location = new System.Drawing.Point(391, 30);
-            this.passTextBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.passTextBox1.Margin = new System.Windows.Forms.Padding(4);
             this.passTextBox1.Name = "passTextBox1";
             this.passTextBox1.PasswordChar = '*';
             this.passTextBox1.Size = new System.Drawing.Size(183, 22);
@@ -465,7 +465,7 @@
             // loginTextBox
             // 
             this.loginTextBox.Location = new System.Drawing.Point(60, 30);
-            this.loginTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.loginTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.loginTextBox.Name = "loginTextBox";
             this.loginTextBox.Size = new System.Drawing.Size(183, 22);
             this.loginTextBox.TabIndex = 3;
@@ -474,13 +474,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1344, 897);
             this.Controls.Add(this.profileGroupBox);
             this.Controls.Add(this.workerGroupBox);
             this.Controls.Add(this.returnButton1);
             this.Controls.Add(this.personalGroupBox);
             this.Controls.Add(this.saveButton);
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "DetailedUserForm";
             this.Text = "Użytkownik";
             this.Controls.SetChildIndex(this.saveButton, 0);

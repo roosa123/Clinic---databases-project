@@ -44,9 +44,10 @@
             // appointmentsDataGrid
             // 
             this.appointmentsDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.appointmentsDataGrid.Location = new System.Drawing.Point(33, 100);
+            this.appointmentsDataGrid.Location = new System.Drawing.Point(44, 123);
+            this.appointmentsDataGrid.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.appointmentsDataGrid.Name = "appointmentsDataGrid";
-            this.appointmentsDataGrid.Size = new System.Drawing.Size(839, 604);
+            this.appointmentsDataGrid.Size = new System.Drawing.Size(1119, 743);
             this.appointmentsDataGrid.TabIndex = 0;
             // 
             // statusComboBox
@@ -58,43 +59,48 @@
             "Zarejestrowana",
             "Wykonana",
             "Anulowana"});
-            this.statusComboBox.Location = new System.Drawing.Point(304, 52);
+            this.statusComboBox.Location = new System.Drawing.Point(405, 64);
+            this.statusComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.statusComboBox.Name = "statusComboBox";
-            this.statusComboBox.Size = new System.Drawing.Size(101, 21);
+            this.statusComboBox.Size = new System.Drawing.Size(133, 24);
             this.statusComboBox.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(261, 55);
+            this.label1.Location = new System.Drawing.Point(348, 68);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(37, 13);
+            this.label1.Size = new System.Drawing.Size(48, 17);
             this.label1.TabIndex = 2;
             this.label1.Text = "Status";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(30, 55);
+            this.label2.Location = new System.Drawing.Point(40, 68);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(30, 13);
+            this.label2.Size = new System.Drawing.Size(38, 17);
             this.label2.TabIndex = 3;
             this.label2.Text = "Data";
             // 
             // fromDateTimePicker
             // 
-            this.fromDateTimePicker.Location = new System.Drawing.Point(66, 53);
+            this.fromDateTimePicker.Location = new System.Drawing.Point(88, 65);
+            this.fromDateTimePicker.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.fromDateTimePicker.Name = "fromDateTimePicker";
             this.fromDateTimePicker.ShowCheckBox = true;
-            this.fromDateTimePicker.Size = new System.Drawing.Size(157, 20);
+            this.fromDateTimePicker.Size = new System.Drawing.Size(208, 22);
             this.fromDateTimePicker.TabIndex = 4;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(452, 55);
+            this.label4.Location = new System.Drawing.Point(603, 68);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(39, 13);
+            this.label4.Size = new System.Drawing.Size(51, 17);
             this.label4.TabIndex = 7;
             this.label4.Text = "Lekarz";
             // 
@@ -102,16 +108,18 @@
             // 
             this.doctorComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.doctorComboBox.FormattingEnabled = true;
-            this.doctorComboBox.Location = new System.Drawing.Point(497, 53);
+            this.doctorComboBox.Location = new System.Drawing.Point(663, 65);
+            this.doctorComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.doctorComboBox.Name = "doctorComboBox";
-            this.doctorComboBox.Size = new System.Drawing.Size(350, 21);
+            this.doctorComboBox.Size = new System.Drawing.Size(465, 24);
             this.doctorComboBox.TabIndex = 8;
             // 
             // executeButton
             // 
-            this.executeButton.Location = new System.Drawing.Point(878, 100);
+            this.executeButton.Location = new System.Drawing.Point(1171, 123);
+            this.executeButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.executeButton.Name = "executeButton";
-            this.executeButton.Size = new System.Drawing.Size(100, 32);
+            this.executeButton.Size = new System.Drawing.Size(133, 39);
             this.executeButton.TabIndex = 9;
             this.executeButton.Text = "Obsłuż";
             this.executeButton.UseVisualStyleBackColor = true;
@@ -119,9 +127,10 @@
             // 
             // appointmentDetailsButton
             // 
-            this.appointmentDetailsButton.Location = new System.Drawing.Point(878, 138);
+            this.appointmentDetailsButton.Location = new System.Drawing.Point(1171, 170);
+            this.appointmentDetailsButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.appointmentDetailsButton.Name = "appointmentDetailsButton";
-            this.appointmentDetailsButton.Size = new System.Drawing.Size(100, 32);
+            this.appointmentDetailsButton.Size = new System.Drawing.Size(133, 39);
             this.appointmentDetailsButton.TabIndex = 10;
             this.appointmentDetailsButton.Text = "Pokaż";
             this.appointmentDetailsButton.UseVisualStyleBackColor = true;
@@ -129,9 +138,10 @@
             // 
             // searchButton
             // 
-            this.searchButton.Location = new System.Drawing.Point(878, 42);
+            this.searchButton.Location = new System.Drawing.Point(1171, 52);
+            this.searchButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(100, 32);
+            this.searchButton.Size = new System.Drawing.Size(133, 39);
             this.searchButton.TabIndex = 13;
             this.searchButton.Text = "Szukaj";
             this.searchButton.UseVisualStyleBackColor = true;
@@ -139,9 +149,10 @@
             // 
             // AppointmentsForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(1344, 897);
             this.Controls.Add(this.searchButton);
             this.Controls.Add(this.appointmentDetailsButton);
             this.Controls.Add(this.executeButton);
@@ -152,6 +163,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.statusComboBox);
             this.Controls.Add(this.appointmentsDataGrid);
+            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Name = "AppointmentsForm";
             this.Text = "Wizyty";
             this.Controls.SetChildIndex(this.appointmentsDataGrid, 0);

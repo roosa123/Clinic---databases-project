@@ -295,7 +295,7 @@ namespace Przychodnia
                     MessageBox.Show("Dane zaktualizowano pomyślnie.");
                 else
                 {
-                    MessageBox.Show("Nie udało się zaktualizować danych.");
+                    MessageBox.Show("Nie zaktualizowano danych.");
                     return;
                 }
 

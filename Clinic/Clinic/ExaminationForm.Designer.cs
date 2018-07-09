@@ -50,85 +50,95 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(70, 48);
+            this.label1.Location = new System.Drawing.Point(93, 59);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(81, 13);
+            this.label1.Size = new System.Drawing.Size(105, 17);
             this.label1.TabIndex = 26;
             this.label1.Text = "Nazwa badania";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(29, 108);
+            this.label2.Location = new System.Drawing.Point(39, 133);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(122, 13);
+            this.label2.Size = new System.Drawing.Size(159, 17);
             this.label2.TabIndex = 28;
             this.label2.Text = "Imię i nazwisko pacjenta";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 137);
+            this.label3.Location = new System.Drawing.Point(16, 169);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(139, 13);
+            this.label3.Size = new System.Drawing.Size(182, 17);
             this.label3.TabIndex = 29;
             this.label3.Text = "Lekarz wykonujący badanie";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(32, 168);
+            this.label4.Location = new System.Drawing.Point(43, 207);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(119, 13);
+            this.label4.Size = new System.Drawing.Size(155, 17);
             this.label4.TabIndex = 30;
             this.label4.Text = "Data wykonaia badania";
             // 
             // patientLabel
             // 
             this.patientLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.patientLabel.Location = new System.Drawing.Point(157, 101);
+            this.patientLabel.Location = new System.Drawing.Point(209, 124);
+            this.patientLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.patientLabel.Name = "patientLabel";
-            this.patientLabel.Size = new System.Drawing.Size(250, 20);
+            this.patientLabel.Size = new System.Drawing.Size(333, 25);
             this.patientLabel.TabIndex = 31;
             // 
             // doctorLabel
             // 
             this.doctorLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.doctorLabel.Location = new System.Drawing.Point(157, 130);
+            this.doctorLabel.Location = new System.Drawing.Point(209, 160);
+            this.doctorLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.doctorLabel.Name = "doctorLabel";
-            this.doctorLabel.Size = new System.Drawing.Size(250, 20);
+            this.doctorLabel.Size = new System.Drawing.Size(333, 25);
             this.doctorLabel.TabIndex = 32;
             // 
             // dateLabel
             // 
             this.dateLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dateLabel.Location = new System.Drawing.Point(157, 161);
+            this.dateLabel.Location = new System.Drawing.Point(209, 198);
+            this.dateLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.dateLabel.Name = "dateLabel";
-            this.dateLabel.Size = new System.Drawing.Size(250, 20);
+            this.dateLabel.Size = new System.Drawing.Size(333, 25);
             this.dateLabel.TabIndex = 33;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 201);
+            this.label5.Location = new System.Drawing.Point(16, 247);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(37, 13);
+            this.label5.Size = new System.Drawing.Size(46, 17);
             this.label5.TabIndex = 34;
             this.label5.Text = "Wynik";
             // 
             // resultTextBox
             // 
-            this.resultTextBox.Location = new System.Drawing.Point(15, 217);
+            this.resultTextBox.Location = new System.Drawing.Point(20, 267);
+            this.resultTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.resultTextBox.Name = "resultTextBox";
-            this.resultTextBox.Size = new System.Drawing.Size(981, 462);
+            this.resultTextBox.Size = new System.Drawing.Size(1307, 568);
             this.resultTextBox.TabIndex = 35;
             this.resultTextBox.Text = "";
             // 
             // saveButton
             // 
-            this.saveButton.Location = new System.Drawing.Point(790, 685);
+            this.saveButton.Location = new System.Drawing.Point(1053, 843);
+            this.saveButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.saveButton.Name = "saveButton";
-            this.saveButton.Size = new System.Drawing.Size(100, 32);
+            this.saveButton.Size = new System.Drawing.Size(133, 39);
             this.saveButton.TabIndex = 36;
             this.saveButton.Text = "Wykonaj";
             this.saveButton.UseVisualStyleBackColor = true;
@@ -136,9 +146,10 @@
             // 
             // returnButton
             // 
-            this.returnButton.Location = new System.Drawing.Point(896, 685);
+            this.returnButton.Location = new System.Drawing.Point(1195, 843);
+            this.returnButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.returnButton.Name = "returnButton";
-            this.returnButton.Size = new System.Drawing.Size(100, 32);
+            this.returnButton.Size = new System.Drawing.Size(133, 39);
             this.returnButton.TabIndex = 37;
             this.returnButton.Text = "Powrót";
             this.returnButton.UseVisualStyleBackColor = true;
@@ -147,50 +158,56 @@
             // examinationLabel
             // 
             this.examinationLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.examinationLabel.Location = new System.Drawing.Point(157, 41);
+            this.examinationLabel.Location = new System.Drawing.Point(209, 50);
+            this.examinationLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.examinationLabel.Name = "examinationLabel";
-            this.examinationLabel.Size = new System.Drawing.Size(250, 20);
+            this.examinationLabel.Size = new System.Drawing.Size(333, 25);
             this.examinationLabel.TabIndex = 38;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(84, 78);
+            this.label6.Location = new System.Drawing.Point(112, 96);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(67, 13);
+            this.label6.Size = new System.Drawing.Size(88, 17);
             this.label6.TabIndex = 39;
             this.label6.Text = "Kod badania";
             // 
             // codeLabel
             // 
             this.codeLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.codeLabel.Location = new System.Drawing.Point(157, 71);
+            this.codeLabel.Location = new System.Drawing.Point(209, 87);
+            this.codeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.codeLabel.Name = "codeLabel";
-            this.codeLabel.Size = new System.Drawing.Size(76, 20);
+            this.codeLabel.Size = new System.Drawing.Size(101, 25);
             this.codeLabel.TabIndex = 40;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(252, 78);
+            this.label7.Location = new System.Drawing.Point(336, 96);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(59, 13);
+            this.label7.Size = new System.Drawing.Size(76, 17);
             this.label7.TabIndex = 41;
             this.label7.Text = "ID badania";
             // 
             // label8
             // 
             this.label8.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label8.Location = new System.Drawing.Point(317, 71);
+            this.label8.Location = new System.Drawing.Point(423, 87);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(90, 20);
+            this.label8.Size = new System.Drawing.Size(120, 25);
             this.label8.TabIndex = 42;
             // 
             // searchButton
             // 
-            this.searchButton.Location = new System.Drawing.Point(413, 41);
+            this.searchButton.Location = new System.Drawing.Point(551, 50);
+            this.searchButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(100, 50);
+            this.searchButton.Size = new System.Drawing.Size(133, 62);
             this.searchButton.TabIndex = 43;
             this.searchButton.Text = "Wyszukaj badanie";
             this.searchButton.UseVisualStyleBackColor = true;
@@ -198,9 +215,10 @@
             // 
             // ExaminationForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(1344, 897);
             this.Controls.Add(this.searchButton);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
@@ -218,6 +236,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Name = "ExaminationForm";
             this.Text = "Badanie fizykalne";
             this.Controls.SetChildIndex(this.label1, 0);

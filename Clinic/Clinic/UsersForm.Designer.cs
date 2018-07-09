@@ -42,7 +42,7 @@
             // addButton
             // 
             this.addButton.Location = new System.Drawing.Point(1171, 169);
-            this.addButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.addButton.Margin = new System.Windows.Forms.Padding(4);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(157, 39);
             this.addButton.TabIndex = 17;
@@ -53,7 +53,7 @@
             // editButton
             // 
             this.editButton.Location = new System.Drawing.Point(1171, 123);
-            this.editButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.editButton.Margin = new System.Windows.Forms.Padding(4);
             this.editButton.Name = "editButton";
             this.editButton.Size = new System.Drawing.Size(157, 39);
             this.editButton.TabIndex = 16;
@@ -81,7 +81,7 @@
             "Użytkownik aktywny",
             "Użytkownik nieaktywny"});
             this.statusComboBox.Location = new System.Drawing.Point(345, 64);
-            this.statusComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.statusComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.statusComboBox.Name = "statusComboBox";
             this.statusComboBox.Size = new System.Drawing.Size(255, 24);
             this.statusComboBox.TabIndex = 14;
@@ -90,7 +90,7 @@
             // 
             this.usersDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.usersDataGrid.Location = new System.Drawing.Point(44, 123);
-            this.usersDataGrid.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.usersDataGrid.Margin = new System.Windows.Forms.Padding(4);
             this.usersDataGrid.Name = "usersDataGrid";
             this.usersDataGrid.Size = new System.Drawing.Size(1119, 743);
             this.usersDataGrid.TabIndex = 13;
@@ -116,7 +116,7 @@
             "Kierownik laboratorium",
             "Administrator"});
             this.roleComboBox.Location = new System.Drawing.Point(87, 64);
-            this.roleComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.roleComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.roleComboBox.Name = "roleComboBox";
             this.roleComboBox.Size = new System.Drawing.Size(169, 24);
             this.roleComboBox.TabIndex = 19;
@@ -124,7 +124,7 @@
             // searchButton
             // 
             this.searchButton.Location = new System.Drawing.Point(665, 55);
-            this.searchButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.searchButton.Margin = new System.Windows.Forms.Padding(4);
             this.searchButton.Name = "searchButton";
             this.searchButton.Size = new System.Drawing.Size(133, 39);
             this.searchButton.TabIndex = 27;
@@ -136,6 +136,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1344, 897);
             this.Controls.Add(this.searchButton);
             this.Controls.Add(this.label2);
@@ -145,7 +146,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.statusComboBox);
             this.Controls.Add(this.usersDataGrid);
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "UsersForm";
             this.Text = "Użytkownicy";
             this.Controls.SetChildIndex(this.usersDataGrid, 0);
