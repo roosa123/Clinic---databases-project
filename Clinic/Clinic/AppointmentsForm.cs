@@ -39,9 +39,9 @@ namespace Przychodnia
         {
             
             gridScheme = new GridScheme();
-            gridScheme.AddColumn("firstName", "Patient first name").AddColumn("lastName", "Patient last name").AddColumn("desc", "Description");
-            gridScheme.AddColumn("diag", "Diagnosis").AddColumn("status", "Status").AddColumn("registerDT", "Register Date").AddColumn("completeDT", "Complete Date");
-            gridScheme.AddColumn("id", "Appointment ID", true);
+            gridScheme.AddColumn("firstName", "Imię pacjenta").AddColumn("lastName", "Nazwisko pacjenta").AddColumn("desc", "Opis");
+            gridScheme.AddColumn("diag", "Diagnoza").AddColumn("status", "Status").AddColumn("registerDT", "Data rejestracji").AddColumn("completeDT", "Data wizyty");
+            gridScheme.AddColumn("id", "ID wizyty", true);
             custromGrid = new GridWrapper(appointmentsDataGrid, gridScheme);
         }
 
