@@ -42,15 +42,15 @@ namespace Przychodnia
         private void InitializeGrids()
         {
             patientsGridScheme = new GridScheme();
-            patientsGridScheme.AddColumn("firstName", "Patient first name").AddColumn("lastName", "Patient last name");
-            patientsGridScheme.AddColumn("pesel", "PESEL").AddColumn("birthDT", "Date of birth").AddColumn("insurNo", "Insurance number").AddColumn("phone", "Phone number");
-            patientsGridScheme.AddColumn("id", "Person ID", true);
+            patientsGridScheme.AddColumn("firstName", "Imię pacjenta").AddColumn("lastName", "Nazwisko pacjenta");
+            patientsGridScheme.AddColumn("pesel", "PESEL").AddColumn("birthDT", "Data urodzenia").AddColumn("insurNo", "Numer ubezpieczenia").AddColumn("phone", "Numer telefonu");
+            patientsGridScheme.AddColumn("id", "ID osoby", true);
             patientsCustomGrid = new GridWrapper(patientsDataGrid, patientsGridScheme);
 
             appointmentsGridScheme = new GridScheme();
-            appointmentsGridScheme.AddColumn("firstName", "Patient first name").AddColumn("lastName", "Patient last name").AddColumn("desc", "Description");
-            appointmentsGridScheme.AddColumn("diag", "Diagnosis").AddColumn("status", "Status").AddColumn("registerDT", "Register Date").AddColumn("completeDT", "Complete Date");
-            appointmentsGridScheme.AddColumn("id", "Appointment ID", true);
+            appointmentsGridScheme.AddColumn("firstName", "Imię pacjenta").AddColumn("lastName", "Nazwisko pacjenta").AddColumn("desc", "Opis");
+            appointmentsGridScheme.AddColumn("diag", "Diagnoza").AddColumn("status", "Status").AddColumn("registerDT", "Data rejestracji").AddColumn("completeDT", "Data wizyty");
+            appointmentsGridScheme.AddColumn("id", "ID wizyty", true);
             appointmentsCustomGrid = new GridWrapper(appointmentsDataGrid, appointmentsGridScheme);
         }
 

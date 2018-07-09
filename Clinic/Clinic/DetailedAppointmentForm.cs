@@ -97,7 +97,7 @@ namespace Przychodnia
         private void InitializeExaminationsGrid()
         {
             ExaminationGridScheme = new GridScheme();
-            ExaminationGridScheme.AddColumn("code", "Code").AddColumn("name", "Name").AddColumn("result", "Result");
+            ExaminationGridScheme.AddColumn("code", "Kod badania").AddColumn("name", "Nazwa").AddColumn("result", "Wynik");
             ExaminationGridScheme.AddColumn("id", "ID", true);
             ExaminationGrid = new GridWrapper(examinationsDataGrid, ExaminationGridScheme);
         }
@@ -105,8 +105,8 @@ namespace Przychodnia
         private void InitializeLaboratyGrid()
         {
             LaboratoryGridScheme = new GridScheme();
-            LaboratoryGridScheme.AddColumn("code", "Code").AddColumn("name", "Name").AddColumn("result", "Result");
-            LaboratoryGridScheme.AddColumn("status", "Status").AddColumn("note", "Supervisor note").AddColumn("id", "ID", true);
+            LaboratoryGridScheme.AddColumn("code", "Kod badania").AddColumn("name", "Nazwa").AddColumn("result", "Wynik");
+            LaboratoryGridScheme.AddColumn("status", "Status").AddColumn("note", "Notatka kierownika laboratorium").AddColumn("id", "ID", true);
             LaboratoryGrid = new GridWrapper(laboratoryDataGrid, LaboratoryGridScheme);
         }
 

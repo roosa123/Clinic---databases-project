@@ -150,18 +150,17 @@ namespace Przychodnia
         private void InitializeGrids()
         {
             appointmentsGridScheme = new GridScheme();
-            appointmentsGridScheme.AddColumn("diag", "Diagnosis").AddColumn("status", "Status").AddColumn("registerDT", "Register Date").AddColumn("completeDT", "Complete Date");
-            appointmentsGridScheme.AddColumn("id", "Appointment ID", true);
+            appointmentsGridScheme.AddColumn("diag", "Diagnoza").AddColumn("status", "Status").AddColumn("registerDT", "Data rejestracji").AddColumn("completeDT", "Data wizyty");
+            appointmentsGridScheme.AddColumn("id", "ID wizyty", true);
             appointmentsCustomGrid = new GridWrapper(appointmentsDataGrid, appointmentsGridScheme);
             
             examinationGridScheme = new GridScheme();
-            examinationGridScheme.AddColumn("exCode", "Examination Code").AddColumn("name", "Name").AddColumn("type", "Type").AddColumn("res", "Result");
- //           examinationGridScheme.AddColumn("id", "Examination ID", true);
+            examinationGridScheme.AddColumn("exCode", "Kod badania").AddColumn("name", "Nazwa").AddColumn("type", "Typ").AddColumn("res", "Wynik");
             examinationsCustomGrid = new GridWrapper(examinationsDataGrid, examinationGridScheme);
 
             laboratoryGridScheme = new GridScheme();
-            laboratoryGridScheme.AddColumn("requestDT", "Date of request").AddColumn("labPers", "Laboratory Person").AddColumn("stat", "Status").AddColumn("res", "Result").AddColumn("supNote", "Laboratory Supervisor Note").AddColumn("dNote", "Doctor Note");
-            laboratoryGridScheme.AddColumn("exCode", "Examination Code");//.AddColumn("id", "Examination ID", true);
+            laboratoryGridScheme.AddColumn("requestDT", "Data zgłoszenia").AddColumn("labPers", "Laborant").AddColumn("stat", "Status").AddColumn("res", "Wynik").AddColumn("supNote", "Notatka kierownika laboratorium").AddColumn("dNote", "Notatka lekarza");
+            laboratoryGridScheme.AddColumn("exCode", "Kod badania").AddColumn("id", "ID badania", true);
             laboratoryCustomGrid = new GridWrapper(laboratoryDataGrid, laboratoryGridScheme);
         }
 
@@ -210,7 +209,7 @@ namespace Przychodnia
                 row.Add(ex.Examinations.Name);
                 row.Add(ex.Examinations.Type);
                 row.Add(ex.Result);
-//                row.Add(ex.Id.ToString());
+                row.Add(ex.Id.ToString());
                 scheme.Add(new Tuple<List<string>, bool>(row, true));
             }
             examinationsCustomGrid.SetRows(scheme);

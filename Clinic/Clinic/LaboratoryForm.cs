@@ -31,8 +31,8 @@ namespace Przychodnia
         private void InitializeGrid()
         {
             examinationGridScheme = new GridScheme();
-            examinationGridScheme.AddColumn("exCode", "Examination Code").AddColumn("name", "Name").AddColumn("lab", "Laboratory Person").AddColumn("reqDT", "Request Date").AddColumn("complDT", "Complete Date").AddColumn("confDT", "Confirmation Date").AddColumn("res", "Result").AddColumn("status", "Status");
-            examinationGridScheme.AddColumn("id", "Examination ID", true);
+            examinationGridScheme.AddColumn("exCode", "Kod badania").AddColumn("name", "Nazwa").AddColumn("lab", "Laborant").AddColumn("reqDT", "Data zgłoszenia").AddColumn("complDT", "Data wykonania").AddColumn("confDT", "Data zatwierdzenia").AddColumn("res", "Wynik").AddColumn("status", "Status");
+            examinationGridScheme.AddColumn("id", "ID badania", true);
             examinationCustomGrid = new GridWrapper(examinationsDataGrid, examinationGridScheme);
         }
 

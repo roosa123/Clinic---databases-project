@@ -43,7 +43,7 @@ namespace Przychodnia
         private void InitializeGrids()
         {
             examinationGridScheme = new GridScheme();
-            examinationGridScheme.AddColumn("exCode", "Examination Code").AddColumn("name", "Name").AddColumn("type", "Type");
+            examinationGridScheme.AddColumn("exCode", "Kod badania").AddColumn("name", "Nazwa").AddColumn("type", "Typ");
             examinationsCustomGrid = new GridWrapper(dataGridView1, examinationGridScheme);
         }
 

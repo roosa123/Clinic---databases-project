@@ -33,9 +33,9 @@ namespace Przychodnia
         private void InitializeGrid()
         {
             usersGridScheme = new GridScheme();
-            usersGridScheme.AddColumn("fName", "First Name").AddColumn("lName", "Last Name");
-            usersGridScheme.AddColumn("fromDT", "Account Validity From").AddColumn("toDT", "Account Validity To").AddColumn("login", "Login").AddColumn("position", "Position");
-            usersGridScheme.AddColumn("id", "Employee ID", true);
+            usersGridScheme.AddColumn("fName", "Imię").AddColumn("lName", "Nazwisko");
+            usersGridScheme.AddColumn("fromDT", "Konto ważne od:").AddColumn("toDT", "Konto ważne do:").AddColumn("login", "Login").AddColumn("position", "Stanowisko");
+            usersGridScheme.AddColumn("id", "ID pracownika", true);
             usersCustomGrid = new GridWrapper(usersDataGrid, usersGridScheme);
         }
 
